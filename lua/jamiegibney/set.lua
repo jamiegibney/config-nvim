@@ -24,15 +24,18 @@ opt.nu = true
 opt.relativenumber = true
 opt.numberwidth = 3
 
-opt.scrolloff = 20
+vim.wo.signcolumn = "yes:2"
+
+opt.scrolloff = 16
 opt.updatetime = 40
 
 opt.incsearch = true
-opt.hlsearch = false
+opt.hlsearch = true
 
 opt.linebreak = true
 opt.breakat = " \t;:,!?."
 opt.fillchars = { eob = " " }
+opt.cursorline = true
 
 opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -44,11 +47,19 @@ opt.background = "light"
 opt.hidden = true
 opt.completeopt = "menuone"
 
-vim.wo.signcolumn = "yes"
 opt.spelllang = "en_gb"
+
+--[[ you can also use:
+api.nvim_create_autocmd({ "Events", }, {
+    pattern = "*",
+    callback = function()
+        ...
+    end,
+})
+]]
 
 cmd "autocmd BufEnter * if &ft ==# 'help' | wincmd L | endif"
 cmd "autocmd BufWinEnter * exe 'normal zz'"
 
 -- flash text upon yank
-cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'Search', timeout = 60 }"
+cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }"

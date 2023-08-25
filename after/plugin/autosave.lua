@@ -15,5 +15,5 @@ require("auto-save").setup {
         end
         return false
     end,
-    debounce_delay = 30,
+    debounce_delay = 130,
 }

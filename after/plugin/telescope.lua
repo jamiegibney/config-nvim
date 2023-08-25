@@ -1,15 +1,28 @@
 local builtin = require "telescope.builtin"
 
+-- * -- KEYMAPS -- * --
 -- "find file"
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+
 -- "find word"
 vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
+
 -- "git file"
 vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
+
 -- "file old"
 vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
+
 -- "find in"
 vim.keymap.set("n", "<leader>fi", builtin.current_buffer_fuzzy_find, {})
+
+-- "go references"
+vim.keymap.set("n", "gr", builtin.lsp_references, {})
+
+-- "telescope resume"
+vim.keymap.set("n", "<leader>tr", builtin.resume, {})
+
+
 
 require("telescope").load_extension("harpoon")
 
@@ -65,11 +78,11 @@ require("telescope").setup {
       preview_cutoff = 0,
     },
 
-    winblend = 10,
-    border = {},
+    winblend = 0,
+    -- border = {},
     color_devicons = true,
-    -- borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    -- borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
 
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = { "node_modules" },
@@ -86,8 +99,5 @@ require("telescope").setup {
     find_files = {
       hidden = true,
     },
-    -- live_grep = {
-    --   hidden = true,
-    -- },
   },
 }

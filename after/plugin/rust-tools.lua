@@ -7,7 +7,7 @@ require("rust-tools").setup {
     inlay_hints = {
       -- show_parameter_hints = false,
       only_current_line = true,
-      highlight = "String",
+      highlight = "DiagnosticHint",
     },
   },
 
@@ -46,12 +46,14 @@ require("rust-tools").setup {
             "clippy::cast_lossless",
             "-A",
             "clippy::cast_possible_truncation",
+            "-A",
+            "clippy::cast_possible_wrap",
           },
         },
         rustfmt = {
           extraArgs = {
             "--config",
-            "use_small_heuristics=Max,control_brace_style=ClosingNextLine,max_width=80,chain_width=60,overflow_delimited_expr=true",
+            "use_small_heuristics=Max,control_brace_style=ClosingNextLine,max_width=80,chain_width=60,overflow_delimited_expr=true,short_array_element_width_threshold=100",
           },
         },
       },

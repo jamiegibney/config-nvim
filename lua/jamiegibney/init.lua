@@ -22,3 +22,6 @@ require("jamiegibney.plugins")
 -- just pretend I'm not calling this twice to get it to work ;)
 vim.cmd "autocmd VimEnter * :Alpha"
 vim.cmd "autocmd VimEnter * :Alpha"
+
+-- set clion-like theme
+require("jamiegibney.theme")

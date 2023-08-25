@@ -23,6 +23,7 @@ local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp_select = { behaviour = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings {
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<S-CR>"] = cmp.mapping.confirm { select = true },
     ["<C-e>"] = cmp.mapping.abort(),
 
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -31,11 +32,22 @@ local cmp_mappings = lsp.defaults.cmp_mappings {
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-f>"] = cmp.mapping.scroll_docs(-4),
 
-    ["<C-i>"] = cmp.mapping.complete(),
-    -- ["<CR>"] = cmp.config.disable,
+    ["<C_i>"] = cmp.mapping.complete(),
 }
 
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({
+    --[[ filetypes = {
+        ["*"] = {
+            ["("] = {
+                kind = {
+                    cmp.lsp.CompletionItemKind.Function,
+                    cmp.lsp.CompletionItemKind.Method,
+                }
+            }
+        },
+        handler = require("nvim-autopairs.completion.cmp")["*"],
+    } ]]
+}))
 
 lsp.setup_nvim_cmp {
     mapping = cmp_mappings,
@@ -51,39 +63,52 @@ lsp.setup_nvim_cmp {
     },
 }
 
-lsp.on_attach(function(_client, _bufnr)
+-- LSP keymaps are here - note that the default implementation of
+-- any of these keymaps will be used if an LSP server is not available
+-- for the current buffer. also, Telescope implements the LSP references
+-- with "gr" ("go references"), and goto-preview implements (type)
+-- definition preview with "<leader>gd/td".
+lsp.on_attach(function(client, bufnr)
     -- lsp action - "action"
     vim.keymap.set("n", "<leader>a", function()
         vim.lsp.buf.code_action()
     end)
+
     -- lsp info - "info"
     vim.keymap.set("n", "<leader>i", function()
         vim.lsp.buf.hover()
     end)
+
     -- lsp signature
     vim.keymap.set("n", "<leader>ls", function()
         vim.lsp.buf.signature_help()
     end)
+
     -- lsp rename
     vim.keymap.set("n", "<leader>rn", function()
         vim.lsp.buf.rename()
     end)
+
     -- lsp format
     vim.keymap.set("n", "<leader>fm", function()
         vim.lsp.buf.format { async = true }
     end)
+
     -- lsp usages - "go usages"
     vim.keymap.set("n", "gu", function()
         vim.lsp.buf.usages()
     end)
-    -- lsp references - "go references"
-    vim.keymap.set("n", "gr", function()
-        vim.lsp.buf.references()
-    end)
+
     -- lsp definition - "go definition"
     vim.keymap.set("n", "gd", function()
         vim.lsp.buf.definition()
     end)
+
+    -- lsp type definition - "type definition"
+    vim.keymap.set("n", "td", function()
+        vim.lsp.buf.type_definition()
+    end)
+
     -- lsp diagnostics - "DiagNostics"
     vim.keymap.set("n", "<leader>dn", function()
         vim.diagnostic.open_float {

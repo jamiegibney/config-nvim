@@ -8,9 +8,6 @@ require("lazy").setup({
     -- themes
     {
         "savq/melange-nvim",
-        config = function()
-            vim.cmd.colorscheme "melange"
-        end,
         event = "VimEnter",
     },
     {
@@ -32,9 +29,13 @@ require("lazy").setup({
         config = function()
             require("treesitter-context").setup {
                 max_lines = 2,
+                -- highlight group?
             }
         end,
         lazy = false,
+    },
+    {
+        "nvim-treesitter/playground",
     },
 
     { -- undo tree
@@ -50,7 +51,7 @@ require("lazy").setup({
         branch = "v2.x",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },             -- Required
+            { "neovim/nvim-lspconfig" }, -- Required
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
@@ -58,9 +59,9 @@ require("lazy").setup({
             {
                 "hrsh7th/nvim-cmp",
                 event = "InsertEnter",
-            },                          -- Required
+            }, -- Required
             { "hrsh7th/cmp-nvim-lsp" }, -- Required
-            { "L3MON4D3/LuaSnip" },     -- Required
+            { "L3MON4D3/LuaSnip" }, -- Required
 
             -- autocomplete sources
             { "saadparwaiz1/cmp_luasnip" },
@@ -111,6 +112,9 @@ require("lazy").setup({
 
     { -- awesome buffer visuals
         "eandrju/cellular-automaton.nvim",
+        keys = {
+            { "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>" },
+        },
     },
 
     { -- fast buffer switching
@@ -185,7 +189,7 @@ require("lazy").setup({
         lazy = true,
     },
 
-    {                  -- surround text with delimiters, etc.
+    { -- surround text with delimiters, etc.
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
@@ -211,6 +215,14 @@ require("lazy").setup({
 
     {
         "lukas-reineke/indent-blankline.nvim",
+    },
+
+    {
+        "chiendo97/intellij.vim",
+    },
+
+    {
+        "takac/vim-hardtime",
     },
 }, {
     defaults = {
