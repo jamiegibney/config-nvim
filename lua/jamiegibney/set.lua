@@ -59,6 +59,8 @@ api.nvim_create_autocmd({ "Events", }, {
 ]]
 
 cmd "autocmd BufEnter * if &ft ==# 'help' | wincmd L | endif"
+-- cmd "autocmd BufEnter * if &ft ==# 'oil' | set winbar=%F"
+
 cmd "autocmd BufWinEnter * exe 'normal zz'"
 
 -- flash text upon yank

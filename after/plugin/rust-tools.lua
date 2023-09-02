@@ -5,7 +5,7 @@ require("rust-tools").setup {
 
   tools = {
     inlay_hints = {
-      -- show_parameter_hints = false,
+      show_parameter_hints = false,
       only_current_line = true,
       highlight = "DiagnosticHint",
     },

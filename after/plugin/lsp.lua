@@ -22,8 +22,9 @@ local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
 local cmp_select = { behaviour = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings {
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<S-CR>"] = cmp.mapping.confirm { select = true },
+    -- ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<C-y>"] = cmp.mapping.confirm { select = true },
+    -- ["<S-CR>"] = cmp.mapping.confirm { select = true },
     ["<C-e>"] = cmp.mapping.abort(),
 
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -32,7 +33,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings {
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-f>"] = cmp.mapping.scroll_docs(-4),
 
-    ["<C_i>"] = cmp.mapping.complete(),
+    ["<C-i>"] = cmp.mapping.complete(),
 }
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({

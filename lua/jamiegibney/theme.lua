@@ -1,5 +1,4 @@
 vim.keymap.set("n", "<leader>hg", ":Inspect<CR>")
--- vim.keymap.set("n", "<leader>ws", ":w<CR>:colorscheme melange<CR>:so<CR>")
 
 vim.g.indent_blankline_use_treesitter = true
 
@@ -33,7 +32,7 @@ local function set_highlights()
     -- general highlights
     api.nvim_set_hl(0, "Normal", { fg = "#000000", bg = "#ffffff", })
     api.nvim_set_hl(0, "NormalNC", { link = "Normal", })
-    api.nvim_set_hl(0, "Todo", { fg = "#008dde", bold = true, })
+    api.nvim_set_hl(0, "Todo", { fg = "#008dde", italic = true, bold = true, --[[ bg = "#c0ddef", ]] })
     api.nvim_set_hl(0, "LineNr", { fg = "#adadad", bg = "#ffffff" })
     api.nvim_set_hl(0, "CursorLine", { bg = "#f5f5f5", })
     api.nvim_set_hl(0, "CursorLineNr", { fg = "#7a7a7a", })
@@ -75,6 +74,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "rustStorage", { fg = "#0033b3", })
     api.nvim_set_hl(0, "rustSigil", { fg = "#000000", })
     api.nvim_set_hl(0, "rustKeyword", { fg = "#0033b3", })
+    api.nvim_set_hl(0, "rustAssert", { link = "@macro", })
+    api.nvim_set_hl(0, "rustQuestionMark", { link = "rustKeyword", })
 
     -- literals
     api.nvim_set_hl(0, "String", { fg = "#0a8521", })
@@ -99,6 +100,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.type.typeParameter", { fg = "#20999d", })
     api.nvim_set_hl(0, "@lsp.type.property", { fg = "#a215a0" })
     api.nvim_set_hl(0, "@lsp.type.enumMember", { fg = "#a215a0", italic = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.enumMember.library.rust", { link = "@lsp.type.enumMember" })
+    api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = "#000000", })
     api.nvim_set_hl(0, "@macro", { fg = "#dd6718", })
 
@@ -124,6 +127,7 @@ local function set_highlights()
 
     local method_color = "#0070a0"
     api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.rust", { fg = method_color, })
+    api.nvim_set_hl(0, "rustFuncCall", { fg = method_color, })
     -- method declaration
     api.nvim_set_hl(0, "@lsp.typemod.method.declaration.rust", { bold = true })
     -- method call
@@ -153,9 +157,10 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.macro.defaultLibrary.rust", { link = "@macro" })
     api.nvim_set_hl(0, "@lsp.typemod.macro.library.rust", { link = "@macro" })
     api.nvim_set_hl(0, "@lsp.type.string.rust", { fg = "#0a8521", italic = true, })
-    -- api.nvim_set_hl(0, "rustString", {})
+    api.nvim_set_hl(0, "rustString", { link = "String" })
     api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", })
     api.nvim_set_hl(0, "@lsp.typemod.decorator.attribute.rust", { fg = "#af9800" })
+    api.nvim_set_hl(0, "rustMacro", { link = "@macro" })
 end
 
 api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {

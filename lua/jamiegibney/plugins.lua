@@ -51,20 +51,21 @@ require("lazy").setup({
         branch = "v2.x",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" }, -- Required
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" }, -- Optional
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
 
             -- Autocompletion
             {
                 "hrsh7th/nvim-cmp",
                 event = "InsertEnter",
-            }, -- Required
-            { "hrsh7th/cmp-nvim-lsp" }, -- Required
-            { "L3MON4D3/LuaSnip" }, -- Required
+            },
+
+            "hrsh7th/cmp-nvim-lsp",
+            "L3MON4D3/LuaSnip",
 
             -- autocomplete sources
-            { "saadparwaiz1/cmp_luasnip" },
+            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
@@ -132,7 +133,9 @@ require("lazy").setup({
 
     { -- startup screen
         "goolord/alpha-nvim",
-        event = "VimEnter",
+        -- toggle the below to enable alpha
+        -- event = "VimEnter",
+        lazy = true,
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("alpha").setup(require("alpha.themes.custom_theme").config)
@@ -189,7 +192,7 @@ require("lazy").setup({
         lazy = true,
     },
 
-    { -- surround text with delimiters, etc.
+    {                  -- surround text with delimiters, etc.
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
@@ -198,6 +201,8 @@ require("lazy").setup({
     { -- a file-system editable like a buffer
         "stevearc/oil.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VimEnter",
+        opts = {},
     },
 
     { -- scrolloff for the end of file
@@ -224,8 +229,17 @@ require("lazy").setup({
     {
         "takac/vim-hardtime",
     },
+
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
 }, {
     defaults = {
+        version = "*",
         lazy = false,
     },
 })
