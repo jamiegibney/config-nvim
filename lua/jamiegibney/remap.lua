@@ -155,23 +155,23 @@ vim.keymap.set("n", "<leader>nc", function()
 end
 )
 
--- allow editing across multiple lines in visual block mode when exiting insert
--- and clear search highlighting too
-vim.keymap.set("i", "<C-c>", "<Esc>:noh<CR>")
+-- allows visual block edits to apply across multiple lines when using <C-c>
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
 
 -- * --  VISUAL MODE  -- * --
 
--- move selected block
+-- move selected block and auto-indent
 vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
 
--- block-comment around selection
+-- linewise comment selection - use "gb" to "go blockwise" around a selection
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 
 -- * --  TERMINAL MODE -- * --
 
--- toggle terminal/normal mode
+-- toggle terminal/normal mode - not a perfect motion as it can alter the other
+-- buffer when exiting the terminal in certain situations
 vim.keymap.set("t", "<C-`>", "<C-\\><C-n>")
 vim.keymap.set("n", "<C-`>", "i")
