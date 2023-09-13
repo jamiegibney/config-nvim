@@ -1,5 +1,10 @@
+-- custom statusline
 require "jamiegibney.statusline"
+-- custom winbar
+-- require "jamiegibney.winbar"
+-- general key remaps — most plugin-specific remaps are in their config files in after/
 require "jamiegibney.remap"
+-- vim settings
 require "jamiegibney.set"
 
 -- lazy
@@ -16,6 +21,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- all plugins
 require "jamiegibney.plugins"
 
 -- set clion-like theme

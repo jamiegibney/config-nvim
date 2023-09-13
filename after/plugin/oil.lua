@@ -12,15 +12,23 @@ require("oil").setup {
     keymaps = {
         ["<C-o>"] = "actions.select",
         ["<C-i>"] = "actions.parent",
-        ["<C-v>"] = "actions.select_vsplit",
+        ["<C-r>"] = "actions.refresh",
         ["<BS>"] = "actions.parent",
+        ["<C-z>"] = "actions.select_hsplit",
 
         -- enable this for floating windows for easy exit
-        -- ["<C-c>"] = "actions.close",
+        ["<C-c>"] = "",
+        ["<C-h>"] = "",
     },
 
     view_options = {
         show_hidden = true,
+        is_always_hidden = function(name, _)
+            if name == ".DS_Store" then
+                return true
+            end
+            return false
+        end
     },
 
     float = {

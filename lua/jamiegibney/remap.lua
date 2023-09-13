@@ -1,54 +1,64 @@
+-- the leader key, set to space
 vim.g.mapleader = " "
 
-vim.g.hardtime_timeout = 1000
-vim.g.hardtime_allow_different_key = 1
 
--- * --  NORMAL  -- * --
+-- * --  NORMAL MODE  -- * --
 
 -- toggle line comment
 vim.keymap.set("n", "<leader>/", function()
     require("Comment.api").toggle.linewise.current()
 end)
 
--- keep the caret centred during big motions
+-- "git status"
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
+-- "undo"-tree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- keep the caret centred in big vertical motions
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
--- clear previous search (and its highlighting)
-vim.keymap.set("n", "<C-c>", ":let @/ = ''<CR>")
-vim.keymap.set("n", "<Esc>", ":let @/ = ''<CR>")
+-- clear previous search (currently using :noh to remove highlights but
+-- retain the previous search)
+-- vim.keymap.set("n", "<C-c>", ":let @/ = ''<CR>")
+-- vim.keymap.set("n", "<Esc>", ":let @/ = ''<CR>")
 
--- "write file"
-vim.keymap.set("n", "<leader>wf", ":w<CR>")
+-- clear search highlight (but not the search term, so n and N will work)
+vim.keymap.set("n", "<C-c>", ":noh<CR>")
+vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
--- move by wrapped lines
+-- "write file", disabled to force :w<CR> manually
+-- vim.keymap.set("n", "<leader>wf", ":w<CR>")
+
+-- move through soft-wrapped lines
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
 -- "write & source"
 vim.keymap.set("n", "<leader>ws", ":w<CR>:so<CR>")
 
--- "file system" (or "fuck sake", as I like to think of it)
+-- "file system" (or "fuck sake", which is funnier)
 vim.keymap.set("n", "<leader>fs", ":Oil<CR>")
--- floating option -- make sure <C-c> to close is set in oil.lua
+-- floating option of the above - make sure <C-c> to close is set in after/oil.lua
 -- vim.keymap.set("n", "<leader>fs", ":Oil --float<CR>")
 
 -- "previous file"
 vim.keymap.set("n", "<leader>pf", "<C-^>")
 
--- move line up/down
+-- move current line up/down and auto-indent
 vim.keymap.set("n", "<C-k>", ":move -2<CR>==")
 vim.keymap.set("n", "<C-j>", ":move +1<CR>==")
 
 -- keep caret at start of line when using J
 -- vim.keymap.set("n", "J", "mzJ'z")
 
--- insert trailing semicolon
+-- insert semicolon at end of line
 vim.keymap.set("n", "<S-CR>", "A;<C-c>")
 
--- window management
+-- split resizign
 -- decrease split width
 vim.keymap.set("n", "<C-,>", "4<C-w><")
 -- increase split width
@@ -58,6 +68,7 @@ vim.keymap.set("n", "<C-->", "4<C-w>-")
 -- increase split height
 vim.keymap.set("n", "<C-=>", "4<C-w>+")
 
+-- splits
 -- "split vertical"
 vim.keymap.set("n", "<leader>sv", "<C-w>v<C-w><C-w>")
 -- "split horizontal"
@@ -66,7 +77,7 @@ vim.keymap.set("n", "<leader>sh", "<C-w>s<C-w><C-w>")
 vim.keymap.set("n", "<leader>hw", ":hide<CR>")
 -- "close window"
 vim.keymap.set("n", "<leader>cw", "ZZ")
--- close all other splits
+-- close all other splits, i.e. "maximise" the current split
 vim.keymap.set("n", "<leader><leader>", "<C-w>o")
 
 -- tabs
@@ -86,22 +97,24 @@ vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
 -- "clear edits"
 vim.keymap.set("n", "<leader>ce", ":e!<CR>")
 
--- "spelling"
+-- "spelling" - enable typo highlighting
 vim.keymap.set("n", "<leader>sp", ":set spell!<CR>")
 
 -- retain content of register after pasting into a selection
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
--- "replace all"
+-- "replace all" - substitute all matched instances of the word under cursor
 vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- * --  INSERT  -- * --
 
--- insert trailing semicolon
+-- * --  INSERT MODE  -- * --
+
+-- insert trailing semicolon and enter normal mode
 vim.keymap.set("i", "<S-CR>", "<C-c>A;<C-c>")
 
--- enter new line without continuing the comment
-vim.keymap.set("i", "<C-CR>", "<CR><C-c>\"_S")
+-- enter new line and ensure it is cleared (i.e. avoids continuing comments)
+-- vim.keymap.set("i", "<C-CR>", "<CR><C-c>\"_S")
+-- vim.keymap.set("n", "<C-CR>", "o<C-c>\"_S")
 
 -- caret navigation in insert mode
 vim.keymap.set("i", "<C-k>", "<C-c>gka")
@@ -142,12 +155,12 @@ vim.keymap.set("n", "<leader>nc", function()
 end
 )
 
-
 -- allow editing across multiple lines in visual block mode when exiting insert
 -- and clear search highlighting too
 vim.keymap.set("i", "<C-c>", "<Esc>:noh<CR>")
 
--- * --  VISUAL  -- * --
+
+-- * --  VISUAL MODE  -- * --
 
 -- move selected block
 vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
@@ -156,7 +169,8 @@ vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
 -- block-comment around selection
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
--- * --  TERMINAL -- * --
+
+-- * --  TERMINAL MODE -- * --
 
 -- toggle terminal/normal mode
 vim.keymap.set("t", "<C-`>", "<C-\\><C-n>")

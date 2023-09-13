@@ -37,6 +37,8 @@ require("rust-tools").setup {
             "clippy::complexity",
             "-W",
             "clippy::perf",
+            "-W",
+            "clippy::clone_on_ref_ptr",
             -- annoying casting lints that I never want to see again
             "-A",
             "clippy::cast_sign_loss",
