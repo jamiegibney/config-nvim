@@ -21,11 +21,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
--- clear previous search (currently using :noh to remove highlights but
--- retain the previous search)
--- vim.keymap.set("n", "<C-c>", ":let @/ = ''<CR>")
--- vim.keymap.set("n", "<Esc>", ":let @/ = ''<CR>")
-
 -- clear search highlight (but not the search term, so n and N will work)
 vim.keymap.set("n", "<C-c>", ":noh<CR>")
 vim.keymap.set("n", "<Esc>", ":noh<CR>")
@@ -122,41 +117,11 @@ vim.keymap.set("i", "<C-j>", "<C-c>gja")
 vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
-local function tprint(tbl, indent)
-    if not indent then
-        indent = 0
-    end
-    for k, v in pairs(tbl) do
-        local formatting = string.rep("{ ", indent) .. k .. ": "
-        if type(v) == "table" then
-            print(formatting)
-            tprint(v, indent + 1)
-        elseif type(v) == "boolean" then
-            print(formatting .. tostring(v))
-        else
-            print(formatting .. v)
-        end
-    end
-end
-
-vim.keymap.set("n", "<leader>nc", function()
-    local node_at_point = require("nvim-treesitter.ts_utils").get_node_at_cursor()
-    local def_node, scope = require("nvim-treesitter.locals").find_definition(node_at_point, 0)
-    local refs = {}
-    if def_node ~= node_at_point then
-        local range = { def_node:range() }
-        table.insert(refs, {
-            { range[1], range[2] },
-            { range[3], range[4] },
-            vim.lsp.protocol.DocumentHighlightKind.Write,
-        })
-    end
-    tprint(refs, 1)
-end
-)
-
 -- allows visual block edits to apply across multiple lines when using <C-c>
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- prevents the weird special character insert when mistyping <C-c>
+vim.keymap.set("i", "<C-v>", "")
 
 
 -- * --  VISUAL MODE  -- * --
@@ -169,9 +134,35 @@ vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 
--- * --  TERMINAL MODE -- * --
+-- * --  TERMINAL MODE  -- * --
 
 -- toggle terminal/normal mode - not a perfect motion as it can alter the other
 -- buffer when exiting the terminal in certain situations
 vim.keymap.set("t", "<C-`>", "<C-\\><C-n>")
 vim.keymap.set("n", "<C-`>", "i")
+
+
+-- * --  REMOVE FUNCTION KEYS  -- * --
+
+-- this may be temporary, but is currently useful to prevent accidents on the new keyboard :)
+vim.keymap.set("i", "<F1>", "")
+vim.keymap.set("i", "<F2>", "")
+vim.keymap.set("i", "<F3>", "")
+vim.keymap.set("i", "<F4>", "")
+vim.keymap.set("i", "<F5>", "")
+vim.keymap.set("i", "<F6>", "")
+vim.keymap.set("i", "<F7>", "")
+vim.keymap.set("i", "<F8>", "")
+vim.keymap.set("i", "<F9>", "")
+vim.keymap.set("i", "<F10>", "")
+
+vim.keymap.set("n", "<F1>", "")
+vim.keymap.set("n", "<F2>", "")
+vim.keymap.set("n", "<F3>", "")
+vim.keymap.set("n", "<F4>", "")
+vim.keymap.set("n", "<F5>", "")
+vim.keymap.set("n", "<F6>", "")
+vim.keymap.set("n", "<F7>", "")
+vim.keymap.set("n", "<F8>", "")
+vim.keymap.set("n", "<F9>", "")
+vim.keymap.set("n", "<F10>", "")

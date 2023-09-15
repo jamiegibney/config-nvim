@@ -1,5 +1,3 @@
-local autosave_in_oil = true
-
 require("auto-save").setup {
     execution_message = {
         message = function()

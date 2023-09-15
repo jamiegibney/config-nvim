@@ -51,9 +51,6 @@ opt.swapfile = false
 
 opt.shortmess:append "sI"
 
--- default is jcroql
-opt.formatoptions = "jcrql"
-
 opt.background = "light"
 opt.hidden = true
 opt.completeopt = "menuone"
@@ -71,6 +68,7 @@ api.nvim_create_autocmd({ "Events", }, {
 
 -- open help windows in a vertical split
 cmd "autocmd BufEnter * if &ft ==# 'help' | wincmd L | endif"
+cmd "autocmd BufEnter * setlocal formatoptions-=o"
 -- not really sure what this is supposed to do?
 cmd "autocmd BufWinEnter * exe 'normal zz'"
 

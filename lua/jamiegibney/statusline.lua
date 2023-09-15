@@ -8,7 +8,7 @@ local function git_branch()
   end
 end
 
--- unsure if this is actually working at all tbh
+-- unsure if this is actually working at all tbh (no, it isn't)
 local function diagnostic_status()
   local num_errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
   local num_warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })

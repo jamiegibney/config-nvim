@@ -5,7 +5,7 @@ require("rust-tools").setup {
 
   tools = {
     inlay_hints = {
-      show_parameter_hints = false,
+      show_parameter_hints = true,
       only_current_line = true,
       highlight = "DiagnosticHint",
     },
@@ -15,7 +15,6 @@ require("rust-tools").setup {
     on_attach = function(_, bufnr)
       -- "code action"
       vim.keymap.set("n", "<leader>ca", require("rust-tools").code_action_group.code_action_group, { buffer = bufnr })
-      -- vim.keymap.set("n", "<leader>rr", require("rust-tools").runnables.runnables())
     end,
 
     settings = {
