@@ -25,9 +25,6 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-c>", ":noh<CR>")
 vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
--- "write file", disabled to force :w<CR> manually
--- vim.keymap.set("n", "<leader>wf", ":w<CR>")
-
 -- move through soft-wrapped lines
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
@@ -107,10 +104,6 @@ vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- insert trailing semicolon and enter normal mode
 vim.keymap.set("i", "<S-CR>", "<C-c>A;<C-c>")
 
--- enter new line and ensure it is cleared (i.e. avoids continuing comments)
--- vim.keymap.set("i", "<C-CR>", "<CR><C-c>\"_S")
--- vim.keymap.set("n", "<C-CR>", "o<C-c>\"_S")
-
 -- caret navigation in insert mode
 vim.keymap.set("i", "<C-k>", "<C-c>gka")
 vim.keymap.set("i", "<C-j>", "<C-c>gja")
@@ -133,12 +126,5 @@ vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
 -- linewise comment selection - use "gb" to "go blockwise" around a selection
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
-
--- * --  TERMINAL MODE  -- * --
-
--- toggle terminal/normal mode - not a perfect motion as it can alter the other
--- buffer when exiting the terminal in certain situations
-vim.keymap.set("t", "<C-`>", "<C-\\><C-n>")
-vim.keymap.set("n", "<C-`>", "i")
-
+-- unmaps all the function keys
 require("jamiegibney/unmapped_function_keys")

@@ -221,7 +221,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "Braces", { link = "DiagnosticHint", })
 end
 
-api.nvim_create_autocmd({ "VimEnter", }, {
+-- api.nvim_create_autocmd({ "VimEnter", }, {
+api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
     pattern = "*",
     callback = function()
         -- in this instance, melange is being used as a "fallback" coloscheme

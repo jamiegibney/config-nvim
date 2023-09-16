@@ -22,6 +22,9 @@ vim.keymap.set("n", "gr", builtin.lsp_references, {})
 -- "telescope resume"
 vim.keymap.set("n", "<leader>tr", builtin.resume, {})
 
+-- "buffers"
+vim.keymap.set("n", "<leader>bu", builtin.buffers)
+
 
 
 require("telescope").load_extension("harpoon")
