@@ -1,6 +1,17 @@
 require("toggleterm").setup({
-    hide_numbers = true,
+    hide_numbers = false,
     shade_terminals = false,
+    highlights = {
+        Normal = {
+            link = "Normal",
+        },
+        NormalFloat = {
+            link = "Normal",
+        },
+    },
+    winbar = {
+        enabled = true,
+    },
 })
 
 -- toggle floating terminal

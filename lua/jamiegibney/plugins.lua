@@ -2,7 +2,10 @@ require("lazy").setup({
     { -- fuzzy finder
         "nvim-telescope/telescope.nvim",
         tag = "0.1.2",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "debugloop/telescope-undo.nvim",
+        },
         event = "UIEnter",
     },
 
@@ -46,10 +49,10 @@ require("lazy").setup({
         event = "LspAttach",
     },
 
-    { -- undo tree
-        "mbbill/undotree",
-        event = "BufRead",
-    },
+    -- { -- undo tree
+    --     "mbbill/undotree",
+    --     event = "BufRead",
+    -- },
 
     { -- git status
         "tpope/vim-fugitive",

@@ -12,7 +12,8 @@ local function insert_with_block_cursor(use_block_cursor_in_insert)
 
     return string.format(
         "%sr-cr:hor80,o:hor50,c:ver80,a:blinkwait10-blinkoff350-blinkon350-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175",
-        prefix)
+        prefix
+    )
 end
 
 -- the cursor!

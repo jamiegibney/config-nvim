@@ -219,6 +219,12 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.decorator.attribute.rust", { fg = "#af9800" })
     api.nvim_set_hl(0, "rustMacro", { link = "@macro" })
     api.nvim_set_hl(0, "Braces", { link = "DiagnosticHint", })
+
+    api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
+    -- api.nvim_set_hl(0, "ColorColumn", { link = "Visual", })
+    -- api.nvim_set_hl(0, "Whitespace", { link = "Normal", })
+    -- api.nvim_set_hl(0, "Ignore", { link = "Normal", })
+
 end
 
 -- api.nvim_create_autocmd({ "VimEnter", }, {

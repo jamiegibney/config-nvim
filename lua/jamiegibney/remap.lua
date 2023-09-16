@@ -13,7 +13,7 @@ end)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
 -- "undo"-tree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- keep the caret centred in big vertical motions
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -98,6 +98,8 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 -- "replace all" - substitute all matched instances of the word under cursor
 vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- "expand braces"
+vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 
 -- * --  INSERT MODE  -- * --
 
