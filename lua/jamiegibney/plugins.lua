@@ -424,11 +424,14 @@ require("lazy").setup({
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
     },
-
-    -- {
-    -- "emilienlemaire/clang-tidy.nvim",
-    -- },
-
+    { -- keymap guide
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+    },
 }, {
     defaults = {
         lazy = true,
