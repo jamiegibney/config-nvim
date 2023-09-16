@@ -94,7 +94,7 @@ opt.hidden = true
 -- language used for spell-checking
 opt.spelllang = "en_gb"
 
--- you can also use:
+-- for autocmds, you can also use:
 --[[
 api.nvim_create_autocmd({ "Events", }, {
     pattern = "*",
