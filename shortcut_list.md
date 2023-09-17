@@ -204,6 +204,8 @@ All of these apply to insert mode only.
 
 `alt +` `1` through `0`: goto specific Harpoon buffer
 
+`ctrl +` `6` through `0`: goto Harpoon buffers 1 through 5 (alternative to above)
+
 ### [Oil](https://github.com/stevearc/oil.nvim)
 
 `ctrl + o`: open file/directory

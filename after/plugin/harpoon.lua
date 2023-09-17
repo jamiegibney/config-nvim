@@ -60,3 +60,24 @@ vim.keymap.set("n", "<A-0>", function()
     require("harpoon.ui").nav_file(10)
 end)
 
+-- alternative command
+-- "goto 1"
+vim.keymap.set("n", "<C-6>", function()
+    require("harpoon.ui").nav_file(1)
+end)
+-- "goto 2"
+vim.keymap.set("n", "<C-7>", function()
+    require("harpoon.ui").nav_file(2)
+end)
+-- "goto 3"
+vim.keymap.set("n", "<C-8>", function()
+    require("harpoon.ui").nav_file(3)
+end)
+-- "goto 4"
+vim.keymap.set("n", "<C-9>", function()
+    require("harpoon.ui").nav_file(4)
+end)
+-- "goto 5"
+vim.keymap.set("n", "<C-0>", function()
+    require("harpoon.ui").nav_file(5)
+end)
