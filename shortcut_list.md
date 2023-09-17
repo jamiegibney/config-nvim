@@ -43,7 +43,7 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"git status"*
 
-`leader + fs`: opens [Oil](https://github.com/stevearc/oil.nvim) (file browser plugin)
+`leader + fs`: opens Oil (file browser plugin)
 
 *"file system"*
 
