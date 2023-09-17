@@ -1,4 +1,4 @@
-## Custom Neovim shortcuts 
+# Custom Neovim shortcuts 
 All custom keymappings for this Neovim RC.
 
 Some keymappings have a mnemonic below them in *italic* to help with memorisation.
@@ -7,7 +7,7 @@ Some keymappings have a mnemonic below them in *italic* to help with memorisatio
 
 **`leader` is mapped to `space`**
 
-### Remapped keys/shortcuts
+## Remapped keys/shortcuts
 This includes keys/shortcuts which perform the same operation, but are remapped for
 added functionality.
 
@@ -17,16 +17,16 @@ added functionality.
 - `j` and `k`
 
 
-### Unmapped keys/shortcuts
+## Unmapped keys/shortcuts
 This includes keys/shortcuts which are outright unmapped and are not functional.
 
 - `F1` through `F10`
 - `ctrl + v` in insert mode
 
 
-### Normal Mode
+## Normal Mode
 
-# General 
+### General 
 
 `leader + /`: toggle line comment
 
@@ -76,7 +76,7 @@ This includes keys/shortcuts which are outright unmapped and are not functional.
 
 `ctrl + space`: toggle floating terminal
 
-# Telescope
+### Telescope
 
 `leader + ff`: file search (searches in current directory)
 
@@ -110,7 +110,7 @@ This includes keys/shortcuts which are outright unmapped and are not functional.
 
 *"undo"*
 
-# Autocompletion
+### Autocompletion
 All of these apply to insert mode only.
 
 `ctrl + y`: confirm current autocompletion
@@ -129,7 +129,7 @@ All of these apply to insert mode only.
 
 `ctrl + i`: open autocompletion popup
 
-# LSP Related
+### LSP Related
 
 `leader + lh`: toggle highlighting of all instances of current token
 
@@ -187,7 +187,7 @@ All of these apply to insert mode only.
 
 *"goto references"*
 
-# Harpoon
+### Harpoon
 
 `ctrl + h`: toggle Harpoon quick menu
 
@@ -199,7 +199,7 @@ All of these apply to insert mode only.
 
 `alt +` `1` through `0`: goto specific Harpoon buffer
 
-# Oil
+### Oil
 
 `ctrl + o`: open file/directory
 
@@ -215,7 +215,7 @@ All of these apply to insert mode only.
 
 `tilde (~)`: cd current Neovim tab to the current directory (affects Harpoon) 
 
-# Splits
+### Splits
 
 `ctrl + ,`: decrease split width (think of it like "ctrl + <")
 
@@ -243,7 +243,7 @@ All of these apply to insert mode only.
 
 `leader + leader`: maximise current split
 
-# Tabs
+### Tabs
 `leader + nt`: create a new tab
 
 *"new tab"*
@@ -268,14 +268,15 @@ All of these apply to insert mode only.
 
 *"tab only"*
 
-### Insert Mode
+
+## Insert Mode
 
 `shift + return`: insert trailing semicolon and enter normal mode
 
 `ctrl +` `k` or `j` or `l` or `h`: caret navigation in insert mode
 
 
-### Visual Mode
+## Visual Mode
 
 `leader + p`: retain content of register after pasting into a selection
 
