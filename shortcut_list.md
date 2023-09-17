@@ -7,6 +7,7 @@ Some keymappings have a mnemonic below them in *italic* to help with memorisatio
 
 **`leader` is mapped to `space`**
 
+
 ## Remapped keys/shortcuts
 This includes keys/shortcuts which perform their original operation, but are remapped for
 added functionality.
@@ -38,11 +39,11 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"write and source"*
 
-`leader + gs`: opens Vim fugitive for Git control
+`leader + gs`: opens [Vim Fugitive](https://github.com/tpope/vim-fugitive) for Git control
 
 *"git status"*
 
-`leader + fs`: opens Oil (file system plugin)
+`leader + fs`: opens [Oil](https://github.com/stevearc/oil.nvim) (file browser plugin)
 
 *"file system"*
 
@@ -66,7 +67,7 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"expand braces"*
 
-`leader + mr`: "make it rain" effect from Cellular Automaton
+`leader + mr`: "make it rain" effect from [Cellular Automaton](https://github.com/Eandrju/cellular-automaton.nvim)
 
 *"make (it) rain"*
 
@@ -76,7 +77,7 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 `ctrl + space`: toggle floating terminal
 
-### Telescope
+### [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 
 `leader + ff`: file search (searches in current directory)
 
@@ -187,7 +188,7 @@ All of these apply to insert mode only.
 
 *"goto references"*
 
-### Harpoon
+### [Harpoon](https://github.com/ThePrimeagen/harpoon)
 
 `ctrl + h`: toggle Harpoon quick menu
 
@@ -199,7 +200,7 @@ All of these apply to insert mode only.
 
 `alt +` `1` through `0`: goto specific Harpoon buffer
 
-### Oil
+### [Oil](https://github.com/stevearc/oil.nvim)
 
 `ctrl + o`: open file/directory
 
