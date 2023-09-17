@@ -1,9 +1,9 @@
-### Custom Neovim shortcuts 
+## Custom Neovim shortcuts 
 All custom keymappings for this Neovim RC — updated 17 September 2023
 
 **`leader` is mapped to `space (␣)`**
 
-## Remapped keys/shortcuts
+### Remapped keys/shortcuts
 This includes keys/shortcuts which perform the same operation, but are remapped for
 added functionality.
 
@@ -13,14 +13,14 @@ added functionality.
 - `j` and `k`
 
 
-## Unmapped keys/shortcuts
+### Unmapped keys/shortcuts
 This includes keys/shortcuts which are outright unmapped and are not functional.
 
 - `F1` through `F10`
 - `ctrl + v` in insert mode
 
 
-## Normal Mode
+### Normal Mode
 
 # General 
 
@@ -220,14 +220,14 @@ All of these apply to insert mode only.
 `leader + to`: closes all tabs but the current
 *"tab only"*
 
-## Insert Mode
+### Insert Mode
 
 `shift + return`: insert trailing semicolon and enter normal mode
 
 `ctrl +` `k` or `j` or `l` or `h`: caret navigation in insert mode
 
 
-## Visual Mode
+### Visual Mode
 
 `leader + p`: retain content of register after pasting into a selection
 
