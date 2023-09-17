@@ -8,7 +8,7 @@ Some keymappings have a mnemonic below them in *italic* to help with memorisatio
 **`leader` is mapped to `space`**
 
 ## Remapped keys/shortcuts
-This includes keys/shortcuts which perform the same operation, but are remapped for
+This includes keys/shortcuts which perform their original operation, but are remapped for
 added functionality.
 
 - `ctrl + d` and `ctrl + u`
@@ -18,7 +18,7 @@ added functionality.
 
 
 ## Unmapped keys/shortcuts
-This includes keys/shortcuts which are outright unmapped and are not functional.
+This includes keys/shortcuts which are unmapped and not functional.
 
 - `F1` through `F10`
 - `ctrl + v` in insert mode
@@ -68,7 +68,7 @@ This includes keys/shortcuts which are outright unmapped and are not functional.
 
 `leader + mr`: "make it rain" effect from Cellular Automaton
 
-*"make rain"*
+*"make (it) rain"*
 
 `ctrl +` `k` and `j`: move current line up/down and auto-indent
 
@@ -191,7 +191,7 @@ All of these apply to insert mode only.
 
 `ctrl + h`: toggle Harpoon quick menu
 
-*"harpooon"*
+*"harpoon"*
 
 `leader + n`: next Harpoon buffer
 
@@ -205,25 +205,25 @@ All of these apply to insert mode only.
 
 `ctrl + i` or `backspace`: go up directory (i.e. "cd ..")
 
-`ctrl + r`: refresh oil buffer
+`ctrl + r`: refresh Oil buffer
 
 `ctrl + z`: open in horizontal split
 
 `ctrl + v`: open in vertical split
 
-`grave (\`)`: cd Neovim to the current directory (affects Harpoon)
+`grave` (\`): cd Neovim to the current directory (affects Harpoon)
 
-`tilde (~)`: cd current Neovim tab to the current directory (affects Harpoon) 
+`tilde` (~): cd current Neovim tab to the current directory (affects Harpoon) 
 
 ### Splits
 
-`ctrl + ,`: decrease split width (think of it like "ctrl + <")
+`ctrl + .`: increase split width (think of it like "`ctrl + >`")
 
-`ctrl + .`: increase split width (think of it like "ctrl + >")
+`ctrl + ,`: decrease split width (think of it like "`ctrl + <`")
+
+`ctrl + =`: increase split height (think of it like "`ctrl + +`")
 
 `ctrl + -`: decrease split height
-
-`ctrl + =`: increase split height (think of it like "ctrl + +")
 
 `leader + sv`: create a new vertical split
 
