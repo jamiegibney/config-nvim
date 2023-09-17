@@ -67,6 +67,10 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"expand braces"*
 
+`leader + as`: toggles autosaving (on by default)
+
+*"autosave"*
+
 `leader + mr`: "make it rain" effect from [Cellular Automaton](https://github.com/Eandrju/cellular-automaton.nvim)
 
 *"make (it) rain"*

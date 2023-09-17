@@ -1,9 +1,9 @@
 require("auto-save").setup {
     execution_message = {
         message = function()
-            return "Autosaved"
+            return "File saved"
         end,
-        dim = 0.30,
+        dim = 0.50,
     },
     -- prevent autosaving in non-modifiable and oil buffers
     -- condition = function(buf)

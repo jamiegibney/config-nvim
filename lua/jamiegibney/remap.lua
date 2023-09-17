@@ -101,6 +101,9 @@ vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- "expand braces"
 vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 
+-- "autosave"
+vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
+
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
