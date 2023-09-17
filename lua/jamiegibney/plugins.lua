@@ -99,8 +99,8 @@ require("lazy").setup({
                 ["<C-f>"] = cmp.mapping.scroll_docs(-4),
 
                 ["<C-i>"] = cmp.mapping.complete(),
-            }
 
+            }
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
             lsp.setup_nvim_cmp {

@@ -17,7 +17,7 @@ require("oil").setup {
         ["<C-z>"] = "actions.select_hsplit",
 
         -- enable this for floating windows for easy exit
-        ["<C-c>"] = "",
+        -- ["<C-c>"] = "",
         ["<C-h>"] = "",
     },
 

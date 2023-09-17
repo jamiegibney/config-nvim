@@ -122,11 +122,12 @@ vim.keymap.set("i", "<C-v>", "")
 -- * --  VISUAL MODE  -- * --
 
 -- move selected block and auto-indent
-vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
 
 -- linewise comment selection - use "gb" to "go blockwise" around a selection
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
+
 
 -- unmaps all the function keys
 require("jamiegibney/unmapped_function_keys")
