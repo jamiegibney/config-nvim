@@ -1,13 +1,13 @@
 -- custom statusline
 require "jamiegibney.statusline"
--- custom winbar
--- require "jamiegibney.winbar"
--- general key remaps — most plugin-specific remaps are in their config files in after/
+
+-- general key remaps — some plugin-specific remaps are in their config files in after/plugins
 require "jamiegibney.remap"
+
 -- vim settings
 require "jamiegibney.set"
 
--- lazy
+-- lazy setup
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {

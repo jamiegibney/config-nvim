@@ -2,9 +2,9 @@
 
 In terms of file structure, this is a pretty disorganised directory. Most Lua files, however, are documented where possible.
 
-Broadly speaking, general editor config is found in `/lua/jamiegibney`, and plugin-specific config is found in `/after/plugin`. There are some exceptions — some plugin config is found in `/lua/jamiegibney/plugin.lua` for convenience.
+Broadly speaking, general editor config is found in `/lua/jamiegibney`, and plugin-specific config is found in `/after/plugin`. There are some exceptions — some plugin config is found in `/lua/jamiegibney/plugins.lua` for convenience.
 
-The main flaw of this current setup is that all LSP config is in-line in `/lua/jamiegibney/plugin.lua`. This was done to easily enable lazy loading, but significantly congests the `plugin.lua` file. This should be changed when possible.
+The main flaw of this current setup is that all LSP config is in-line in `/lua/jamiegibney/plugins.lua`. This was done to easily enable lazy loading, but significantly congests the `plugins.lua` file. This should be changed when possible.
 
 ### TODO
 - Separate LSP config to its own file
