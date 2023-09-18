@@ -121,6 +121,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- prevents the weird special character insert when mistyping <C-c>
 vim.keymap.set("i", "<C-v>", "")
 
+-- just use x!
+vim.keymap.set("i", "<Del>", "")
+
 
 -- * --  VISUAL MODE  -- * --
 
