@@ -22,8 +22,12 @@ added functionality.
 This includes keys/shortcuts which are unmapped and not functional.
 
 - `F1` through `F10`
-- `ctrl + v` in insert mode
-- `delete` in normal mode
+- In normal mode:
+    - `delete` 
+    - `return`
+    - `ctrl + n`
+    - `ctrl + p`
+    - `backspace`
 
 
 ## Normal Mode

@@ -104,6 +104,18 @@ vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 -- "autosave"
 vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
 
+-- Normal mode unmaps
+-- use x!
+vim.keymap.set("n", "<Del>", "")
+-- use j!
+vim.keymap.set("n", "<CR>", "")
+vim.keymap.set("n", "<C-n>", "")
+-- use k!
+vim.keymap.set("n", "<C-p>", "")
+-- use h!
+vim.keymap.set("n", "<BS>", "")
+
+
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
@@ -117,13 +129,6 @@ vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
 vim.keymap.set("i", "<C-c>", "<Esc>")
-
--- prevents the weird special character insert when mistyping <C-c>
-vim.keymap.set("i", "<C-v>", "")
-
--- just use x!
-vim.keymap.set("n", "<Del>", "")
-
 
 -- * --  VISUAL MODE  -- * --
 
