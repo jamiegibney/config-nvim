@@ -122,7 +122,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "<C-v>", "")
 
 -- just use x!
-vim.keymap.set("i", "<Del>", "")
+vim.keymap.set("n", "<Del>", "")
 
 
 -- * --  VISUAL MODE  -- * --
