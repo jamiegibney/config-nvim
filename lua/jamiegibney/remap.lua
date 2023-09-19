@@ -44,9 +44,6 @@ vim.keymap.set("n", "<leader>pf", "<C-^>")
 vim.keymap.set("n", "<C-k>", ":move -2<CR>==")
 vim.keymap.set("n", "<C-j>", ":move +1<CR>==")
 
--- keep caret at start of line when using J
--- vim.keymap.set("n", "J", "mzJ'z")
-
 -- insert semicolon at end of line
 vim.keymap.set("n", "<S-CR>", "A;<C-c>")
 
@@ -128,7 +125,12 @@ vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
-vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set({ "i", "v", "c" }, "<C-c>", "<Esc>", { noremap = true, })
+
+-- this allows <C-c> to exit replace mode
+-- unfortunately this also breaks the replace mode cursor :/
+-- vim.keymap.set("n", "r<C-c>", "<Esc>")
+
 
 -- * --  VISUAL MODE  -- * --
 
@@ -138,6 +140,9 @@ vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
 
 -- linewise comment selection - use "gb" to "go blockwise" around a selection
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
+
+-- folding
+vim.keymap.set("v", "<leader>fl", "")
 
 
 -- unmaps all the function keys

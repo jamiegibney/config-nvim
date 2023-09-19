@@ -49,6 +49,8 @@ require("rust-tools").setup {
             "clippy::cast_possible_truncation",
             "-A",
             "clippy::cast_possible_wrap",
+            "-A",
+            "clippy::missing_const_for_fn",
           },
         },
         rustfmt = {

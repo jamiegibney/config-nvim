@@ -296,6 +296,10 @@ All of these apply to insert mode only.
 
 `leader + /`: linewise comment
 
+`leader + fl`: folds the current selection (move the caret in selection to unfold)
+
+*"fold"*
+
 `gb`: blockwise comment
 
 *"go block (comment)"*
