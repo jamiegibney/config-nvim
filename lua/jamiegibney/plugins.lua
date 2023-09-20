@@ -66,17 +66,17 @@ require("lazy").setup({
                 configure_diagnostics = true,
                 setup_servers_on_start = true,
                 set_lsp_keymaps = false,
-                --[[ manage_nvim_cmp = {
+                manage_nvim_cmp = {
                     set_sources = "recommended",
                     set_basic_mappings = false,
                     set_extra_mappings = false,
                     use_luasnip = true,
                     set_format = true,
                     documentation_window = true,
-                }, ]]
+                },
             }
 
-            --[[ local cmp = require "cmp"
+            local cmp = require "cmp"
             local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
             local cmp_select = { behaviour = cmp.SelectBehavior.Insert }
@@ -108,7 +108,7 @@ require("lazy").setup({
                         completeopt = "menu,menuone,noinsert,noselect",
                     },
                 },
-            } ]]
+            }
 
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -171,7 +171,7 @@ require("lazy").setup({
                 end)
             end)
 
-            -- require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+            require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.set_server_config {
                 on_init = function(client)
@@ -262,14 +262,17 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
 
             -- Autocompletion
-            -- {
-            --     "hrsh7th/nvim-cmp",
-            --     event = "InsertEnter",
-            -- },
-            -- {
-            --     "hrsh7th/cmp-nvim-lsp",
-            --     event = "BufRead",
-            -- },
+            {
+                "hrsh7th/nvim-cmp",
+                event = "InsertEnter",
+            },
+            {
+                "lukas-reineke/cmp-under-comparator",
+            },
+            {
+                "hrsh7th/cmp-nvim-lsp",
+                event = "BufRead",
+            },
 
             {
                 "L3MON4D3/LuaSnip",
@@ -277,15 +280,15 @@ require("lazy").setup({
             },
 
             -- autocomplete sources
-            -- "saadparwaiz1/cmp_luasnip",
-            -- "hrsh7th/cmp-nvim-lua",
-            -- "hrsh7th/cmp-nvim-lsp",
-            -- "hrsh7th/cmp-buffer",
-            -- "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
         },
     },
 
-    {
+    --[[ {
         "ms-jpq/coq_nvim",
         dependencies = {
             "ms-jpq/coq.thirdparty",
@@ -293,15 +296,7 @@ require("lazy").setup({
         },
 
         lazy = false,
-    },
-
-    {
-        "ms-jpq/coq.artifacts",
-    },
-
-    {
-        "ms-jpq/coq.thirdparty",
-    },
+    }, ]]
 
     { -- auto-pairing of () [] {} <> "" '', etc
         "windwp/nvim-autopairs",
@@ -409,11 +404,7 @@ require("lazy").setup({
         end,
     },
 
-<<<<<<< HEAD
-    {                  -- surround text with anything you want!
-=======
-    {                  -- surround text with delimiters, etc.
->>>>>>> parent of cbac826 (added shortcut for telescope spell suggestions)
+    { -- surround text with anything you want!
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
@@ -434,7 +425,7 @@ require("lazy").setup({
     },
 
     { -- some floating preview windows
-        "rmagatti/goto-preview",
+       "rmagatti/goto-preview",
         event = "BufRead",
     },
 

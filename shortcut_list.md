@@ -82,7 +82,7 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 `ctrl +` `k` and `j`: move current line up/down and auto-indent
 
-`shift + return`: insert semicolon at end of line
+`shift` OR `ctrl` `+ return`: insert semicolon at end of line
 
 `ctrl + space`: toggle floating terminal
 
@@ -285,7 +285,7 @@ All of these apply to insert mode only.
 
 ## Insert Mode
 
-`shift + return`: insert trailing semicolon and enter normal mode
+`shift` OR `ctrl` `+ return`: insert trailing semicolon and enter normal mode
 
 `ctrl +` `k` or `j` or `l` or `h`: caret navigation in insert mode
 

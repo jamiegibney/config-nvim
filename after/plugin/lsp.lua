@@ -17,7 +17,6 @@ cap.textDocument.completion.completionItem.resolveSupport = {
 cap.textDocument.completion.completionItem.labelDetailsSupport = true
 
 local lsp = require("lspconfig")
-local coq = require("coq")
 
 lsp["clangd"].setup {
     capabilities = cap,
@@ -32,11 +31,6 @@ lsp["clangd"].setup {
     init_options = {
         semanticHighlighting = true,
     },
-    coq.lsp_ensure_capabilities()
-}
-
-lsp["rust_analyzer"].setup {
-    coq.lsp_ensure_capabilities()
 }
 
 -- local lsp = require("lsp-zero").preset {
