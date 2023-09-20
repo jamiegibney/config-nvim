@@ -398,7 +398,7 @@ require("lazy").setup({
         end,
     },
 
-    {                  -- surround text with delimiters, etc.
+    { -- surround text with anything you want!
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",

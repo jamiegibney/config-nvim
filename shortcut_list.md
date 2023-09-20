@@ -120,6 +120,10 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"undo"*
 
+`leader + su`: suggest spelling for the word under cursor (Telescope equivalent of `z=`)
+
+*"suggest"*
+
 ### Autocompletion
 All of these apply to insert mode only.
 
