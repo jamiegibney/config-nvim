@@ -112,6 +112,7 @@ cmd "autocmd BufEnter * setlocal formatoptions-=o"
 cmd "autocmd BufWinEnter * exe 'normal zz'"
 -- opens terminal in insert mode
 cmd "autocmd TermOpen * startinsert"
+cmd "autocmd BufEnter * COQnow --shut-up"
 
 -- flash text upon yank
 cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }"

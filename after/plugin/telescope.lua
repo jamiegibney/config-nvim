@@ -93,7 +93,7 @@ require("telescope").setup {
             center = {
                 height = 0.3,
             },
-            width = 0.60,
+            width = 0.65,
             height = 0.80,
             preview_cutoff = 0,
         },

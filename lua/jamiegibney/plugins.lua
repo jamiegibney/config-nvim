@@ -66,24 +66,17 @@ require("lazy").setup({
                 configure_diagnostics = true,
                 setup_servers_on_start = true,
                 set_lsp_keymaps = false,
-                manage_nvim_cmp = {
+                --[[ manage_nvim_cmp = {
                     set_sources = "recommended",
                     set_basic_mappings = false,
                     set_extra_mappings = false,
                     use_luasnip = true,
                     set_format = true,
                     documentation_window = true,
-                },
+                }, ]]
             }
 
-            -- lsp.configure("clangd", {
-            --     on_attach = function(client, bufnr)
-            --         print("hello clangd!")
-            --         require("clang-tidy").setup()
-            --     end
-            -- })
-
-            local cmp = require "cmp"
+            --[[ local cmp = require "cmp"
             local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
             local cmp_select = { behaviour = cmp.SelectBehavior.Insert }
@@ -115,7 +108,7 @@ require("lazy").setup({
                         completeopt = "menu,menuone,noinsert,noselect",
                     },
                 },
-            }
+            } ]]
 
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -269,14 +262,14 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
 
             -- Autocompletion
-            {
-                "hrsh7th/nvim-cmp",
-                event = "InsertEnter",
-            },
-            {
-                "hrsh7th/cmp-nvim-lsp",
-                event = "BufRead",
-            },
+            -- {
+            --     "hrsh7th/nvim-cmp",
+            --     event = "InsertEnter",
+            -- },
+            -- {
+            --     "hrsh7th/cmp-nvim-lsp",
+            --     event = "BufRead",
+            -- },
 
             {
                 "L3MON4D3/LuaSnip",
@@ -284,12 +277,30 @@ require("lazy").setup({
             },
 
             -- autocomplete sources
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
+            -- "saadparwaiz1/cmp_luasnip",
+            -- "hrsh7th/cmp-nvim-lua",
+            -- "hrsh7th/cmp-nvim-lsp",
+            -- "hrsh7th/cmp-buffer",
+            -- "hrsh7th/cmp-path",
         },
+    },
+
+    {
+        "ms-jpq/coq_nvim",
+        dependencies = {
+            "ms-jpq/coq.thirdparty",
+            "ms-jpq/coq.artifacts",
+        },
+
+        lazy = false,
+    },
+
+    {
+        "ms-jpq/coq.artifacts",
+    },
+
+    {
+        "ms-jpq/coq.thirdparty",
     },
 
     { -- auto-pairing of () [] {} <> "" '', etc
@@ -398,7 +409,7 @@ require("lazy").setup({
         end,
     },
 
-    { -- surround text with anything you want!
+    {                  -- surround text with anything you want!
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",

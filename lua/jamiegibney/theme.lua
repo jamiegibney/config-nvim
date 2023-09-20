@@ -42,7 +42,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "IncSearch", { bg = "#f0a8d2", })
     api.nvim_set_hl(0, "Folded", { bg = "#eeeeee", })
     api.nvim_set_hl(0, "Visual", { bg = "#a6d2ff", })
-    api.nvim_set_hl(0, "Comment", { fg = "#8c8c8c", italic = true })
+    api.nvim_set_hl(0, "Comment", { fg = "#9c9c9c", italic = true })
 
     api.nvim_set_hl(0, "SpellLocal", { sp = "#bc5c00", undercurl = true, })
     api.nvim_set_hl(0, "SpellBad", { link = "SpellLocal", })
@@ -228,7 +228,7 @@ local function set_highlights()
 end
 
 -- api.nvim_create_autocmd({ "VimEnter", }, {
-api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+api.nvim_create_autocmd({ "VimEnter", --[[ "ColorScheme" ]] }, {
     pattern = "*",
     callback = function()
         -- in this instance, melange is being used as a "fallback" coloscheme
