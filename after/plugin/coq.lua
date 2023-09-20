@@ -14,7 +14,7 @@ vim.g.coq_settings = {
     },
     keymap = {
         pre_select = true,
-        manual_complete = "<C-e>",
+        manual_complete = "<C-i>",
         recommended = false,
     },
 }

@@ -131,17 +131,19 @@ All of these apply to insert mode only.
 
 *"yes"*
 
-`ctrl + e`: abort autocompletion
+<!-- `ctrl + e`: abort autocompletion -->
 
 `ctrl + n`: select next item in list
 
 `ctrl + p`: select previous item in list
 
-`ctrl + d`: scroll documentation down
+<!-- `ctrl + d`: scroll documentation down -->
 
-`ctrl + f`: scroll documentation up
+<!-- `ctrl + f`: scroll documentation up -->
 
 `ctrl + i`: open autocompletion popup
+
+`ctrl + h`: goto next snippet placeholder
 
 ### LSP Related
 
