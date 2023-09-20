@@ -409,7 +409,11 @@ require("lazy").setup({
         end,
     },
 
+<<<<<<< HEAD
     {                  -- surround text with anything you want!
+=======
+    {                  -- surround text with delimiters, etc.
+>>>>>>> parent of cbac826 (added shortcut for telescope spell suggestions)
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
