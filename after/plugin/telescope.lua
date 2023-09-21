@@ -25,6 +25,9 @@ vim.keymap.set("n", "<leader>tr", builtin.resume, {})
 -- "buffers"
 vim.keymap.set("n", "<leader>bu", builtin.buffers)
 
+-- "spell suggest"
+vim.keymap.set("n", "<leader>su", builtin.spell_suggest)
+
 -- "undo"
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>")
 
@@ -82,8 +85,8 @@ require("telescope").setup {
                 mirror = false,
             },
             cursor = {
-                height = 0.55,
-                width = 0.7,
+                height = 0.5,
+                width = 0.5,
                 preview_width = 0.6,
             },
             center = {
@@ -114,6 +117,16 @@ require("telescope").setup {
     pickers = {
         find_files = {
             hidden = true,
+        },
+        spell_suggest = {
+            layout_strategy = "cursor",
+        },
+        lsp_references = {
+            layout_strategy = "cursor",
+            layout_config = {
+                width = 0.8,
+                height = 0.8,
+            },
         },
     },
 }

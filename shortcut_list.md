@@ -114,7 +114,15 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 `leader + bu`: show all open buffers
 
+*"telescope resume"*
+
+`leader + bu`: show all open buffers
+
 *"buffers"*
+
+`leader + su`: show spelling suggestions for item under cursor
+
+*"suggest"*
 
 `leader + u`: show undo history/tree for current buffer
 
