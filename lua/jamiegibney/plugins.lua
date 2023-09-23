@@ -404,7 +404,7 @@ require("lazy").setup({
         end,
     },
 
-    { -- surround text with anything you want!
+    {                  -- surround text with anything you want!
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
@@ -425,12 +425,23 @@ require("lazy").setup({
     },
 
     { -- some floating preview windows
-       "rmagatti/goto-preview",
+        "rmagatti/goto-preview",
         event = "BufRead",
     },
 
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
+        event = "BufRead",
+    },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
         event = "BufRead",
     },
 }, {

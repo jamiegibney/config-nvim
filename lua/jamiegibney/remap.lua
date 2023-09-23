@@ -45,7 +45,6 @@ vim.keymap.set("n", "<C-k>", ":move -2<CR>==")
 vim.keymap.set("n", "<C-j>", ":move +1<CR>==")
 
 -- insert semicolon at end of line
-vim.keymap.set("n", "<S-CR>", "A;<C-c>")
 vim.keymap.set("n", "<C-CR>", "A;<C-c>")
 
 -- split resizign
@@ -117,7 +116,6 @@ vim.keymap.set("n", "<BS>", "")
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
-vim.keymap.set("i", "<S-CR>", "<C-c>A;<C-c>")
 vim.keymap.set("i", "<C-CR>", "<C-c>A;<C-c>")
 
 -- caret navigation in insert mode
