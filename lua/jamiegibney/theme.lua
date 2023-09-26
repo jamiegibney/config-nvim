@@ -177,6 +177,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.function.declaration", { fg = "#006f95", bold = true, })
     -- standalone function calls
     api.nvim_set_hl(0, "@lsp.type.function.rust", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.callable", { link = "@lsp.type.function.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.rust", { fg = "#00ab9c", })
     -- associated function (calls and declarations)
     api.nvim_set_hl(0, "@lsp.typemod.method.static.rust", { fg = "#0079a5", italic = true, })
@@ -224,7 +225,6 @@ local function set_highlights()
     -- api.nvim_set_hl(0, "ColorColumn", { link = "Visual", })
     -- api.nvim_set_hl(0, "Whitespace", { link = "Normal", })
     -- api.nvim_set_hl(0, "Ignore", { link = "Normal", })
-
 end
 
 -- api.nvim_create_autocmd({ "VimEnter", }, {

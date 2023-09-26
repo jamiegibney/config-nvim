@@ -21,13 +21,14 @@ added functionality.
 ## Unmapped keys/shortcuts
 This includes keys/shortcuts which are unmapped and not functional.
 
-- `F1` through `F10`
+- `F1` through `F20`
 - In normal mode:
     - `delete` 
     - `return`
     - `ctrl + n`
     - `ctrl + p`
     - `backspace`
+    - `shift + return`
 
 
 ## Normal Mode

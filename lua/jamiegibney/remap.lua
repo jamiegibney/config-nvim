@@ -47,6 +47,9 @@ vim.keymap.set("n", "<C-j>", ":move +1<CR>==")
 -- insert semicolon at end of line
 vim.keymap.set("n", "<C-CR>", "A;<C-c>")
 
+-- unmapped to help train mistakes
+vim.keymap.set("n", "<S-CR>", "")
+
 -- split resizign
 -- decrease split width
 vim.keymap.set("n", "<C-,>", "4<C-w><")
