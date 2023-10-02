@@ -2,9 +2,9 @@ local cmp = require("cmp")
 
 cmp.setup {
     performance = {
-        debounce = 20,
+        debounce = 15,
         throttle = 10,
-        fetching_timeout = 100,
+        fetching_timeout = 50,
         async_budget = 2,
     },
     sorting = {

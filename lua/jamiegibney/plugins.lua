@@ -444,6 +444,10 @@ require("lazy").setup({
         end,
         event = "BufRead",
     },
+
+    {
+        "f3fora/cmp-spell",
+    },
 }, {
     defaults = {
         lazy = true,

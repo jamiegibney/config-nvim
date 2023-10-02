@@ -109,6 +109,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.rust", {})
     api.nvim_set_hl(0, "@lsp.typemod.variable.constant.rust", { link = "@lsp.mod.constant.rust" })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.static.rust", { fg = "#000000", bold = true, })
     api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = "#000000", })
     api.nvim_set_hl(0, "@macro", { fg = "#dd6718", })
     -- * -- C highlights -- * --
@@ -160,6 +161,16 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
     api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#00ab9c", })
     api.nvim_set_hl(0, "@lsp.typemod.type.deduced.cpp", { link = "Statement", })
+
+    -- * -- Lua highlights -- * --
+    api.nvim_set_hl(0, "luaFunction", { fg = "#0033b3", italic = true, })
+    api.nvim_set_hl(0, "luaString", { fg = "#0a8521", italic = true, })
+    api.nvim_set_hl(0, "luaStatement", { link = "Statement", })
+    api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.lua", { link = "@macro" })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.lua", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.type.function.lua", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.type.method.lua", { fg = "#0070a0", italic = true })
+
 
     -- * -- Rust highlights -- * --
     -- types
@@ -218,6 +229,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "rustString", { link = "String" })
     api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", })
     api.nvim_set_hl(0, "@lsp.typemod.decorator.attribute.rust", { fg = "#af9800" })
+    api.nvim_set_hl(0, "@lsp.typemod.keyword.unsafe.rust", { fg = "#cc0000", })
+    api.nvim_set_hl(0, "@lsp.mod.unsafe.rust", { bg = "#ffeeee" })
     api.nvim_set_hl(0, "rustMacro", { link = "@macro" })
     api.nvim_set_hl(0, "Braces", { link = "DiagnosticHint", })
 

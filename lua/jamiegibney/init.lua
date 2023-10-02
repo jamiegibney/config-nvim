@@ -26,3 +26,5 @@ require "jamiegibney.plugins"
 
 -- set clion-like theme
 require "jamiegibney.theme"
+
+require "jamiegibney.cmp_spell"
