@@ -89,8 +89,10 @@ vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
 -- "toggle diagnostics"
 vim.keymap.set("n", "<leader>td", function()
     if vim.diagnostic.is_disabled() then
+        print("Diagnostics enabled")
         vim.diagnostic.enable()
     else
+        print("Diagnostics disabled")
         vim.diagnostic.disable()
     end
 end)
