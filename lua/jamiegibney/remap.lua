@@ -86,6 +86,15 @@ vim.keymap.set("n", "<leader>tp", ":tabprev<CR>")
 -- "tab only" - close all tabs but the current
 vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
 
+-- "toggle diagnostics"
+vim.keymap.set("n", "<leader>td", function()
+    if vim.diagnostic.is_disabled() then
+        vim.diagnostic.enable()
+    else
+        vim.diagnostic.disable()
+    end
+end)
+
 -- "clear edits"
 vim.keymap.set("n", "<leader>ce", ":e!<CR>")
 

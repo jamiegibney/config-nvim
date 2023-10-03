@@ -77,6 +77,10 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"autosave"*
 
+`leader + td`: toggles lsp diagnostics, useful for presentation
+
+*"toggle diagnostics"*
+
 `leader + mr`: "make it rain" effect from [Cellular Automaton](https://github.com/Eandrju/cellular-automaton.nvim)
 
 *"make (it) rain"*
