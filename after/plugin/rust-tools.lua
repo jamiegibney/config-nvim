@@ -39,6 +39,8 @@ require("rust-tools").setup {
                         "clippy::perf",
                         "-W",
                         "clippy::clone_on_ref_ptr",
+                        "-D",
+                        "unsafe_op_in_unsafe_fn",
                         -- annoying casting lints that I never want to see again
                         "-A",
                         "clippy::cast_sign_loss",
@@ -50,9 +52,11 @@ require("rust-tools").setup {
                         "clippy::cast_possible_truncation",
                         "-A",
                         "clippy::cast_possible_wrap",
-                        -- and this...
+                        -- and these...
                         "-A",
                         "clippy::missing_const_for_fn",
+                        "-A",
+                        "clippy::redundant_closure_for_method_calls",
                     },
                 },
                 rustfmt = {

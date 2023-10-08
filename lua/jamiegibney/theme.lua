@@ -109,7 +109,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.rust", {})
     api.nvim_set_hl(0, "@lsp.typemod.variable.constant.rust", { link = "@lsp.mod.constant.rust" })
-    api.nvim_set_hl(0, "@lsp.typemod.variable.static.rust", { fg = "#000000", bold = true, })
+    -- api.nvim_set_hl(0, "@lsp.mod.static.rust", { fg = "#000000", bold = true, })
     api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = "#000000", })
     api.nvim_set_hl(0, "@macro", { fg = "#dd6718", })
     -- * -- C highlights -- * --

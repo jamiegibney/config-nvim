@@ -300,6 +300,8 @@ All of these apply to insert mode only.
 
 `ctrl + return`: insert trailing semicolon and enter normal mode
 
+`shift + return`: insert newline below cursor without moving position
+
 `ctrl +` `k` or `j` or `l` or `h`: caret navigation in insert mode
 
 

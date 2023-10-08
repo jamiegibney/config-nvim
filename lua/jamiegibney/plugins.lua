@@ -344,6 +344,7 @@ require("lazy").setup({
         "eandrju/cellular-automaton.nvim",
         keys = {
             { "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>" },
+            { "<leader>sc", "<cmd>CellularAutomaton scramble<CR>" },
         },
     },
 

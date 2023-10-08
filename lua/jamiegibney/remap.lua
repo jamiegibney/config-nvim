@@ -141,6 +141,9 @@ vim.keymap.set("i", "<C-l>", "<Right>")
 -- allows visual block edits to apply across multiple lines when using <C-c>
 vim.keymap.set({ "i", "v", "c" }, "<C-c>", "<Esc>", { noremap = true, })
 
+-- insert new line below cursor without changing position
+vim.keymap.set("i", "<S-CR>", "<Esc>")
+
 -- this allows <C-c> to exit replace mode
 -- unfortunately this also breaks the replace mode cursor :/
 -- vim.keymap.set("n", "r<C-c>", "<Esc>")
