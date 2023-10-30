@@ -435,19 +435,23 @@ require("lazy").setup({
         event = "BufRead",
     },
 
-    {
-        "iamcco/markdown-preview.nvim",
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        event = "BufRead",
+    { -- markdown previewing
+        -- "iamcco/markdown-preview.nvim",
+        -- build = function()
+        --     vim.fn["mkdp#util#install"]()
+        -- end,
+        -- init = function()
+        --     vim.g.mkdp_filetypes = { "markdown" }
+        -- end,
+        -- event = "BufRead",
     },
 
-    {
-        "f3fora/cmp-spell",
+    { -- nvim cmp spelling
+        -- "f3fora/cmp-spell",
+    },
+
+    { -- file "overview" tree
+        "simrat39/symbols-outline.nvim",
     },
 }, {
     defaults = {

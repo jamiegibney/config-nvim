@@ -93,7 +93,7 @@ opt.background = "light"
 opt.hidden = true
 
 -- language used for spell-checking
-opt.spelllang = "en_gb"
+opt.spelllang = "en_us"
 
 -- you can also use:
 --[[

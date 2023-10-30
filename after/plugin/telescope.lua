@@ -121,12 +121,5 @@ require("telescope").setup {
         spell_suggest = {
             layout_strategy = "cursor",
         },
-        lsp_references = {
-            layout_strategy = "cursor",
-            layout_config = {
-                width = 0.8,
-                height = 0.8,
-            },
-        },
     },
 }

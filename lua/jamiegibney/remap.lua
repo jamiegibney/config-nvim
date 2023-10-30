@@ -142,7 +142,7 @@ vim.keymap.set("i", "<C-l>", "<Right>")
 vim.keymap.set({ "i", "v", "c" }, "<C-c>", "<Esc>", { noremap = true, })
 
 -- insert new line below cursor without changing position
-vim.keymap.set("i", "<S-CR>", "<Esc>O")
+-- vim.keymap.set("i", "<S-CR>", "<Esc>O")
 
 -- this allows <C-c> to exit replace mode
 -- unfortunately this also breaks the replace mode cursor :/

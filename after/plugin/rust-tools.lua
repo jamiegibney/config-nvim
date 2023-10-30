@@ -57,6 +57,8 @@ require("rust-tools").setup {
                         "clippy::missing_const_for_fn",
                         "-A",
                         "clippy::redundant_closure_for_method_calls",
+                        "-A",
+                        "clippy::must_use_candidate",
                     },
                 },
                 rustfmt = {
