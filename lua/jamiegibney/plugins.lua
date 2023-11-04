@@ -365,7 +365,7 @@ require("lazy").setup({
     { -- startup screen
         "goolord/alpha-nvim",
         -- toggle the below to enable alpha
-        -- event = "VimEnter",
+        cmd = "Alpha",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("alpha").setup(require("alpha.themes.custom_theme").config)
