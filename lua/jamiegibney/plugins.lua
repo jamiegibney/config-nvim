@@ -432,7 +432,23 @@ require("lazy").setup({
 
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         event = "BufRead",
+        config = function()
+            require("ibl").setup {
+                scope = {
+                    enabled = true,
+                    char = "▏",
+                    highlight = "DiagnosticHint",
+                    show_start = false,
+                    show_end = false,
+                },
+                indent = {
+                    char = "▏",
+                    highlight = "DiagnosticInfo",
+                },
+            }
+        end
     },
 
     { -- markdown previewing
@@ -447,11 +463,20 @@ require("lazy").setup({
     },
 
     { -- nvim cmp spelling
-        -- "f3fora/cmp-spell",
+        "f3fora/cmp-spell",
     },
 
     { -- file "overview" tree
         "simrat39/symbols-outline.nvim",
+        config = function()
+            require("symbols-outline").setup()
+        end,
+        cmd = "SymbolsOutline",
+    },
+
+    {
+        "jaxbot/semantic-highlight.vim",
+        lazy = false,
     },
 }, {
     defaults = {

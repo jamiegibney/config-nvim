@@ -7,6 +7,9 @@ require "jamiegibney.remap"
 -- vim settings
 require "jamiegibney.set"
 
+-- semantic variable highlighting
+require "jamiegibney.semantic_highlighting"
+
 -- lazy setup
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -27,4 +30,4 @@ require "jamiegibney.plugins"
 -- set clion-like theme
 require "jamiegibney.theme"
 
-require "jamiegibney.cmp_spell"
+-- require "jamiegibney.cmp_spell"

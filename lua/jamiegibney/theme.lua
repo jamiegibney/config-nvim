@@ -30,6 +30,9 @@ local function set_highlights()
         api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true, })
     end
 
+    -- api.nvim_set_hl(0, "IblIndent", { link = "DiagnosticHint" })
+    -- api.nvim_set_hl(0, "IblScope", { link = "DiagnosticHint" })
+
     -- general highlights
     api.nvim_set_hl(0, "Normal", { fg = "#000000", bg = "#ffffff", })
     api.nvim_set_hl(0, "NormalNC", { link = "Normal", })
@@ -177,7 +180,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.rust", { fg = "#000000", })
 
     -- variables and parameters (closure variables are considered parameters)
-    api.nvim_set_hl(0, "@lsp.type.variable.rust", { fg = "#000000", })
+    api.nvim_set_hl(0, "@lsp.type.variable.rust", { link = "none" })
     api.nvim_set_hl(0, "@lsp.type.parameter", { fg = "#000000", })
     api.nvim_set_hl(0, "@lsp.typemod.variable.mutable.rust", { sp = "#aaaaaa", underline = true, })
     api.nvim_set_hl(0, "@lsp.typemod.parameter.mutable.rust", { link = "@lsp.typemod.variable.mutable.rust" })
