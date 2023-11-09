@@ -95,6 +95,8 @@ opt.hidden = true
 -- language used for spell-checking
 opt.spelllang = "en_us"
 
+opt.shada = "!,'200,<50,s10,h"
+
 -- you can also use:
 --[[
 api.nvim_create_autocmd({ "Events", }, {

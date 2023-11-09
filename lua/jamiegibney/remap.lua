@@ -115,6 +115,9 @@ vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 -- "autosave"
 vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
 
+-- "semantic highlighting"
+vim.keymap.set("n", "<leader>sh", "<cmd>SemanticHighlightToggle<CR>")
+
 -- Normal mode unmaps
 -- use x!
 vim.keymap.set("n", "<Del>", "")

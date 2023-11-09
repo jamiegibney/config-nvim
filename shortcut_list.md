@@ -81,6 +81,10 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"toggle diagnostics"*
 
+`leader + sh`: toggles semantic highlighting (i.e. "rainbow variables")
+
+*"semantic highlighting"*
+
 `leader + mr`: "make it rain" effect from [Cellular Automaton](https://github.com/Eandrju/cellular-automaton.nvim)
 
 *"make (it) rain"*
