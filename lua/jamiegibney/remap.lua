@@ -129,11 +129,11 @@ vim.keymap.set("n", "<C-p>", "")
 -- use h!
 vim.keymap.set("n", "<BS>", "")
 
--- goto neovim config directory "go config"
-vim.keymap.set("n", "<leader>gcfg", "<cmd>Oil ~/.config/nvim/")
+-- goto neovim config directory "neovim config"
+vim.keymap.set("n", "<leader>ncfg", "<cmd>Oil ~/.config/nvim/<CR>")
 
--- goto rust playground directory "go playground"
-vim.keymap.set("n", "<leader>gpg", "<cmd>Oil ~/Documents/dev/Rust/playground/")
+-- goto rust playground directory "rust playground"
+vim.keymap.set("n", "<leader>rpg", "<cmd>Oil ~/Documents/dev/Rust/playground/<CR>")
 
 
 -- * --  INSERT MODE  -- * --

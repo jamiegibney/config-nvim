@@ -85,13 +85,13 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"semantic"*
 
-`leader + gcfg`: goto Neovim config directory
+`leader + ncfg`: goto Neovim config directory
 
-*"go config"*
+*"Neovim config"*
 
-`leader + gpg`: goto Rust playground directory
+`leader + rpg`: goto Rust playground directory
 
-*"go playground"*
+*"rust playground"*
 
 `leader + mr`: "make it rain" effect from [Cellular Automaton](https://github.com/Eandrju/cellular-automaton.nvim)
 
