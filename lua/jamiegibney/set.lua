@@ -121,6 +121,14 @@ cmd "autocmd TermOpen * startinsert"
 -- flash text upon yank
 cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }"
 
+-- vim.api.nvim_create_autocmd("BufRead", {
+--     group = vim.api.nvim_create_autocmd("CmpSourceCargo", { clear = true }),
+--     pattern = "Cargo.toml",
+--     callback = function()
+--         cmp.setup.buffer({ sources = { { name = "crates" } } })
+--     end
+-- })
+
 -- this can preserve folds and stuff between sessions, but it seems to break highlighting for some reason. maybe there's another way
 -- cmd "autocmd BufWinLeave * silent mkview"
 -- cmd "autocmd BufWinEnter * silent loadview"

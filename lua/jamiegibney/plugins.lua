@@ -63,7 +63,7 @@ require("lazy").setup({
         "VonHeikemen/lsp-zero.nvim",
         config = function()
             local lsp = require("lsp-zero").preset {
-                configure_diagnostics = true,
+                configure_diagnostics = false,
                 setup_servers_on_start = true,
                 set_lsp_keymaps = false,
                 manage_nvim_cmp = {

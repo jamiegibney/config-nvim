@@ -7,6 +7,9 @@ cmp.setup {
         fetching_timeout = 50,
         async_budget = 2,
     },
+    completion = {
+        keyword_length = 1,
+    },
     sorting = {
         comparators = {
             cmp.config.compare.offset,
@@ -18,5 +21,8 @@ cmp.setup {
             cmp.config.compare.length,
             cmp.config.compare.order,
         }
+    },
+    sources = {
+        { name = "crates" },
     }
 }
