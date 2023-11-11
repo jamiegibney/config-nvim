@@ -478,6 +478,11 @@ require("lazy").setup({
         "jaxbot/semantic-highlight.vim",
         lazy = false,
     },
+
+    {
+        "tpope/vim-abolish",
+        lazy = false,
+    },
 }, {
     defaults = {
         lazy = true,

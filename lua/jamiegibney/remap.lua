@@ -115,8 +115,8 @@ vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 -- "autosave"
 vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
 
--- "semantic highlighting"
-vim.keymap.set("n", "<leader>sh", "<cmd>SemanticHighlightToggle<CR>")
+-- "semantic"
+vim.keymap.set("n", "<leader>sm", "<cmd>SemanticHighlightToggle<CR>")
 
 -- Normal mode unmaps
 -- use x!
@@ -128,6 +128,12 @@ vim.keymap.set("n", "<C-n>", "")
 vim.keymap.set("n", "<C-p>", "")
 -- use h!
 vim.keymap.set("n", "<BS>", "")
+
+-- goto neovim config directory "go config"
+vim.keymap.set("n", "<leader>gcfg", "<cmd>Oil ~/.config/nvim/")
+
+-- goto rust playground directory "go playground"
+vim.keymap.set("n", "<leader>gpg", "<cmd>Oil ~/Documents/dev/Rust/playground/")
 
 
 -- * --  INSERT MODE  -- * --

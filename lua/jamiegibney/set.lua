@@ -71,6 +71,8 @@ opt.hlsearch = true
 opt.linebreak = true
 -- where to break lines for soft-wrapping
 opt.breakat = " \t;:,!?."
+-- the character at which wrapping will occur.
+opt.textwidth = 85
 
 -- the chars used after the EOF
 opt.fillchars = { eob = " " }
