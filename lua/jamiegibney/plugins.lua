@@ -13,23 +13,6 @@ require("lazy").setup({
         "savq/melange-nvim",
         event = "VimEnter",
     },
-    --[[ {
-        "sainnhe/gruvbox-material",
-        name = "gruvbox-material",
-        lazy = false,
-    },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = false,
-    },
-    {
-        "ellisonleao/gruvbox.nvim",
-        name = "gruvbox",
-    },
-    { -- colorscheme generation
-        "rktjmp/lush.nvim",
-    }, ]]
 
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
@@ -487,6 +470,9 @@ require("lazy").setup({
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop", },
         ft = { "markdown" },
+        keys = {
+            { "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", }
+        },
         build = function()
             vim.fn["mkdp#util#install"]()
         end

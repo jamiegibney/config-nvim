@@ -89,6 +89,10 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"symbols outline"*
 
+`leader + mp`: open rendered markdown preview in browser
+
+*"markdown preview"*
+
 `gx`: goto link under cursor (non-netrw function)
 
 *"goto link"*
