@@ -64,7 +64,7 @@ require("telescope").setup {
         prompt_title = false,
         dynamic_preview_title = true,
         results_title = false,
-        path_display = "truncate",
+        -- path_display = "truncate",
 
         prompt_prefix = "=> ",
         selection_caret = " ",

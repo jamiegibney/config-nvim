@@ -67,7 +67,7 @@ require("lazy").setup({
                 setup_servers_on_start = true,
                 set_lsp_keymaps = false,
                 manage_nvim_cmp = {
-                    set_sources = "recommended",
+                    -- set_sources = "recommended",
                     set_basic_mappings = false,
                     set_extra_mappings = false,
                     use_luasnip = true,
@@ -481,6 +481,19 @@ require("lazy").setup({
 
     {
         "tpope/vim-abolish",
+        lazy = false,
+    },
+
+    {
+        "garyhurtz/cmp_kitty",
+        dependencies = {
+            { "hrsh7th/nvim-cmp" },
+        },
+
+        init = function()
+            require('cmp_kitty'):setup()
+        end,
+
         lazy = false,
     },
 }, {
