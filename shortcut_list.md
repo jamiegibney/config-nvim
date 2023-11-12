@@ -85,6 +85,14 @@ This includes keys/shortcuts which are unmapped and not functional.
 
 *"semantic"*
 
+`leader + so`: show symbols outline (i.e. all project symbols)
+
+*"symbols outline"*
+
+`gx`: goto link under cursor (non-netrw function)
+
+*"goto link"*
+
 `leader + ncfg`: goto Neovim config directory
 
 *"Neovim config"*
