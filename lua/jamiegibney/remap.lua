@@ -118,6 +118,9 @@ vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
 -- "semantic"
 vim.keymap.set("n", "<leader>sm", "<cmd>SemanticHighlightToggle<CR>")
 
+-- "symbols outline"
+vim.keymap.set("n", "<leader>so", "<cmd>SymbolsOutline<CR>")
+
 -- Normal mode unmaps
 -- use x!
 vim.keymap.set("n", "<Del>", "")
@@ -135,6 +138,13 @@ vim.keymap.set("n", "<leader>ncfg", "<cmd>Oil ~/.config/nvim/<CR>")
 -- goto rust playground directory "rust playground"
 vim.keymap.set("n", "<leader>rpg", "<cmd>Oil ~/Documents/dev/Rust/playground/<CR>")
 
+-- "crate"
+vim.keymap.set("n", "<leader>cr", function()
+    require("crates").show_popup()
+end)
+
+-- open url under cursor
+vim.keymap.set("n", "gx", "<cmd>URLOpenUnderCursor<CR>")
 
 -- * --  INSERT MODE  -- * --
 

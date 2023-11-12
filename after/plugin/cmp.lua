@@ -1,4 +1,15 @@
 local cmp = require("cmp")
+local dict = require("cmp_dictionary")
+
+dict.setup({
+    document = true,
+    -- max_items = 5,
+})
+dict.switcher({
+    spelllang = {
+        en_us = "~/.config/nvim/en.dict"
+    }
+})
 
 cmp.setup {
     performance = {
@@ -23,19 +34,25 @@ cmp.setup {
         }
     },
     sources = {
-        -- { name = "buffer" },
+        { name = "buffer" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        {
-            name = "spell",
-            option = {
-                keep_all_entries = false,
-                enable_in_context = function()
-                    return true
-                end
-            }
-        },
         { name = "crates" },
-        { name = "kitty" },
+        { name = "calc" },
+        { name = "async_path" },
+        { name = "git" },
+        { name = "nvim_lua" },
+        -- {
+        --     name = "spell",
+        --     option = {
+        --         keep_all_entries = true,
+        --         enable_in_context = function()
+        --             return vim.o.spell
+        --         end
+        --     }
+        -- },
+        -- { name = "dictionary" },
+        -- { name = "tmux" },
+        -- { name = "kitty" },
     }
 }

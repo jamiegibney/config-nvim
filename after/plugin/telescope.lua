@@ -29,24 +29,11 @@ vim.keymap.set("n", "<leader>bu", builtin.buffers)
 -- "spell suggest"
 vim.keymap.set("n", "<leader>su", builtin.spell_suggest)
 
--- "undo"
-vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>")
-
 
 require("telescope").load_extension("harpoon")
-require("telescope").load_extension("undo")
+require("telescope").load_extension("fzf")
 
 require("telescope").setup {
-    extensions = {
-        undo = {
-            -- use_delta = true,
-            -- side_by_side = true,
-            layout_strategy = "vertical",
-            layout_config = {
-                preview_height = 0.6,
-            },
-        },
-    },
     defaults = {
         vimgrep_arguments = {
             "rg",

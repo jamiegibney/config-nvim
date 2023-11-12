@@ -4,7 +4,6 @@ require("lazy").setup({
         tag = "0.1.2",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "debugloop/telescope-undo.nvim",
         },
         event = "UIEnter",
     },
@@ -14,7 +13,7 @@ require("lazy").setup({
         "savq/melange-nvim",
         event = "VimEnter",
     },
-    {
+    --[[ {
         "sainnhe/gruvbox-material",
         name = "gruvbox-material",
         lazy = false,
@@ -30,7 +29,7 @@ require("lazy").setup({
     },
     { -- colorscheme generation
         "rktjmp/lush.nvim",
-    },
+    }, ]]
 
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
@@ -49,10 +48,10 @@ require("lazy").setup({
         event = "LspAttach",
     },
 
-    -- { -- undo tree
-    --     "mbbill/undotree",
-    --     event = "BufRead",
-    -- },
+    { -- undo tree
+        "mbbill/undotree",
+        event = "BufRead",
+    },
 
     { -- git status
         "tpope/vim-fugitive",
@@ -63,11 +62,11 @@ require("lazy").setup({
         "VonHeikemen/lsp-zero.nvim",
         config = function()
             local lsp = require("lsp-zero").preset {
-                configure_diagnostics = false,
+                configure_diagnostics = true,
                 setup_servers_on_start = true,
                 set_lsp_keymaps = false,
                 manage_nvim_cmp = {
-                    -- set_sources = "recommended",
+                    set_sources = "recommended",
                     set_basic_mappings = false,
                     set_extra_mappings = false,
                     use_luasnip = true,
@@ -279,7 +278,28 @@ require("lazy").setup({
                 event = "InsertEnter",
             },
 
+
             -- autocomplete sources
+            "felipelema/cmp-async-path",
+            "hrsh7th/cmp-calc",
+            "petertriho/cmp-git",
+            "hrsh7th/cmp-nvim-lua",
+            "andersevenrud/cmp-tmux",
+            "f3fora/cmp-spell",
+
+            -- {
+            --     "garyhurtz/cmp_kitty",
+            --     dependencies = {
+            --         { "hrsh7th/nvim-cmp" },
+            --     },
+            --
+            --     init = function()
+            --         require('cmp_kitty'):setup()
+            --     end,
+            --
+            --     lazy = false,
+            -- },
+
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-nvim-lsp",
@@ -378,8 +398,20 @@ require("lazy").setup({
 
     { -- rust crate tools
         "saecki/crates.nvim",
+        tag = "v0.4.0",
         event = { "BufRead Cargo.toml" },
         dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("crates").setup({
+                thousands_separator = ",",
+                date_format = "%d-%m-%y",
+                src = {
+                    cmp = {
+                        enabled = true,
+                    }
+                }
+            })
+        end
     },
 
     { -- colour picker
@@ -452,18 +484,12 @@ require("lazy").setup({
     },
 
     { -- markdown previewing
-        -- "iamcco/markdown-preview.nvim",
-        -- build = function()
-        --     vim.fn["mkdp#util#install"]()
-        -- end,
-        -- init = function()
-        --     vim.g.mkdp_filetypes = { "markdown" }
-        -- end,
-        -- event = "BufRead",
-    },
-
-    { -- nvim cmp spelling
-        "f3fora/cmp-spell",
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop", },
+        ft = { "markdown" },
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end
     },
 
     { -- file "overview" tree
@@ -476,7 +502,7 @@ require("lazy").setup({
 
     {
         "jaxbot/semantic-highlight.vim",
-        lazy = false,
+        cmd = "SemanticHighlightToggle",
     },
 
     {
@@ -485,17 +511,29 @@ require("lazy").setup({
     },
 
     {
-        "garyhurtz/cmp_kitty",
-        dependencies = {
-            { "hrsh7th/nvim-cmp" },
-        },
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build =
+        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    },
 
-        init = function()
-            require('cmp_kitty'):setup()
-        end,
-
+    {
+        "uga-rosa/cmp-dictionary",
         lazy = false,
     },
+
+    {
+        "sontungexpt/url-open",
+        branch = "mini",
+        cmd = "URLOpenUnderCursor",
+        config = function()
+            local status_ok, url_open = pcall(require, "url-open")
+
+            if status_ok then
+                url_open.setup({})
+            end
+        end,
+    }
+
 }, {
     defaults = {
         lazy = true,

@@ -121,6 +121,8 @@ cmd "autocmd TermOpen * startinsert"
 -- flash text upon yank
 cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }"
 
+-- cmd "autocmd BufRead Cargo.toml lua require('crates').show()"
+
 -- vim.api.nvim_create_autocmd("BufRead", {
 --     group = vim.api.nvim_create_autocmd("CmpSourceCargo", { clear = true }),
 --     pattern = "Cargo.toml",
