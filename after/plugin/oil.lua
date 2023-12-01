@@ -7,7 +7,10 @@ require("oil").setup {
     skip_confirm_for_simple_edits = false,
 
     delete_to_trash = true,
-    trash_command = "trash",
+
+    win_options = {
+        signcolumn = "yes:1",
+    },
 
     keymaps = {
         ["<C-o>"] = "actions.select",

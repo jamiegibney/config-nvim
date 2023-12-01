@@ -1,15 +1,15 @@
 local cmp = require("cmp")
-local dict = require("cmp_dictionary")
-
-dict.setup({
-    document = true,
-    -- max_items = 5,
-})
-dict.switcher({
-    spelllang = {
-        en_us = "~/.config/nvim/en.dict"
-    }
-})
+-- local dict = require("cmp_dictionary")
+--
+-- dict.setup({
+--     document = true,
+--     -- max_items = 5,
+-- })
+-- dict.switcher({
+--     spelllang = {
+--         en_us = "~/.config/nvim/en.dict"
+--     }
+-- })
 
 cmp.setup {
     performance = {

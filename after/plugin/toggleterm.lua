@@ -1,4 +1,6 @@
 require("toggleterm").setup({
+    size = 40,
+
     hide_numbers = false,
     shade_terminals = false,
     highlights = {
@@ -10,10 +12,10 @@ require("toggleterm").setup({
         },
     },
     winbar = {
-        enabled = true,
+        enabled = false,
     },
-})
+    autochdir = true,
+    start_in_insert = true,
 
--- toggle floating terminal
-vim.keymap.set("n", "<C-Space>", ":ToggleTerm size=10 direction=float<CR>a<Esc><BS><BS>")
-vim.keymap.set("t", "<C-Space>", "<C-\\><C-n>:ToggleTerm<CR>")
+    open_mapping = [[<C-Space>]],
+})

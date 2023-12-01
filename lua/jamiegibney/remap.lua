@@ -9,6 +9,9 @@ vim.keymap.set("n", "<leader>/", function()
     require("Comment.api").toggle.linewise.current()
 end)
 
+-- suspend vim and return to terminal (C-space is mapped to "fg" in fish)
+-- vim.keymap.set("n", "<C-Space>", "<C-z>")
+
 -- "git status"
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
@@ -30,7 +33,7 @@ vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
 -- "write & source"
-vim.keymap.set("n", "<leader>ws", ":w<CR>:so<CR>")
+vim.keymap.set("n", "<leader>ws", ":w<CR>:so<CR>:echo 'File written and sourced'<CR>")
 
 -- "file system" (or "fuck sake", which is funnier)
 vim.keymap.set("n", "<leader>fs", ":Oil<CR>")
@@ -38,7 +41,7 @@ vim.keymap.set("n", "<leader>fs", ":Oil<CR>")
 -- vim.keymap.set("n", "<leader>fs", ":Oil --float<CR>")
 
 -- "previous file"
-vim.keymap.set("n", "<leader>pf", "<C-^>")
+vim.keymap.set("n", "<leader>pf", "<C-^>:echo 'Switched to previous file'<CR>")
 
 -- move current line up/down and auto-indent
 vim.keymap.set("n", "<C-k>", ":move -2<CR>==")
@@ -97,6 +100,9 @@ vim.keymap.set("n", "<leader>td", function()
     end
 end)
 
+-- unmap tagstack for tmux
+vim.keymap.set("n", "<C-t>", "")
+
 -- "clear edits"
 vim.keymap.set("n", "<leader>ce", ":e!<CR>")
 
@@ -152,8 +158,6 @@ vim.keymap.set("n", "gx", "<cmd>URLOpenUnderCursor<CR>")
 vim.keymap.set("i", "<C-CR>", "<C-c>A;<C-c>")
 
 -- caret navigation in insert mode
-vim.keymap.set("i", "<C-k>", "<C-c>gka")
-vim.keymap.set("i", "<C-j>", "<C-c>gja")
 vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
@@ -178,8 +182,7 @@ vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 -- folding
-vim.keymap.set("v", "<leader>fl", "")
-
+vim.keymap.set("v", "<leader>fl", ":fold<CR>")
 
 -- unmaps all the function keys
 require("jamiegibney/unmapped_function_keys")

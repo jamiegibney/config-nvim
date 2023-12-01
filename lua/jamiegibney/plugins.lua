@@ -5,12 +5,21 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        event = "UIEnter",
+        keys = {
+            { "<leader>ff", "<cmd>Telescope find_files", },
+            { "<leader>fw", "<cmd>Telescope live_grep", },
+            { "<leader>fo", "<cmd>Telescope oldfiles", },
+        },
+        event = "LspAttach",
     },
 
     -- themes
     {
         "savq/melange-nvim",
+        event = "VimEnter",
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
         event = "VimEnter",
     },
 
@@ -42,6 +51,7 @@ require("lazy").setup({
     },
 
     { -- lsp bundle
+    -- TODO make this separate files, please
         "VonHeikemen/lsp-zero.nvim",
         config = function()
             local lsp = require("lsp-zero").preset {
@@ -261,7 +271,6 @@ require("lazy").setup({
                 event = "InsertEnter",
             },
 
-
             -- autocomplete sources
             "felipelema/cmp-async-path",
             "hrsh7th/cmp-calc",
@@ -291,35 +300,25 @@ require("lazy").setup({
         },
     },
 
-    --[[ {
-        "ms-jpq/coq_nvim",
-        dependencies = {
-            "ms-jpq/coq.thirdparty",
-            "ms-jpq/coq.artifacts",
-        },
-
-        lazy = false,
-    }, ]]
-
     { -- auto-pairing of () [] {} <> "" '', etc
         "windwp/nvim-autopairs",
         opts = {
             disable_filetype = { "TelescopePrompt", "vim", "plain text", "txt" },
         },
-        config = function()
-            require("nvim-autopairs").setup {}
-        end,
+        -- config = function()
+        --     require("nvim-autopairs").setup {}
+        -- end,
         event = "InsertEnter",
     },
 
     { -- rust enhancements
         "simrat39/rust-tools.nvim",
-        event = "BufRead",
+        event = "LspAttach",
     },
 
     { -- debugging tool
         "mfussenegger/nvim-dap",
-        event = "BufRead",
+        event = "LspAttach",
     },
 
     { -- auto-saving
@@ -367,16 +366,12 @@ require("lazy").setup({
 
     { -- startup screen
         "goolord/alpha-nvim",
-        -- toggle the below to enable alpha
+        -- lazy = false,
         cmd = "Alpha",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("alpha").setup(require("alpha.themes.custom_theme").config)
         end,
-    },
-
-    { -- buffer minimap
-        "wfxr/minimap.vim",
     },
 
     { -- rust crate tools
@@ -395,11 +390,6 @@ require("lazy").setup({
                 }
             })
         end
-    },
-
-    { -- colour picker
-        "ziontee113/color-picker.nvim",
-        cmd = "PickColor",
     },
 
     { -- better terminals
@@ -440,11 +430,6 @@ require("lazy").setup({
         event = "BufRead",
     },
 
-    { -- some floating preview windows
-        "rmagatti/goto-preview",
-        event = "BufRead",
-    },
-
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -470,6 +455,7 @@ require("lazy").setup({
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop", },
         ft = { "markdown" },
+        lazy = true,
         keys = {
             { "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", }
         },
@@ -503,11 +489,6 @@ require("lazy").setup({
     },
 
     {
-        "uga-rosa/cmp-dictionary",
-        lazy = false,
-    },
-
-    {
         "sontungexpt/url-open",
         branch = "mini",
         cmd = "URLOpenUnderCursor",
@@ -518,7 +499,7 @@ require("lazy").setup({
                 url_open.setup({})
             end
         end,
-    }
+    },
 
 }, {
     defaults = {

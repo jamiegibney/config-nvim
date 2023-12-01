@@ -30,7 +30,6 @@ vim.keymap.set("n", "<leader>bu", builtin.buffers)
 vim.keymap.set("n", "<leader>su", builtin.spell_suggest)
 
 
-require("telescope").load_extension("harpoon")
 require("telescope").load_extension("fzf")
 
 require("telescope").setup {

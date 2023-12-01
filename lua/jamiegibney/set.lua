@@ -99,38 +99,50 @@ opt.spelllang = "en_us"
 
 opt.shada = "!,'200,<50,s10,h"
 
--- you can also use:
---[[
-api.nvim_create_autocmd({ "Events", }, {
+-- open help windows in a vertical split
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = "*",
     callback = function()
-        ...
-    end,
+        vim.cmd("if &ft ==# 'help' | wincmd L | endif")
+    end
 })
-]]
 
--- open help windows in a vertical split
-cmd "autocmd BufEnter * if &ft ==# 'help' | wincmd L | endif"
-cmd "autocmd BufEnter * setlocal formatoptions-=o"
+-- prevent comments from being created on newlines with 'o' and 'O'
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = "*",
+    callback = function()
+        vim.cmd("setlocal formatoptions-=o")
+    end
+})
+
 -- centres the window upon opening a buffer
-cmd "autocmd BufWinEnter * exe 'normal zz'"
--- opens terminal in insert mode
-cmd "autocmd TermOpen * startinsert"
--- cmd "autocmd BufEnter * COQnow --shut-up"
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = "*",
+    callback = function()
+        vim.cmd("exe 'normal zz'")
+    end
+})
 
--- flash text upon yank
-cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }"
+-- flash text upon yank ;)
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+    pattern = "*",
+    callback = function()
+        vim.cmd("silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }")
+    end
+})
 
--- cmd "autocmd BufRead Cargo.toml lua require('crates').show()"
+-- print a message when the directory has changed
+vim.api.nvim_create_autocmd({ "DirChanged" }, {
+    pattern = "global",
+    callback = function()
+        print("Changed the current working directory")
+    end
+})
 
--- vim.api.nvim_create_autocmd("BufRead", {
---     group = vim.api.nvim_create_autocmd("CmpSourceCargo", { clear = true }),
---     pattern = "Cargo.toml",
---     callback = function()
---         cmp.setup.buffer({ sources = { { name = "crates" } } })
---     end
--- })
-
--- this can preserve folds and stuff between sessions, but it seems to break highlighting for some reason. maybe there's another way
--- cmd "autocmd BufWinLeave * silent mkview"
--- cmd "autocmd BufWinEnter * silent loadview"
+-- same as above, but only for the current tab
+vim.api.nvim_create_autocmd({ "DirChanged" }, {
+    pattern = "tabpage",
+    callback = function()
+        print("Changed the current working directory for the current tab")
+    end
+})

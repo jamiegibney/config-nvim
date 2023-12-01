@@ -243,17 +243,14 @@ local function set_highlights()
     -- api.nvim_set_hl(0, "Ignore", { link = "Normal", })
 end
 
--- api.nvim_create_autocmd({ "VimEnter", }, {
-api.nvim_create_autocmd({ "VimEnter", --[[ "ColorScheme" ]] }, {
-    pattern = "*",
-    callback = function()
-        -- in this instance, melange is being used as a "fallback" coloscheme
-        -- most languages other than rust will therefore use melange highlights
-        vim.cmd.colorscheme "melange"
-        set_highlights()
-        api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", italic = false, })
-    end
-})
+M = {}
 
+function M.set_theme()
+    vim.cmd.colorscheme "melange"
+    set_highlights()
+    api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", italic = false, })
+end
 
-set_highlights()
+M.set_theme()
+
+return M

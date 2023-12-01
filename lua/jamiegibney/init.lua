@@ -28,6 +28,8 @@ vim.opt.rtp:prepend(lazypath)
 require "jamiegibney.plugins"
 
 -- set clion-like theme
-require "jamiegibney.theme"
+require("jamiegibney.theme").set_theme()
+
+require("jamiegibney.lsp.init")
 
 -- require "jamiegibney.cmp_spell"
