@@ -185,6 +185,3 @@ vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 -- folding
 vim.keymap.set("v", "<leader>fl", ":fold<CR>")
-
--- unmaps all the function keys
-require("jamiegibney/unmapped_function_keys")
