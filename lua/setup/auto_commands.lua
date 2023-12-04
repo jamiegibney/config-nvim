@@ -45,3 +45,8 @@ vim.api.nvim_create_autocmd({ "DirChanged" }, {
         print("Changed to the current working directory for the current tab")
     end
 })
+
+-- allow the ability to reset the theme with ":ResetTheme"
+vim.api.nvim_create_user_command("ResetTheme", function()
+    require("setup.theme").set_theme()
+end, {})
