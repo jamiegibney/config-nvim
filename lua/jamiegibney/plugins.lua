@@ -10,23 +10,23 @@ require("lazy").setup({
             { "<leader>fw", "<cmd>Telescope live_grep", },
             { "<leader>fo", "<cmd>Telescope oldfiles", },
         },
-        event = "LspAttach",
+        cmd = "Telescope",
     },
 
     -- themes
     {
         "savq/melange-nvim",
-        event = "VimEnter",
+        event = "VeryLazy",
     },
     {
-        "ellisonleao/gruvbox.nvim",
-        event = "VimEnter",
+        "sainnhe/gruvbox-material",
+        event = "VeryLazy",
     },
 
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        -- event = "LspAttach",
+        event = "LspAttach",
     },
 
     { -- top-of-buffer context
@@ -47,257 +47,44 @@ require("lazy").setup({
 
     { -- git status
         "tpope/vim-fugitive",
-        lazy = false,
+        event = "VeryLazy",
     },
 
-    { -- lsp bundle
-    -- TODO make this separate files, please
-        "VonHeikemen/lsp-zero.nvim",
-        config = function()
-            local lsp = require("lsp-zero").preset {
-                configure_diagnostics = true,
-                setup_servers_on_start = true,
-                set_lsp_keymaps = false,
-                manage_nvim_cmp = {
-                    set_sources = "recommended",
-                    set_basic_mappings = false,
-                    set_extra_mappings = false,
-                    use_luasnip = true,
-                    set_format = true,
-                    documentation_window = true,
-                },
-            }
-
-            local cmp = require "cmp"
-            local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-
-            local cmp_select = { behaviour = cmp.SelectBehavior.Insert }
-            local cmp_mappings = lsp.defaults.cmp_mappings {
-                -- ["<CR>"] = cmp.mapping.confirm { select = true },
-                ["<C-y>"] = cmp.mapping.confirm { select = true },
-                ["<C-e>"] = cmp.mapping.abort(),
-
-                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-
-                ["<C-d>"] = cmp.mapping.scroll_docs(4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(-4),
-
-                ["<C-i>"] = cmp.mapping.complete(),
-
-            }
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-            lsp.setup_nvim_cmp {
-                mapping = cmp_mappings,
-                window = {
-                    completion = {
-                        scrolloff = 5,
-                        side_padding = 1,
-                    },
-                    preselect = require("cmp").PreselectMode.None,
-                    complete = {
-                        completeopt = "menu,menuone,noinsert,noselect",
-                    },
-                },
-            }
-
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                },
-            })
-
-            -- LSP keymaps are here - note that the default implementation of
-            -- any of these keymaps will be used if an LSP server is not available
-            -- for the current buffer. also, Telescope implements the LSP references
-            -- with "gr" ("go references"), and goto-preview implements (type)
-            -- definition preview with "<leader>gd/td".
-            lsp.on_attach(function(client, bufnr)
-                -- lsp action - "action"
-                vim.keymap.set("n", "<leader>a", function()
-                    vim.lsp.buf.code_action()
-                end)
-
-                -- lsp info - "info"
-                vim.keymap.set("n", "<leader>i", function()
-                    vim.lsp.buf.hover()
-                end)
-
-                -- lsp signature
-                vim.keymap.set("n", "<leader>ls", function()
-                    vim.lsp.buf.signature_help()
-                end)
-
-                -- lsp rename
-                vim.keymap.set("n", "<leader>rn", function()
-                    vim.lsp.buf.rename()
-                end)
-
-                -- lsp format
-                vim.keymap.set("n", "<leader>fm", function()
-                    vim.lsp.buf.format { async = true }
-                end)
-
-                -- lsp usages - "go usages"
-                vim.keymap.set("n", "<leader>gu", function()
-                    vim.lsp.buf.usages()
-                end)
-
-                -- lsp definition - "go definition"
-                vim.keymap.set("n", "gd", function()
-                    vim.lsp.buf.definition()
-                end)
-
-                -- lsp type definition - "type definition"
-                vim.keymap.set("n", "td", function()
-                    vim.lsp.buf.type_definition()
-                end)
-
-                -- lsp diagnostics - "DiagNostics"
-                vim.keymap.set("n", "<leader>dn", function()
-                    vim.diagnostic.open_float {
-                        border = "rounded",
-                        source = true,
-                    }
-                end)
-            end)
-
-            require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-
-            lsp.set_server_config {
-                on_init = function(client)
-                    client.server_capabilities.documentFormattingProvider = true
-                    client.server_capabilities.documentRangeFormattingProvider = true
-                end,
-            }
-
-            lsp.set_sign_icons {
-                error = "✘",
-                warn = "!",
-                hint = "~",
-                info = "-",
-            }
-
-            require("lspconfig").clangd.setup({
-                cmd = {
-                    "clangd",
-                    "--clang-tidy",
-                },
-            })
-
-            lsp.skip_server_setup { "rust_analyzer" }
-
-            lsp.setup()
-
-            -- prints a table out
-            local function tprint(tbl, indent)
-                if not indent then
-                    indent = 0
-                end
-                for k, v in pairs(tbl) do
-                    local formatting = string.rep("{ ", indent) .. k .. ": "
-                    if type(v) == "table" then
-                        print(formatting)
-                        tprint(v, indent + 1)
-                    elseif type(v) == "boolean" then
-                        print(formatting .. tostring(v))
-                    else
-                        print(formatting .. v)
-                    end
-                end
-            end
-
-            -- TODO: this does not work if the "for further information" dialogue is the last line of the message
-            -- removes "for further information" message in clippy diagnostics
-            local function remove_further_information(msg)
-                local start, _ = string.find(msg, "for further information")
-                if start == nil then
-                    return msg
-                end
-
-                local last = 0
-                local i = 0
-                while true do
-                    i = string.find(msg, "\n", last + 1)
-                    if i == nil then
-                        break
-                    end
-                    last = i
-                end
-
-                local result = string.sub(msg, 1, start - 1) .. string.sub(msg, last)
-                return result
-            end
-
-            vim.diagnostic.config {
-                virtual_text = {
-                    spacing = 3,
-                    format = function(diag)
-                        return remove_further_information(diag.message)
-                    end,
-                },
-                signs = true,
-                update_in_insert = true,
-                underline = true,
-                severity_sort = true,
-            }
-        end,
-
-        branch = "v2.x",
-        event = "VeryLazy",
+    {
+        "neovim/nvim-lspconfig",
 
         dependencies = {
-            -- LSP Support
-            "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            "folke/neodev.nvim",
+        },
+    },
 
-            -- Autocompletion
-            {
-                "hrsh7th/nvim-cmp",
-                event = "InsertEnter",
-            },
-            {
-                "lukas-reineke/cmp-under-comparator",
-            },
-            {
-                "hrsh7th/cmp-nvim-lsp",
-                event = "BufRead",
-            },
+    {
+        "hrsh7th/nvim-cmp",
+        lazy = false,
 
+        dependencies = {
+            -- autocomplete sources
             {
                 "L3MON4D3/LuaSnip",
-                event = "InsertEnter",
+                event = "LspAttach",
             },
-
-            -- autocomplete sources
-            "felipelema/cmp-async-path",
-            "hrsh7th/cmp-calc",
-            "petertriho/cmp-git",
-            "hrsh7th/cmp-nvim-lua",
-            "andersevenrud/cmp-tmux",
-            "f3fora/cmp-spell",
-
-            -- {
-            --     "garyhurtz/cmp_kitty",
-            --     dependencies = {
-            --         { "hrsh7th/nvim-cmp" },
-            --     },
-            --
-            --     init = function()
-            --         require('cmp_kitty'):setup()
-            --     end,
-            --
-            --     lazy = false,
-            -- },
-
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lua",
+
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-calc",
+            "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-        },
+
+            "rafamadriz/friendly-snippets",
+            "lukas-reineke/cmp-under-comparator",
+            "felipelema/cmp-async-path",
+            "petertriho/cmp-git",
+            -- "andersevenrud/cmp-tmux",
+            -- "f3fora/cmp-spell",
+        }
     },
 
     { -- auto-pairing of () [] {} <> "" '', etc
@@ -305,9 +92,6 @@ require("lazy").setup({
         opts = {
             disable_filetype = { "TelescopePrompt", "vim", "plain text", "txt" },
         },
-        -- config = function()
-        --     require("nvim-autopairs").setup {}
-        -- end,
         event = "InsertEnter",
     },
 
@@ -352,12 +136,9 @@ require("lazy").setup({
 
     { -- fast buffer switching
         "theprimeagen/harpoon",
-        config = function()
-            require("harpoon").setup {
-                save_on_toggle = true,
-            }
-        end,
-        event = "BufRead",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = false,
     },
 
     { -- devicons
@@ -366,7 +147,6 @@ require("lazy").setup({
 
     { -- startup screen
         "goolord/alpha-nvim",
-        -- lazy = false,
         cmd = "Alpha",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
@@ -379,6 +159,7 @@ require("lazy").setup({
         tag = "v0.4.0",
         event = { "BufRead Cargo.toml" },
         dependencies = { "nvim-lua/plenary.nvim" },
+
         config = function()
             require("crates").setup({
                 thousands_separator = ",",
@@ -410,10 +191,10 @@ require("lazy").setup({
         end,
     },
 
-    {                  -- surround text with anything you want!
+    { -- surround text with anything you want!
         "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
+        version = "*",
+        event = "InsertEnter",
     },
 
     { -- a file-system editable like a buffer
@@ -427,28 +208,15 @@ require("lazy").setup({
                 insert_mode = true,
             }
         end,
+
         event = "BufRead",
     },
 
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
+
         main = "ibl",
-        event = "BufRead",
-        config = function()
-            require("ibl").setup {
-                scope = {
-                    enabled = true,
-                    char = "▏",
-                    highlight = "DiagnosticHint",
-                    show_start = false,
-                    show_end = false,
-                },
-                indent = {
-                    char = "▏",
-                    highlight = "DiagnosticInfo",
-                },
-            }
-        end
+        event = "LspAttach",
     },
 
     { -- markdown previewing
@@ -466,21 +234,23 @@ require("lazy").setup({
 
     { -- file "overview" tree
         "simrat39/symbols-outline.nvim",
+
         config = function()
             require("symbols-outline").setup()
         end,
+
         cmd = "SymbolsOutline",
     },
 
-    {
-        "jaxbot/semantic-highlight.vim",
-        cmd = "SemanticHighlightToggle",
-    },
+    -- {
+    --     "jaxbot/semantic-highlight.vim",
+    --     cmd = "SemanticHighlightToggle",
+    -- },
 
-    {
-        "tpope/vim-abolish",
-        lazy = false,
-    },
+    -- {
+    --     "tpope/vim-abolish",
+    --     lazy = false,
+    -- },
 
     {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -492,6 +262,7 @@ require("lazy").setup({
         "sontungexpt/url-open",
         branch = "mini",
         cmd = "URLOpenUnderCursor",
+
         config = function()
             local status_ok, url_open = pcall(require, "url-open")
 
@@ -501,6 +272,26 @@ require("lazy").setup({
         end,
     },
 
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+
+        opts = {
+            window = {
+                backdrop = 1.0,
+            },
+        },
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+
+        config = function()
+            require("gitsigns").setup()
+        end,
+
+        event = "BufRead"
+    }
 }, {
     defaults = {
         lazy = true,

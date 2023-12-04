@@ -13,6 +13,8 @@ require("rust-tools").setup {
 
     server = {
         on_attach = function(_, bufnr)
+            -- local map = function(keys, func)
+            -- end
             -- "code action"
             vim.keymap.set("n", "<leader>ca", require("rust-tools").code_action_group.code_action_group,
                 { buffer = bufnr })

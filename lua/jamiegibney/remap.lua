@@ -31,6 +31,8 @@ vim.keymap.set("n", "<Esc>", ":noh<CR>")
 -- move through soft-wrapped lines
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
+vim.keymap.set("n", "gj", "j")
+vim.keymap.set("n", "gk", "k")
 
 -- "write & source"
 vim.keymap.set("n", "<leader>ws", ":w<CR>:so<CR>:echo 'File written and sourced'<CR>")

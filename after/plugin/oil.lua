@@ -9,7 +9,9 @@ require("oil").setup {
     delete_to_trash = true,
 
     win_options = {
-        signcolumn = "yes:1",
+        signcolumn = "no",
+        numberwidth = 4,
+        relativenumber = false,
     },
 
     keymaps = {
@@ -21,7 +23,7 @@ require("oil").setup {
 
         -- enable this for floating windows for easy exit
         ["<C-c>"] = "<Esc>:noh<CR>",
-        ["<C-h>"] = "",
+        ["<C-h>"] = false,
     },
 
     view_options = {

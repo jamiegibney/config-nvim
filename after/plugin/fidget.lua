@@ -7,27 +7,26 @@ require("fidget").setup({
     },
 
     align = {
-        bottom = true, -- align fidgets along bottom edge of buffer
+        bottom = false, -- align fidgets along bottom edge of buffer
         right = true, -- align fidgets along right edge of buffer
     },
 
     timer = {
-        spinner_rate = 120, -- frame rate of spinner animation, in ms
+        spinner_rate = 80, -- frame rate of spinner animation, in ms
         fidget_decay = 4000, -- how long to keep around empty fidget, in ms
         task_decay = 3000, -- how long to keep around completed task, in ms
     },
 
     window = {
-        relative = "win", -- where to anchor, either "win" or "editor"
-        blend = 0,    -- &winblend for the window
-        zindex = nil, -- the zindex value for the window
+        blend = 100,
+        relative = "editor", -- where to anchor, either "win" or "editor"
         border = "none", -- style of border for the fidget window
     },
 
     fmt = {
         leftpad = true,   -- right-justify text in fidget box
-        stack_upwards = true, -- list of tasks grows upwards
-        max_width = 0,    -- maximum width of the fidget box
+        stack_upwards = false, -- list of tasks grows upwards
+        max_width = 20,    -- maximum width of the fidget box
         fidget =          -- function to format fidget title
             function(fidget_name, spinner)
                 return string.format("%s %s", spinner, fidget_name)
@@ -41,10 +40,5 @@ require("fidget").setup({
                   task_name
                 )
             end,
-    },
-
-    debug = {
-        logging = false, -- whether to enable logging, for debugging
-        strict = false, -- whether to interpret LSP strictly
     },
 })

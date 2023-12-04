@@ -52,9 +52,9 @@ opt.number = true
 -- whether line numbers should be relative to the current line or not
 opt.relativenumber = true
 -- the width in cells of the lines numbers
-opt.numberwidth = 3
+opt.numberwidth = 6
 -- the number of signs in the signcolumn, which may increase the size of the "left margin"
-vim.wo.signcolumn = "yes:2"
+vim.wo.signcolumn = "yes"
 
 -- the minimum number of lines from the cursor to the top/bottom of the current buffer
 opt.scrolloff = 16
@@ -98,51 +98,3 @@ opt.hidden = true
 opt.spelllang = "en_us"
 
 opt.shada = "!,'200,<50,s10,h"
-
--- open help windows in a vertical split
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = "*",
-    callback = function()
-        vim.cmd("if &ft ==# 'help' | wincmd L | endif")
-    end
-})
-
--- prevent comments from being created on newlines with 'o' and 'O'
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = "*",
-    callback = function()
-        vim.cmd("setlocal formatoptions-=o")
-    end
-})
-
--- centres the window upon opening a buffer
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    pattern = "*",
-    callback = function()
-        vim.cmd("exe 'normal zz'")
-    end
-})
-
--- flash text upon yank ;)
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    pattern = "*",
-    callback = function()
-        vim.cmd("silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }")
-    end
-})
-
--- print a message when the directory has changed
-vim.api.nvim_create_autocmd({ "DirChanged" }, {
-    pattern = "global",
-    callback = function()
-        print("Changed the current working directory")
-    end
-})
-
--- same as above, but only for the current tab
-vim.api.nvim_create_autocmd({ "DirChanged" }, {
-    pattern = "tabpage",
-    callback = function()
-        print("Changed the current working directory for the current tab")
-    end
-})

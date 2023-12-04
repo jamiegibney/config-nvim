@@ -1,35 +1,26 @@
--- custom statusline
-require "jamiegibney.statusline"
-
 -- general key remaps — some plugin-specific remaps are in their config files in after/plugins
-require "jamiegibney.remap"
+require("jamiegibney.remap")
+
+-- setup lazy
+require("jamiegibney.lazy_init");
+
+-- load plugins
+require("jamiegibney.plugins")
+
+-- custom statusline
+require("jamiegibney.statusline")
 
 -- vim settings
-require "jamiegibney.set"
+require("jamiegibney.set")
+
+-- various auto commands
+require("jamiegibney.auto_commands")
 
 -- semantic variable highlighting
-require "jamiegibney.semantic_highlighting"
-
--- lazy setup
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    }
-end
-vim.opt.rtp:prepend(lazypath)
-
--- all plugins
-require "jamiegibney.plugins"
+-- require("jamiegibney.semantic_highlighting")
 
 -- set clion-like theme
 require("jamiegibney.theme").set_theme()
 
-require("jamiegibney.lsp.init")
-
--- require "jamiegibney.cmp_spell"
+-- lsp initialisation
+require("jamiegibney.lsp")

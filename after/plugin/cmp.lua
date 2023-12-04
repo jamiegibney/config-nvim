@@ -1,17 +1,14 @@
 local cmp = require("cmp")
--- local dict = require("cmp_dictionary")
---
--- dict.setup({
---     document = true,
---     -- max_items = 5,
--- })
--- dict.switcher({
---     spelllang = {
---         en_us = "~/.config/nvim/en.dict"
---     }
--- })
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.config.setup()
 
 cmp.setup {
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
     performance = {
         debounce = 15,
         throttle = 10,
@@ -19,8 +16,16 @@ cmp.setup {
         async_budget = 2,
     },
     completion = {
+        completeopt = "menu,menuone,noinsert,noselect",
         keyword_length = 1,
     },
+    mapping = cmp.mapping.preset.insert({
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+    }),
     sorting = {
         comparators = {
             cmp.config.compare.offset,
@@ -37,22 +42,19 @@ cmp.setup {
         { name = "buffer" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "crates" },
         { name = "calc" },
         { name = "async_path" },
-        { name = "git" },
         { name = "nvim_lua" },
-        -- {
-        --     name = "spell",
-        --     option = {
-        --         keep_all_entries = true,
-        --         enable_in_context = function()
-        --             return vim.o.spell
-        --         end
-        --     }
-        -- },
-        -- { name = "dictionary" },
-        -- { name = "tmux" },
-        -- { name = "kitty" },
-    }
+        { name = "git" },
+        -- { name = "crates" },
+    },
+    window = {
+        completion = {
+            scrolloff = 5,
+            side_padding = 1,
+        },
+        preselect = cmp.PreselectMode.None,
+    },
 }
+
+cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())

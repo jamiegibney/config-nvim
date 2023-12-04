@@ -1,83 +1,78 @@
 -- * -- HARPOON KEYMAPS -- * --
 
+local harpoon = require("harpoon")
+
+harpoon:setup({
+    settings = {
+        save_on_toggle = true,
+    },
+})
+
 -- "harpoon"
 vim.keymap.set("n", "<C-h>", function()
-    require("harpoon.ui").toggle_quick_menu()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 -- "add file"
 vim.keymap.set("n", "<leader>af", function()
+    harpoon:list():append()
     print("File added to Harpoon")
-    require("harpoon.mark").add_file()
-end)
-
--- "next"
-vim.keymap.set("n", "<leader>n", function()
-    require("harpoon.ui").nav_next()
-end)
--- "previous"
-vim.keymap.set("n", "<leader>p", function()
-    require("harpoon.ui").nav_prev()
 end)
 
 -- "goto 1"
 vim.keymap.set("n", "<A-1>", function()
-    require("harpoon.ui").nav_file(1)
+    harpoon:list():select(1)
 end)
 -- "goto 2"
 vim.keymap.set("n", "<A-2>", function()
-    require("harpoon.ui").nav_file(2)
+    harpoon:list():select(2)
 end)
 -- "goto 3"
 vim.keymap.set("n", "<A-3>", function()
-    require("harpoon.ui").nav_file(3)
+    harpoon:list():select(3)
 end)
 -- "goto 4"
 vim.keymap.set("n", "<A-4>", function()
-    require("harpoon.ui").nav_file(4)
+    harpoon:list():select(4)
 end)
 -- "goto 5"
 vim.keymap.set("n", "<A-5>", function()
-    require("harpoon.ui").nav_file(5)
+    harpoon:list():select(5)
 end)
 -- "goto 6"
 vim.keymap.set("n", "<A-6>", function()
-    require("harpoon.ui").nav_file(6)
+    harpoon:list():select(6)
 end)
 -- "goto 7"
 vim.keymap.set("n", "<A-7>", function()
-    require("harpoon.ui").nav_file(7)
+    harpoon:list():select(7)
 end)
 -- "goto 8"
 vim.keymap.set("n", "<A-8>", function()
-    require("harpoon.ui").nav_file(8)
+    harpoon:list():select(8)
 end)
 -- "goto 9"
 vim.keymap.set("n", "<A-9>", function()
-    require("harpoon.ui").nav_file(9)
-end)
--- "goto 10"
-vim.keymap.set("n", "<A-0>", function()
-    require("harpoon.ui").nav_file(10)
+    harpoon:list():select(9)
 end)
 
 -- alternative command
 -- "goto 1"
 vim.keymap.set("n", "<C-6>", function()
-    require("harpoon.ui").nav_file(1)
+    harpoon:list():select(1)
 end)
 -- "goto 2"
 vim.keymap.set("n", "<C-7>", function()
-    require("harpoon.ui").nav_file(2)
+    harpoon:list():select(2)
 end)
 -- "goto 3"
 vim.keymap.set("n", "<C-8>", function()
-    require("harpoon.ui").nav_file(3)
+    harpoon:list():select(3)
 end)
 -- "goto 4"
 vim.keymap.set("n", "<C-9>", function()
-    require("harpoon.ui").nav_file(4)
+    harpoon:list():select(4)
 end)
 -- "goto 5"
 vim.keymap.set("n", "<C-0>", function()
-    require("harpoon.ui").nav_file(5)
+    harpoon:list():select(5)
 end)

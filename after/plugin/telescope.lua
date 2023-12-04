@@ -1,51 +1,51 @@
 local builtin = require "telescope.builtin"
 local actions = require("telescope.actions")
+local km = vim.keymap
 
--- * -- KEYMAPS -- * --
 -- "find file"
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+km.set("n", "<leader>ff", builtin.find_files, {})
 
 -- "find word"
-vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
+km.set("n", "<leader>fw", builtin.live_grep, {})
 
 -- "git file"
-vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
+km.set("n", "<leader>gf", builtin.git_files, {})
 
 -- "file old"
-vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
+km.set("n", "<leader>fo", builtin.oldfiles, {})
 
 -- "find in"
-vim.keymap.set("n", "<leader>fi", builtin.current_buffer_fuzzy_find, {})
+km.set("n", "<leader>fi", builtin.current_buffer_fuzzy_find, {})
 
 -- "go references"
-vim.keymap.set("n", "gr", builtin.lsp_references, {})
+km.set("n", "gr", builtin.lsp_references, {})
 
 -- "telescope resume"
-vim.keymap.set("n", "<leader>tr", builtin.resume, {})
+km.set("n", "<leader>tr", builtin.resume, {})
 
 -- "buffers"
-vim.keymap.set("n", "<leader>bu", builtin.buffers)
+km.set("n", "<leader>bu", builtin.buffers)
 
 -- "spell suggest"
-vim.keymap.set("n", "<leader>su", builtin.spell_suggest)
+km.set("n", "<leader>su", builtin.spell_suggest)
 
 
 require("telescope").load_extension("fzf")
 
 require("telescope").setup {
     defaults = {
-        vimgrep_arguments = {
-            "rg",
-            "-L",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "-u",
-            "-u",
-        },
+        -- vimgrep_arguments = {
+        --     "rg",
+        --     "-L",
+        --     "--color=never",
+        --     "--no-heading",
+        --     "--with-filename",
+        --     "--line-number",
+        --     "--column",
+        --     "--smart-case",
+        --     "-u",
+        --     "-u",
+        -- },
 
         prompt_title = false,
         dynamic_preview_title = true,
@@ -85,7 +85,6 @@ require("telescope").setup {
         },
 
         winblend = 0,
-        -- border = {},
         color_devicons = true,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         -- borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
@@ -98,8 +97,6 @@ require("telescope").setup {
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 
         mappings = {
             i = {
