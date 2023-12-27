@@ -46,7 +46,20 @@ vim.api.nvim_create_autocmd({ "DirChanged" }, {
     end
 })
 
+-- recognise .wgsl files
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.wgsl",
+    callback = function()
+        vim.bo.filetype = "wgsl"
+    end,
+})
+
 -- allow the ability to reset the theme with ":ResetTheme"
 vim.api.nvim_create_user_command("ResetTheme", function()
     require("setup.theme").set_theme()
+end, {})
+
+-- alias for ":write" or ":w" to help with typos
+vim.api.nvim_create_user_command("W", function()
+    vim.cmd("write")
 end, {})

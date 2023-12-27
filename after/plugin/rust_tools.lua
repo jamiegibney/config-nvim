@@ -13,11 +13,35 @@ require("rust-tools").setup {
 
     server = {
         on_attach = function(_, bufnr)
-            -- local map = function(keys, func)
-            -- end
+            local map = function(keys, func)
+                local opts = { buffer = bufnr }
+                vim.keymap.set("n", keys, func, opts)
+            end
+
             -- "code action"
-            vim.keymap.set("n", "<leader>ca", require("rust-tools").code_action_group.code_action_group,
-                { buffer = bufnr })
+            map("<leader>ca", function()
+                require("rust-tools").code_action_group.code_action_group()
+            end)
+
+            -- "information"
+            map("<leader>i", function() vim.lsp.buf.hover() end)
+
+            -- "rename"
+            map("<leader>rn", function() vim.lsp.buf.rename() end)
+
+            -- "format"
+            map("<leader>fm", function() vim.lsp.buf.format({ async = true }) end)
+
+            -- "goto definition"
+            map("gd", function() vim.lsp.buf.definition() end)
+
+            -- "diagnostics"
+            map("<leader>dn", function()
+                vim.diagnostic.open_float({
+                    -- border = "",
+                    source = true,
+                })
+            end)
         end,
 
         settings = {

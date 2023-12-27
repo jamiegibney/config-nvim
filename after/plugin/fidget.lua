@@ -18,7 +18,7 @@ require("fidget").setup({
     },
 
     window = {
-        blend = 100,
+        blend = 30,
         relative = "editor", -- where to anchor, either "win" or "editor"
         border = "none", -- style of border for the fidget window
     },

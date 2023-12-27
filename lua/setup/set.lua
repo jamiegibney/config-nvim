@@ -1,6 +1,11 @@
 local opt = vim.opt
 local cmd = vim.cmd
 
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- function to choose between a block or line cursor in insert mode
 local function insert_with_block_cursor(use_block_cursor_in_insert)
     local prefix
@@ -72,7 +77,7 @@ opt.linebreak = true
 -- where to break lines for soft-wrapping
 opt.breakat = " \t;:,!?."
 -- the character at which wrapping will occur.
-opt.textwidth = 85
+opt.textwidth = 0 -- TODO: just implement this for plain text files
 
 -- the chars used after the EOF
 opt.fillchars = { eob = " " }
@@ -95,6 +100,6 @@ opt.background = "light"
 opt.hidden = true
 
 -- language used for spell-checking
-opt.spelllang = "en_us"
+opt.spelllang = "en_gb"
 
 opt.shada = "!,'200,<50,s10,h"

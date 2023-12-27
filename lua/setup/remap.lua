@@ -1,98 +1,107 @@
 -- the leader key, set to space
 vim.g.mapleader = " "
 
+local function map(mode, keys, func)
+    vim.keymap.set(mode, keys, func)
+end
 
 -- * --  NORMAL MODE  -- * --
 
 -- toggle line comment
-vim.keymap.set("n", "<leader>/", function()
+map("n", "<leader>/", function()
     require("Comment.api").toggle.linewise.current()
 end)
 
 -- suspend vim and return to terminal (C-space is mapped to "fg" in fish)
--- vim.keymap.set("n", "<C-Space>", "<C-z>")
+-- map("n", "<C-Space>", "<C-z>")
 
 -- "git status"
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+map("n", "<leader>gs", vim.cmd.Git)
 
 -- "undo"-tree
--- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- map("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- zen "mode"
+map("n", "<leader>mm", "<cmd>ZenMode<CR>")
 
 -- keep the caret centred in big vertical motions
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
 
 -- clear search highlight (but not the search term, so n and N will work)
-vim.keymap.set("n", "<C-c>", ":noh<CR>")
-vim.keymap.set("n", "<Esc>", ":noh<CR>")
+map("n", "<C-c>", ":noh<CR>")
+map("n", "<Esc>", ":noh<CR>")
 
 -- move through soft-wrapped lines
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
-vim.keymap.set("n", "gj", "j")
-vim.keymap.set("n", "gk", "k")
+map("n", "j", "gj")
+map("n", "k", "gk")
+map("n", "gj", "j")
+map("n", "gk", "k")
 
 -- "write & source"
-vim.keymap.set("n", "<leader>ws", ":w<CR>:so<CR>:echo 'File written and sourced'<CR>")
+map("n", "<leader>ws", ":w<CR>:so<CR>:echo 'File written and sourced'<CR>")
 
 -- "file system" (or "fuck sake", which is funnier)
-vim.keymap.set("n", "<leader>fs", ":Oil<CR>")
+map("n", "<leader>fs", ":Oil<CR>")
 -- floating option of the above - make sure <C-c> to close is set in after/oil.lua
--- vim.keymap.set("n", "<leader>fs", ":Oil --float<CR>")
+-- map("n", "<leader>fs", ":Oil --float<CR>")
 
 -- "previous file"
-vim.keymap.set("n", "<leader>pf", "<C-^>:echo 'Switched to previous file'<CR>")
+map("n", "<leader>pf", "<C-^>:echo 'Switched to previous file'<CR>")
 
 -- move current line up/down and auto-indent
-vim.keymap.set("n", "<C-k>", ":move -2<CR>==")
-vim.keymap.set("n", "<C-j>", ":move +1<CR>==")
+map("n", "<C-p>", "V:move '<-2<CR>gv=gv<Esc>")
+map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
 
 -- insert semicolon at end of line
-vim.keymap.set("n", "<C-CR>", "A;<C-c>")
+map("n", "<C-CR>", "A;<C-c>")
 
 -- unmapped to help train mistakes
-vim.keymap.set("n", "<S-CR>", "")
+map("n", "<S-CR>", "")
+
+-- copy contents of buffer
+map("n", "<leader>%", "ggyG<C-o>")
 
 -- split resizign
 -- decrease split width
-vim.keymap.set("n", "<C-,>", "4<C-w><")
+map("n", "<C-,>", "4<C-w><")
 -- increase split width
-vim.keymap.set("n", "<C-.>", "4<C-w>>")
+map("n", "<C-.>", "4<C-w>>")
 -- decrease split height
-vim.keymap.set("n", "<C-->", "4<C-w>-")
+map("n", "<C-->", "4<C-w>-")
 -- increase split height
-vim.keymap.set("n", "<C-=>", "4<C-w>+")
+map("n", "<C-=>", "4<C-w>+")
 
 -- splits
 -- "split vertical"
-vim.keymap.set("n", "<leader>sv", "<C-w>v<C-w><C-w>")
+map("n", "<leader>sv", "<C-w>v<C-w><C-w>")
 -- "split horizontal"
-vim.keymap.set("n", "<leader>sh", "<C-w>s<C-w><C-w>")
+map("n", "<leader>sh", "<C-w>s<C-w><C-w>")
 -- "hide window"
-vim.keymap.set("n", "<leader>hw", ":hide<CR>")
+map("n", "<leader>hw", ":hide<CR>")
 -- "close window"
-vim.keymap.set("n", "<leader>cw", "ZZ")
+map("n", "<leader>cw", "ZZ")
 -- close all other splits, i.e. "maximise" the current split
-vim.keymap.set("n", "<leader><leader>", "<C-w>o")
+map("n", "<leader><leader>", "<C-w>o")
 
 -- tabs
 -- "new tab"
-vim.keymap.set("n", "<leader>nt", ":tabnew<CR>")
+map("n", "<leader>nt", ":tabnew<CR>")
 -- "open (current buffer in) tab"
-vim.keymap.set("n", "<leader>ot", ":tab split<CR>")
+map("n", "<leader>ot", ":tab split<CR>")
 -- "close tab"
-vim.keymap.set("n", "<leader>ct", ":tabclose<CR>")
+map("n", "<leader>ct", ":tabclose<CR>")
 -- "tab next"
-vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
+map("n", "<leader>tn", ":tabnext<CR>")
 -- "tab previous"
-vim.keymap.set("n", "<leader>tp", ":tabprev<CR>")
+map("n", "<leader>tp", ":tabprev<CR>")
 -- "tab only" - close all tabs but the current
-vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
+map("n", "<leader>to", ":tabonly<CR>")
 
 -- "toggle diagnostics"
-vim.keymap.set("n", "<leader>td", function()
+map("n", "<leader>td", function()
     if vim.diagnostic.is_disabled() then
         print("Diagnostics enabled")
         vim.diagnostic.enable()
@@ -103,85 +112,97 @@ vim.keymap.set("n", "<leader>td", function()
 end)
 
 -- unmap tagstack for tmux
-vim.keymap.set("n", "<C-t>", "")
+map("n", "<C-t>", "")
 
 -- "clear edits"
-vim.keymap.set("n", "<leader>ce", ":e!<CR>")
+map("n", "<leader>ce", ":e!<CR>")
 
 -- "spelling" - enable typo highlighting
-vim.keymap.set("n", "<leader>sp", ":set spell!<CR>")
+map("n", "<leader>sp", ":set spell!<CR>")
+-- map("n", "<leader>sp", function()
+--     local setting = vim.opt.spell
+--     vim.opt.spell = not setting
+--
+--     if setting then
+--         print("Spelling highlights disabled")
+--     else
+--         print("Spelling highlights enabled")
+-- end)
+--     end
 
 -- retain content of register after pasting into a selection
-vim.keymap.set("x", "<leader>p", "\"_dP")
+map("x", "<leader>p", "\"_dP")
 
 -- "replace all" - substitute all matched instances of the word under cursor
-vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- "expand braces"
-vim.keymap.set("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
+map("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
 
 -- "autosave"
-vim.keymap.set("n", "<leader>as", "<cmd>ASToggle<CR>")
+map("n", "<leader>as", "<cmd>ASToggle<CR>")
 
 -- "semantic"
-vim.keymap.set("n", "<leader>sm", "<cmd>SemanticHighlightToggle<CR>")
+map("n", "<leader>sm", "<cmd>SemanticHighlightToggle<CR>")
 
 -- "symbols outline"
-vim.keymap.set("n", "<leader>so", "<cmd>SymbolsOutline<CR>")
+map("n", "<leader>so", "<cmd>SymbolsOutline<CR>")
 
 -- Normal mode unmaps
 -- use x!
-vim.keymap.set("n", "<Del>", "")
+map("n", "<Del>", "")
 -- use j!
-vim.keymap.set("n", "<CR>", "")
-vim.keymap.set("n", "<C-n>", "")
+map("n", "<CR>", "")
 -- use k!
-vim.keymap.set("n", "<C-p>", "")
 -- use h!
-vim.keymap.set("n", "<BS>", "")
+map("n", "<BS>", "")
 
 -- goto neovim config directory "neovim config"
-vim.keymap.set("n", "<leader>ncfg", "<cmd>Oil ~/.config/nvim/<CR>")
+map("n", "<leader>ncfg", "<cmd>Oil ~/.config/nvim/<CR>")
 
 -- goto rust playground directory "rust playground"
-vim.keymap.set("n", "<leader>rpg", "<cmd>Oil ~/Documents/dev/Rust/playground/<CR>")
+map("n", "<leader>rpg", "<cmd>Oil ~/Documents/dev/Rust/playground/<CR>")
 
 -- "crate"
-vim.keymap.set("n", "<leader>cr", function()
+map("n", "<leader>cr", function()
     require("crates").show_popup()
 end)
 
 -- open url under cursor
-vim.keymap.set("n", "gx", "<cmd>URLOpenUnderCursor<CR>")
+map("n", "gx", "<cmd>URLOpenUnderCursor<CR>")
 
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
-vim.keymap.set("i", "<C-CR>", "<C-c>A;<C-c>")
+map("i", "<C-CR>", "<C-c>A;<C-c>")
 
 -- caret navigation in insert mode
-vim.keymap.set("i", "<C-h>", "<Left>")
-vim.keymap.set("i", "<C-l>", "<Right>")
+map("i", "<C-h>", "<Left>")
+map("i", "<C-l>", "<Right>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
-vim.keymap.set({ "i", "v", "c" }, "<C-c>", "<Esc>", { noremap = true, })
+map({ "i", "v", "c" }, "<C-c>", "<Esc>")
 
 -- insert new line below cursor without changing position
--- vim.keymap.set("i", "<S-CR>", "<Esc>O")
+-- map("i", "<S-CR>", "<Esc>O")
 
 -- this allows <C-c> to exit replace mode
 -- unfortunately this also breaks the replace mode cursor :/
--- vim.keymap.set("n", "r<C-c>", "<Esc>")
+-- map("n", "r<C-c>", "<Esc>")
 
 
 -- * --  VISUAL MODE  -- * --
 
 -- move selected block and auto-indent
-vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv")
+map("v", "<C-p>", ":move '<-2<CR>gv=gv")
+map("v", "<C-n>", ":move '>+1<CR>gv=gv")
 
--- linewise comment selection - use "gb" to "go blockwise" around a selection
-vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
+-- linewise comment selection
+map("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
+
+-- "go block" - blockwise comment selection
+map("v", "gb", "<Plug>(comment_toggle_blockwise_visual)")
 
 -- folding
-vim.keymap.set("v", "<leader>fl", ":fold<CR>")
+map("v", "<leader>fl", ":fold<CR>")
+

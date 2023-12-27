@@ -8,71 +8,97 @@ harpoon:setup({
     },
 })
 
+local function map(key, cb)
+    vim.keymap.set("n", key, cb)
+end
+
 -- "harpoon"
-vim.keymap.set("n", "<C-h>", function()
+map("<C-h>", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 -- "add file"
-vim.keymap.set("n", "<leader>af", function()
+map("<leader>af", function()
     harpoon:list():append()
     print("File added to Harpoon")
 end)
 
 -- "goto 1"
-vim.keymap.set("n", "<A-1>", function()
+map("<A-1>", function()
     harpoon:list():select(1)
 end)
 -- "goto 2"
-vim.keymap.set("n", "<A-2>", function()
+map("<A-2>", function()
     harpoon:list():select(2)
 end)
 -- "goto 3"
-vim.keymap.set("n", "<A-3>", function()
+map("<A-3>", function()
     harpoon:list():select(3)
 end)
 -- "goto 4"
-vim.keymap.set("n", "<A-4>", function()
+map("<A-4>", function()
     harpoon:list():select(4)
 end)
 -- "goto 5"
-vim.keymap.set("n", "<A-5>", function()
+map("<A-5>", function()
     harpoon:list():select(5)
 end)
 -- "goto 6"
-vim.keymap.set("n", "<A-6>", function()
+map("<A-6>", function()
     harpoon:list():select(6)
 end)
 -- "goto 7"
-vim.keymap.set("n", "<A-7>", function()
+map("<A-7>", function()
     harpoon:list():select(7)
 end)
 -- "goto 8"
-vim.keymap.set("n", "<A-8>", function()
+map("<A-8>", function()
     harpoon:list():select(8)
 end)
 -- "goto 9"
-vim.keymap.set("n", "<A-9>", function()
+map("<A-9>", function()
     harpoon:list():select(9)
 end)
 
 -- alternative command
 -- "goto 1"
-vim.keymap.set("n", "<C-6>", function()
+map("<C-6>", function()
     harpoon:list():select(1)
 end)
 -- "goto 2"
-vim.keymap.set("n", "<C-7>", function()
+map("<C-7>", function()
     harpoon:list():select(2)
 end)
 -- "goto 3"
-vim.keymap.set("n", "<C-8>", function()
+map("<C-8>", function()
     harpoon:list():select(3)
 end)
 -- "goto 4"
-vim.keymap.set("n", "<C-9>", function()
+map("<C-9>", function()
     harpoon:list():select(4)
 end)
 -- "goto 5"
-vim.keymap.set("n", "<C-0>", function()
+map("<C-0>", function()
+    harpoon:list():select(5)
+end)
+
+-- alternative homerow
+-- "goto 1"
+map("<C-j>", function()
+    harpoon:list():select(1)
+end)
+-- "goto 2"
+map("<C-k>", function()
+    harpoon:list():select(2)
+end)
+-- "goto 3"
+map("<C-l>", function()
+    harpoon:list():select(3)
+end)
+-- "goto 4"
+map("<C-;>", function()
+    harpoon:list():select(4)
+end)
+-- "goto 5"
+map("<C-'>", function()
     harpoon:list():select(5)
 end)

@@ -1,4 +1,6 @@
-require 'nvim-treesitter.configs'.setup {
+vim.filetype.add({ extension = { wgsl = "wgsl" } })
+
+require("nvim-treesitter.configs").setup {
     ensure_installed = {
         "c", "cpp", "c_sharp",
         "rust",
@@ -10,7 +12,9 @@ require 'nvim-treesitter.configs'.setup {
 
         "vim", "vimdoc",
 
-        "query"
+        "query",
+
+        "wgsl",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -21,7 +25,9 @@ require 'nvim-treesitter.configs'.setup {
     auto_install = true,
 
     highlight = {
-        enable = false,
+        enable = {
+            "wgsl",
+        },
 
         disable = {},
 

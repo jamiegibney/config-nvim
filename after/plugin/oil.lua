@@ -29,7 +29,7 @@ require("oil").setup {
     view_options = {
         show_hidden = true,
         is_always_hidden = function(name, _)
-            if name == ".DS_Store" then
+            if name == ".DS_Store" or name == ".git" or name == ".idea" then
                 return true
             end
             return false

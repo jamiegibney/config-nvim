@@ -10,7 +10,7 @@ require("auto-save").setup {
         local fn = vim.fn
         local utils = require "auto-save.utils.data"
 
-        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil" }) then
+        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil", "harpoon", }) then
             return true
         end
         return false

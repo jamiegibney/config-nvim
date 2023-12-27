@@ -178,18 +178,18 @@ require("lazy").setup({
         version = "*",
     },
 
-    { -- symbol highlighting
-        "tzachar/local-highlight.nvim",
-        keys = {
-            { "<leader>lh", "<cmd>LocalHighlightToggle<CR>" },
-        },
-        config = function()
-            require("local-highlight").setup {
-                hlgroup = "DiffAdd",
-                cw_hlgroup = "DiffAdd",
-            }
-        end,
-    },
+    -- { -- symbol highlighting
+    --     "tzachar/local-highlight.nvim",
+    --     keys = {
+    --         { "<leader>lh", "<cmd>LocalHighlightToggle<CR>" },
+    --     },
+    --     config = function()
+    --         require("local-highlight").setup {
+    --             hlgroup = "DiffAdd",
+    --             cw_hlgroup = "DiffAdd",
+    --         }
+    --     end,
+    -- },
 
     { -- surround text with anything you want!
         "kylechui/nvim-surround",
@@ -291,7 +291,12 @@ require("lazy").setup({
         end,
 
         event = "BufRead"
-    }
+    },
+
+    {
+        "tikhomirov/vim-glsl",
+        lazy = false,
+    },
 }, {
     defaults = {
         lazy = true,
