@@ -88,6 +88,9 @@ mason_lsp_config.setup_handlers({
         if server_name == "rust_analyzer" then
             return
         end
+        if server_name == "wgsl_analyzer" then
+            return
+        end
         if server_name == "clangd" then
             lsp["clangd"].setup {
                 cmd = {

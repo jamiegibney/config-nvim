@@ -181,7 +181,7 @@ map("i", "<C-h>", "<Left>")
 map("i", "<C-l>", "<Right>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
-map({ "i", "v", "c" }, "<C-c>", "<Esc>")
+map({ "i", "v", "c", "s" }, "<C-c>", "<Esc>")
 
 -- insert new line below cursor without changing position
 -- map("i", "<S-CR>", "<Esc>O")
