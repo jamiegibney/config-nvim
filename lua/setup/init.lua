@@ -8,7 +8,7 @@ require("setup.lazy_init");
 require("setup.plugins")
 
 -- custom statusline
-require("setup.statusline").set_status_line()
+require("setup.statusline")
 
 -- vim settings
 require("setup.set")

@@ -63,11 +63,3 @@ end, {})
 vim.api.nvim_create_user_command("W", function()
     vim.cmd("write")
 end, {})
-
-vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-    pattern = "*.txt, *.md",
-    callback = function()
-        require("setup.statusline").set_status_line()
-    end,
-})
-

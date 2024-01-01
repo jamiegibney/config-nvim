@@ -30,16 +30,7 @@ local function diagnostic_status()
     return res
 end
 
-local function word_count()
-    local words = vim.fn.wordcount().words
-    -- local ft = vim.bo.filetype
-
-    return string.format("(%d words)", words)
-end
-
-M = {}
-
-function M.get_status_line()
+local function status_line()
     local set_color_1 = "%#StatusLineNC#"
     local file_dir = "/%f"
     local modified_read_only = "%m%r"
@@ -52,9 +43,9 @@ function M.get_status_line()
     local percentage = "%p%%"
     local set_color_3 = "%#StatusLineNC#"
     local file_type = "%y"
-    -- [dir] [+]
+
     return string.format(
-        "%s%s %s%s%s%s   %s %s %s %s %s%s ",
+        "%s%s %s%s%s%s   %s %s %s %s%s ",
         set_color_1,
         file_dir,
         modified_read_only,
@@ -69,8 +60,6 @@ function M.get_status_line()
     )
 end
 
-function M.set_status_line()
-    vim.opt.statusline = M.get_status_line()
-end
+vim.opt.statusline = status_line()
 
-return M
+
