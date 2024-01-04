@@ -36,7 +36,7 @@ require("lazy").setup({
 
     -- { -- undo tree
     --     "mbbill/undotree",
-    --     event = "BufRead",
+    --     keys = { "<leader>u" },
     -- },
 
     -- { -- git status
@@ -62,13 +62,6 @@ require("lazy").setup({
         lazy = false,
 
         dependencies = {
-            -- autocomplete sources
-            -- {
-            --     "L3MON4D3/LuaSnip",
-            --     event = "LspAttach",
-            -- },
-            -- "saadparwaiz1/cmp_luasnip",
-
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
@@ -173,15 +166,6 @@ require("lazy").setup({
         "stevearc/oil.nvim",
     },
 
-    { -- scrolloff for the end of file
-        "Aasim-A/scrollEOF.nvim",
-        config = function()
-            require("scrollEOF").setup {
-                insert_mode = true,
-            }
-        end,
-    },
-
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -235,7 +219,6 @@ require("lazy").setup({
         end,
         event = "BufRead"
     },
-
 }, {
     defaults = {
         lazy = true,

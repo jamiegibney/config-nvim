@@ -24,3 +24,6 @@ require("setup.theme").set_theme()
 
 -- lsp initialisation
 require("setup.lsp")
+
+-- Any custom functions
+require("setup.custom_functions")

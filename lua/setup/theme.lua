@@ -30,9 +30,6 @@ local function set_highlights()
         api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true, })
     end
 
-    -- api.nvim_set_hl(0, "IblIndent", { link = "DiagnosticHint" })
-    -- api.nvim_set_hl(0, "IblScope", { link = "DiagnosticHint" })
-
     api.nvim_set_hl(0, "@keyword.function.wgsl", { link = "Keyword" })
     api.nvim_set_hl(0, "@punctuation.bracket.wgsl", { fg = "#9c9c9c" })
     api.nvim_set_hl(0, "@type.wgsl", { link = "Keyword" })
@@ -83,7 +80,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "rustBoxPlacementBalance", { fg = "#6a959f", })
     api.nvim_set_hl(0, "rustIdentifier", { fg = "#000000", })
     api.nvim_set_hl(0, "Identifier", { fg = "#000000", })
-    api.nvim_set_hl(0, "MatchParen", { bg = "#93d9d9", })
+    api.nvim_set_hl(0, "MatchParen", { fg = "#000000", bg = "#93d9d9", })
     api.nvim_set_hl(0, "Statement", { fg = "#0033b3", })
     api.nvim_set_hl(0, "rustStorage", { fg = "#0033b3", })
     api.nvim_set_hl(0, "rustSigil", { fg = "#000000", })
