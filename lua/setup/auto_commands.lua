@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = "*",
     callback = function()
-        vim.cmd("silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 100 }")
+        vim.cmd("silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 75 }")
     end
 })
 
