@@ -161,8 +161,6 @@ require("lazy").setup({
     { -- better terminals
         "akinsho/toggleterm.nvim",
         version = "*",
-        keys = "<C-Space>",
-        enabled = false,
     },
 
     { -- surround text with anything you want!

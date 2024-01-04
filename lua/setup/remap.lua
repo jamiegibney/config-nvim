@@ -20,7 +20,7 @@ map("n", "<leader>df", function()
 end)
 
 -- suspend vim and return to terminal (C-space is mapped to "fg" in fish)
-map("n", "<C-Space>", "<C-z>")
+-- map("n", "<C-Space>", "<C-z>")
 
 -- "git status"
 -- map("n", "<leader>gs", vim.cmd.Git)
