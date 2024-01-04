@@ -27,6 +27,9 @@ km.set("n", "<leader>tr", builtin.resume, {})
 km.set("n", "<leader>bu", builtin.buffers)
 
 -- "spell suggest"
+km.set("n", "<leader>wd", builtin.diagnostics)
+
+-- "spell suggest"
 km.set("n", "<leader>su", builtin.spell_suggest)
 
 

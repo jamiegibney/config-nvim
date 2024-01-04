@@ -1,6 +1,9 @@
 -- general key remaps — some plugin-specific remaps are in their config files in after/plugins
 require("setup.remap")
 
+-- vim settings
+require("setup.set")
+
 -- setup lazy
 require("setup.lazy_init");
 
@@ -9,9 +12,6 @@ require("setup.plugins")
 
 -- custom statusline
 require("setup.statusline")
-
--- vim settings
-require("setup.set")
 
 -- various auto commands
 require("setup.auto_commands")

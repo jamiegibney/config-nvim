@@ -18,10 +18,6 @@ require("lazy").setup({
         "savq/melange-nvim",
         event = "VeryLazy",
     },
-    {
-        "sainnhe/gruvbox-material",
-        event = "VeryLazy",
-    },
 
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
@@ -34,21 +30,19 @@ require("lazy").setup({
         config = function()
             require("treesitter-context").setup {
                 max_lines = 2,
-                -- highlight group?
             }
         end,
-        event = "LspAttach",
     },
 
-    { -- undo tree
-        "mbbill/undotree",
-        event = "BufRead",
-    },
+    -- { -- undo tree
+    --     "mbbill/undotree",
+    --     event = "BufRead",
+    -- },
 
-    { -- git status
-        "tpope/vim-fugitive",
-        event = "VeryLazy",
-    },
+    -- { -- git status
+    --     "tpope/vim-fugitive",
+    --     event = "VeryLazy",
+    -- },
 
     {
         "neovim/nvim-lspconfig",
@@ -56,7 +50,10 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "folke/neodev.nvim",
+            {
+                "folke/neodev.nvim",
+                event = "BufEnter *.lua",
+            },
         },
     },
 
@@ -66,24 +63,17 @@ require("lazy").setup({
 
         dependencies = {
             -- autocomplete sources
-            {
-                "L3MON4D3/LuaSnip",
-                event = "LspAttach",
-            },
-            "saadparwaiz1/cmp_luasnip",
+            -- {
+            --     "L3MON4D3/LuaSnip",
+            --     event = "LspAttach",
+            -- },
+            -- "saadparwaiz1/cmp_luasnip",
 
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-calc",
-            "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
 
-            "rafamadriz/friendly-snippets",
-            "lukas-reineke/cmp-under-comparator",
             "felipelema/cmp-async-path",
-            "petertriho/cmp-git",
-            -- "andersevenrud/cmp-tmux",
-            -- "f3fora/cmp-spell",
         }
     },
 
@@ -97,13 +87,14 @@ require("lazy").setup({
 
     { -- rust enhancements
         "simrat39/rust-tools.nvim",
-        event = "LspAttach",
+        event = "BufEnter *.rs",
+        -- lazy = true,
     },
 
-    { -- debugging tool
-        "mfussenegger/nvim-dap",
-        event = "LspAttach",
-    },
+    -- { -- debugging tool
+    --     "mfussenegger/nvim-dap",
+    --     event = "LspAttach",
+    -- },
 
     { -- auto-saving
         "Pocco81/auto-save.nvim",
@@ -113,12 +104,6 @@ require("lazy").setup({
     { -- gamefied vim motions
         "ThePrimeagen/vim-be-good",
         cmd = "VimBeGood",
-    },
-
-    { -- lsp loading widget
-        "j-hui/fidget.nvim",
-        tag = "legacy",
-        event = "LspAttach",
     },
 
     { -- automatic commenting
@@ -176,20 +161,9 @@ require("lazy").setup({
     { -- better terminals
         "akinsho/toggleterm.nvim",
         version = "*",
+        keys = "<C-Space>",
+        enabled = false,
     },
-
-    -- { -- symbol highlighting
-    --     "tzachar/local-highlight.nvim",
-    --     keys = {
-    --         { "<leader>lh", "<cmd>LocalHighlightToggle<CR>" },
-    --     },
-    --     config = function()
-    --         require("local-highlight").setup {
-    --             hlgroup = "DiffAdd",
-    --             cw_hlgroup = "DiffAdd",
-    --         }
-    --     end,
-    -- },
 
     { -- surround text with anything you want!
         "kylechui/nvim-surround",
@@ -208,13 +182,10 @@ require("lazy").setup({
                 insert_mode = true,
             }
         end,
-
-        event = "BufRead",
     },
 
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
-
         main = "ibl",
         event = "LspAttach",
     },
@@ -240,17 +211,8 @@ require("lazy").setup({
         end,
 
         cmd = "SymbolsOutline",
+        enabled = false,
     },
-
-    -- {
-    --     "jaxbot/semantic-highlight.vim",
-    --     cmd = "SemanticHighlightToggle",
-    -- },
-
-    -- {
-    --     "tpope/vim-abolish",
-    --     lazy = false,
-    -- },
 
     {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -259,23 +221,8 @@ require("lazy").setup({
     },
 
     {
-        "sontungexpt/url-open",
-        branch = "mini",
-        cmd = "URLOpenUnderCursor",
-
-        config = function()
-            local status_ok, url_open = pcall(require, "url-open")
-
-            if status_ok then
-                url_open.setup({})
-            end
-        end,
-    },
-
-    {
         "folke/zen-mode.nvim",
         cmd = "ZenMode",
-
         opts = {
             window = {
                 backdrop = 1.0,
@@ -285,18 +232,12 @@ require("lazy").setup({
 
     {
         "lewis6991/gitsigns.nvim",
-
         config = function()
             require("gitsigns").setup()
         end,
-
         event = "BufRead"
     },
 
-    {
-        "tikhomirov/vim-glsl",
-        lazy = false,
-    },
 }, {
     defaults = {
         lazy = true,
