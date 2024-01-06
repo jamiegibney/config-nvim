@@ -45,6 +45,10 @@ require("lazy").setup({
     -- },
 
     {
+        -- fidget
+    },
+
+    {
         "neovim/nvim-lspconfig",
 
         dependencies = {

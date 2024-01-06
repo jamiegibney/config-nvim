@@ -15,8 +15,8 @@ require("oil").setup {
     },
 
     keymaps = {
-        ["<C-o>"] = "actions.select",
-        ["<C-i>"] = "actions.parent",
+        -- ["<C-o>"] = "actions.select",
+        -- ["<C-i>"] = "actions.parent",
         ["<C-r>"] = "actions.refresh",
         ["<BS>"] = "actions.parent",
         ["<C-z>"] = "actions.select_hsplit",
@@ -32,6 +32,7 @@ require("oil").setup {
             if name == ".DS_Store" or name == ".git" or name == ".idea" then
                 return true
             end
+
             return false
         end
     },

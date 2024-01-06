@@ -81,6 +81,28 @@ map("<C-0>", function()
     harpoon:list():select(5)
 end)
 
+-- -- alternative homerow
+-- -- "goto 1"
+-- map("<C-h>", function()
+--     harpoon:list():select(1)
+-- end)
+-- -- "goto 2"
+-- map("<C-t>", function()
+--     harpoon:list():select(2)
+-- end)
+-- -- "goto 3"
+-- map("<C-n>", function()
+--     harpoon:list():select(3)
+-- end)
+-- -- "goto 4"
+-- map("<C-s>", function()
+--     harpoon:list():select(4)
+-- end)
+-- -- "goto 5"
+-- map("<C-/>", function()
+--     harpoon:list():select(5)
+-- end)
+
 -- alternative homerow
 -- "goto 1"
 map("<C-j>", function()

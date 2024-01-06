@@ -47,6 +47,9 @@ map("<leader>fm", function() vim.lsp.buf.format({ async = true }) end)
 -- "goto definition"
 map("gd", function() vim.lsp.buf.definition() end)
 
+-- "goto definition"
+vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
+
 -- "diagnostics"
 map("<leader>dn", function()
     vim.diagnostic.open_float({
