@@ -44,8 +44,10 @@ require("lazy").setup({
     --     event = "VeryLazy",
     -- },
 
-    {
-        -- fidget
+    { -- lsp loading widget
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        event = "LspAttach",
     },
 
     {
@@ -164,6 +166,17 @@ require("lazy").setup({
         "kylechui/nvim-surround",
         version = "*",
         event = "InsertEnter",
+    },
+
+    { -- scrolloff for the end of file
+        "Aasim-A/scrollEOF.nvim",
+        config = function()
+            require("scrollEOF").setup {
+                insert_mode = true,
+            }
+        end,
+
+        event = "BufRead",
     },
 
     { -- a file-system editable like a buffer

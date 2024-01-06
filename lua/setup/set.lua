@@ -62,7 +62,7 @@ opt.numberwidth = 6
 vim.wo.signcolumn = "yes"
 
 -- the minimum number of lines from the cursor to the top/bottom of the current buffer
-opt.scrolloff = 64
+opt.scrolloff = 16
 
 -- this controls the CursorHold event, which is mainly used for the local highlighting plugin
 opt.updatetime = 40
