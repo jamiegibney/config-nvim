@@ -1,15 +1,11 @@
-require("rust-tools").setup {
-    hover_actions = {
-        auto_focus = true,
-    },
-
-    tools = {
-        inlay_hints = {
-            show_parameter_hints = true,
-            only_current_line = true,
-            highlight = "DiagnosticHint",
-        },
-    },
+vim.g.rustaceanvim = {
+    -- tools = {
+    --     inlay_hints = {
+    --         show_parameter_hints = true,
+    --         only_current_line = true,
+    --         highlight = "DiagnosticHint",
+    --     },
+    -- },
 
     server = {
         on_attach = function(_, bufnr)
@@ -20,7 +16,7 @@ require("rust-tools").setup {
 
             -- "code action"
             map("<leader>ca", function()
-                require("rust-tools").code_action_group.code_action_group()
+                vim.cmd.RustLsp({ "codeAction" })
             end)
 
             -- "information"
@@ -38,7 +34,6 @@ require("rust-tools").setup {
             -- "diagnostics"
             map("<leader>dn", function()
                 vim.diagnostic.open_float({
-                    -- border = "",
                     source = true,
                 })
             end)
