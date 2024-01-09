@@ -11,7 +11,6 @@ require("oil").setup {
     win_options = {
         signcolumn = "no",
         numberwidth = 4,
-        relativenumber = false,
     },
 
     keymaps = {

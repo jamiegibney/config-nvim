@@ -13,9 +13,16 @@ local function map(key, cb)
 end
 
 -- "harpoon"
-map("<C-h>", function()
-    harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
+if vim.g.use_dvorak_bindings then
+    map("<C-m>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
+else
+    map("<C-h>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
+end
+
 -- "add file"
 map("<leader>af", function()
     harpoon:list():append()
@@ -82,23 +89,46 @@ map("<C-0>", function()
 end)
 
 -- alternative homerow
--- "goto 1"
-map("<C-h>", function()
-    harpoon:list():select(1)
-end)
--- "goto 2"
-map("<C-t>", function()
-    harpoon:list():select(2)
-end)
--- "goto 3"
-map("<C-n>", function()
-    harpoon:list():select(3)
-end)
--- "goto 4"
-map("<C-s>", function()
-    harpoon:list():select(4)
-end)
--- "goto 5"
-map("<C-/>", function()
-    harpoon:list():select(5)
-end)
+if vim.g.use_dvorak_bindings then
+    -- "goto 1"
+    map("<C-h>", function()
+        harpoon:list():select(1)
+    end)
+    -- "goto 2"
+    map("<C-t>", function()
+        harpoon:list():select(2)
+    end)
+    -- "goto 3"
+    map("<C-n>", function()
+        harpoon:list():select(3)
+    end)
+    -- "goto 4"
+    map("<C-s>", function()
+        harpoon:list():select(4)
+    end)
+    -- "goto 5"
+    map("<C-/>", function()
+        harpoon:list():select(5)
+    end)
+else
+    -- "goto 1"
+    map("<C-j>", function()
+        harpoon:list():select(1)
+    end)
+    -- "goto 2"
+    map("<C-k>", function()
+        harpoon:list():select(2)
+    end)
+    -- "goto 3"
+    map("<C-l>", function()
+        harpoon:list():select(3)
+    end)
+    -- "goto 4"
+    map("<C-;>", function()
+        harpoon:list():select(4)
+    end)
+    -- "goto 5"
+    map("<C-'>", function()
+        harpoon:list():select(5)
+    end)
+end

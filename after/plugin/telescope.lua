@@ -109,7 +109,7 @@ require("telescope").setup {
     },
     pickers = {
         find_files = {
-            hidden = true,
+            hidden = false,
         },
         spell_suggest = {
             layout_strategy = "cursor",
