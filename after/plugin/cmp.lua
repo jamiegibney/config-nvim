@@ -36,10 +36,12 @@ local vscode_icons = {
     TypeParameter = "  ",
 }
 
+vim.keymap.set("i", "<C-y>", "")
+
 cmp.setup {
     snippet = {
-        expand = function(args)
-            --
+        expand = function()
+            -- FIXME: this function seems to be causing some issues with <C-y> autocompletion...
         end
     },
     performance = {

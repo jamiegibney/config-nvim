@@ -156,6 +156,10 @@ end)
 -- insert trailing semicolon and enter normal mode
 map("i", "<C-CR>", "<C-c>A;<C-c>")
 
+-- backwards-deletes a word in insert mode
+-- note that <M-BS> is how the terminal interprets <C-BS> and this has nothing to do with the meta key.
+map("i", "<M-BS>", "<C-w>")
+
 -- allows visual block edits to apply across multiple lines when using <C-c>
 map({ "i", "v", "c", "s" }, "<C-c>", "<Esc>")
 
