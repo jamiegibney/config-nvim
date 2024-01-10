@@ -52,7 +52,6 @@ require("lazy").setup({
 
     {
         "neovim/nvim-lspconfig",
-
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
@@ -93,10 +92,9 @@ require("lazy").setup({
         },
     },
 
-    -- { -- debugging tool
-    --     "mfussenegger/nvim-dap",
-    --     event = "LspAttach",
-    -- },
+    { -- debugging tool
+        "mfussenegger/nvim-dap",
+    },
 
     { -- auto-saving
         "Pocco81/auto-save.nvim",

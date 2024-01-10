@@ -50,3 +50,15 @@ local function toggle_auto_completion()
     vim.g.auto_completion = not ac_enabled
 end
 map("n", "<leader>ac", function() toggle_auto_completion() end)
+
+-- "toggle diagnostics"
+map("n", "<leader>td", function()
+    if vim.diagnostic.is_disabled() then
+        print("Diagnostics enabled")
+        vim.diagnostic.enable()
+    else
+        print("Diagnostics disabled")
+        vim.diagnostic.disable()
+    end
+end)
+

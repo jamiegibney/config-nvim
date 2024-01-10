@@ -8,7 +8,7 @@ vim.g.rustaceanvim = {
     -- },
 
     server = {
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
             local map = function(keys, func)
                 local opts = { buffer = bufnr }
                 vim.keymap.set("n", keys, func, opts)

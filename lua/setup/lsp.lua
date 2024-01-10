@@ -1,31 +1,5 @@
-local on_attach = function(_, bufnr)
-    -- local map = function(keys, func)
-    --     local opts = { buffer = bufnr }
-    --     vim.keymap.set("n", keys, func, opts)
-    -- end
+local on_attach = function(client, bufnr)
     --
-    -- -- "code action"
-    -- map("<leader>ca", function() vim.lsp.buf.code_action() end)
-    --
-    -- -- "information"
-    -- map("<leader>i", function() vim.lsp.buf.hover() end)
-    --
-    -- -- "rename"
-    -- map("<leader>rn", function() vim.lsp.buf.rename() end)
-    --
-    -- -- "format"
-    -- map("<leader>fm", function() vim.lsp.buf.format({ async = true }) end)
-    --
-    -- -- "goto definition"
-    -- map("gd", function() vim.lsp.buf.definition() end)
-    --
-    -- -- "diagnostics"
-    -- map("<leader>dn", function()
-    --     vim.diagnostic.open_float({
-    --         -- border = "",
-    --         source = true,
-    --     })
-    -- end)
 end
 
 local map = function(keys, func)
@@ -53,7 +27,6 @@ vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
 -- "diagnostics"
 map("<leader>dn", function()
     vim.diagnostic.open_float({
-        -- border = "",
         source = true,
     })
 end)

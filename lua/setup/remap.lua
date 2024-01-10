@@ -102,17 +102,6 @@ map("n", "<leader><leader>", "<C-w>o")
 -- -- "tab only" - close all tabs but the current
 -- map("n", "<leader>to", ":tabonly<CR>")
 
--- "toggle diagnostics"
-map("n", "<leader>td", function()
-    if vim.diagnostic.is_disabled() then
-        print("Diagnostics enabled")
-        vim.diagnostic.enable()
-    else
-        print("Diagnostics disabled")
-        vim.diagnostic.disable()
-    end
-end)
-
 -- unmap tagstack for tmux
 map("n", "<C-t>", "")
 
