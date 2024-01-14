@@ -19,9 +19,6 @@ map("n", "<leader>df", function()
     vim.cmd("Gitsigns toggle_deleted")
 end)
 
--- suspend vim and return to terminal (C-space is mapped to "fg" in fish)
--- map("n", "<C-Space>", "<C-z>")
-
 -- "git status"
 -- map("n", "<leader>gs", vim.cmd.Git)
 
@@ -61,9 +58,6 @@ map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
 
 -- insert semicolon at end of line
 map("n", "<C-CR>", "A;<C-c>")
-
--- unmapped to help train mistakes
-map("n", "<S-CR>", "")
 
 -- copy contents of buffer
 map("n", "<leader>%", "ggyG<C-o>")

@@ -2,7 +2,7 @@ local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
 
-vim.g.toggle_gjk = false
+vim.g.toggle_gjk = true
 
 -- Toggles the behaviour of "j" and "k" to "gj" and "gk" for easy navigation
 -- through wrapped lines. Prints the current state of the toggle.
