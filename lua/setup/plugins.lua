@@ -81,6 +81,7 @@ require("lazy").setup({
             disable_filetype = { "TelescopePrompt", "vim", "plain text", "txt" },
         },
         event = "InsertEnter",
+        enabled = false,
     },
 
     -- { -- rust-tools replacement
