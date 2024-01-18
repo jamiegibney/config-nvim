@@ -26,7 +26,7 @@ require("fidget").setup({
     fmt = {
         leftpad = true,   -- right-justify text in fidget box
         stack_upwards = false, -- list of tasks grows upwards
-        max_width = 20,    -- maximum width of the fidget box
+        max_width = 30,    -- maximum width of the fidget box
         fidget =          -- function to format fidget title
             function(fidget_name, spinner)
                 return string.format("%s %s", spinner, fidget_name)

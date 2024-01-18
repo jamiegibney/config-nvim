@@ -83,13 +83,18 @@ require("lazy").setup({
         event = "InsertEnter",
     },
 
-    { -- rust-tools replacement
-        "mrcjkb/rustaceanvim",
-        version = "^3",
+    -- { -- rust-tools replacement
+    --     "mrcjkb/rustaceanvim",
+    --     version = "^3",
+    --
+    --     ft = {
+    --         "rust",
+    --     },
+    -- },
 
-        ft = {
-            "rust",
-        },
+    {
+        "simrat39/rust-tools.nvim",
+        event = "BufEnter *.rs",
     },
 
     { -- debugging tool
