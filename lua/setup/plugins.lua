@@ -62,6 +62,11 @@ require("lazy").setup({
         },
     },
 
+    { -- workspace diagnostics
+        "folke/trouble.nvim",
+        event = "LspAttach",
+    },
+
     {
         "hrsh7th/nvim-cmp",
         lazy = false,
