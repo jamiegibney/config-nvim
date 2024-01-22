@@ -1,7 +1,7 @@
 local cmp = require("cmp")
--- local luasnip = require("luasnip")
--- require("luasnip.loaders.from_vscode").lazy_load()
--- luasnip.config.setup()
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.config.setup()
 
 local vscode_icons = {
     Text = "  ",
@@ -36,12 +36,10 @@ local vscode_icons = {
     TypeParameter = "  ",
 }
 
-vim.keymap.set("i", "<C-y>", "")
-
 cmp.setup {
     snippet = {
-        expand = function()
-            -- FIXME: this function seems to be causing some issues with <C-y> autocompletion...
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
         end
     },
     performance = {
@@ -89,6 +87,7 @@ cmp.setup {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "async_path" },
+        { name = 'luasnip' },
     },
     window = {
         completion = {
