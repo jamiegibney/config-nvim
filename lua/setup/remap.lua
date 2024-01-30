@@ -19,6 +19,9 @@ map("n", "<leader>df", function()
     vim.cmd("Gitsigns toggle_deleted")
 end)
 
+-- "git add" (the current buffer)
+map("n", "<leader>ga", "<cmd>!git add %<CR>")
+
 -- "git status"
 -- map("n", "<leader>gs", vim.cmd.Git)
 
