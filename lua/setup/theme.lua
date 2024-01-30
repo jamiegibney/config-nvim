@@ -213,6 +213,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.method.consuming.rust", { fg = method_color, })
 
     api.nvim_set_hl(0, "@lsp.type.typeAlias.rust", { fg = "#000000", })
+    api.nvim_set_hl(0, "@lsp.type.selfTypeKeyword.rust", { link = "DiagnosticHint" })
     api.nvim_set_hl(0, "@lsp.type.selfKeyword.rust", { fg = "#0033b3", })
     api.nvim_set_hl(0, "@lsp.typemod.selfKeyword.consuming.rust", { bold = true, })
     api.nvim_set_hl(0, "@lsp.typemod.selfKeyword.mutable.rust", { link = "@lsp.typemod.variable.mutable.rust" })
