@@ -2,7 +2,9 @@ local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
 
-vim.g.toggle_gjk = true
+--
+
+vim.g.toggle_gjk = false
 
 -- Toggles the behaviour of "j" and "k" to "gj" and "gk" for easy navigation
 -- through wrapped lines. Prints the current state of the toggle.
@@ -31,8 +33,14 @@ local function toggle_gjk()
 end
 map("n", "<leader>tg", function() toggle_gjk() end)
 
+-- I want this to be enabled by default, so this gets called here
+toggle_gjk()
+
+--
+
 vim.g.auto_completion = true
 
+-- Toggles nvim-cmp auto-completion. Prints the current state of the toggle.
 local function toggle_auto_completion()
     local ac_enabled = vim.g.auto_completion
     local print_string
@@ -61,4 +69,3 @@ map("n", "<leader>td", function()
         vim.diagnostic.disable()
     end
 end)
-
