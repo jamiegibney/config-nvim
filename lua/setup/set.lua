@@ -37,6 +37,7 @@ opt.smartindent = true
 -- the number of spaces to use for autoindent
 opt.shiftwidth = 4
 -- number of spaces which a tab should count for
+opt.tabstop = 4
 opt.softtabstop = 4
 -- use spaces for tabs in insert mode, and when using the <<>> commands
 opt.expandtab = true
