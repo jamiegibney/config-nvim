@@ -54,6 +54,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end,
 })
 
+-- stop treesitter highlighting for already-configured filetypes
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", },
+    callback = function()
+        vim.treesitter.stop()
+    end
+})
+
 -- allow the ability to reset the theme with ":ResetTheme"
 vim.api.nvim_create_user_command("ResetTheme", function()
     require("setup.theme").set_theme()
