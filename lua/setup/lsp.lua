@@ -125,3 +125,15 @@ vim.diagnostic.config {
     underline = true,
     severity_sort = true,
 }
+
+local omnisharp = "/Users/jamiegibney/Documents/dev/other/omnisharp-osx"
+
+require("lspconfig").omnisharp.setup({
+    cmd = {
+        "mono",
+        "--assembly-loader=strict",
+        omnisharp .. "/omnisharp/OmniSharp.exe",
+    },
+    on_attach = on_attach,
+    use_mono = true,
+})
