@@ -1,7 +1,7 @@
 local opt = vim.opt
-local cmd = vim.cmd
 
 vim.g.use_dvorak_bindings = false
+vim.g.c_syntax_for_h = 1
 
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
