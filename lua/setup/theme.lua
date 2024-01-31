@@ -259,6 +259,7 @@ M = {}
 
 function M.set_theme()
     vim.cmd.colorscheme "melange"
+    vim.opt.background = "light"
     set_highlights()
     api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", italic = false, })
 end
