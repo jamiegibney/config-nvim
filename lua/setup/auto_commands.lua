@@ -11,6 +11,8 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = "*",
     callback = function()
         vim.cmd("setlocal formatoptions-=o")
+        -- allow the ability to jump between underscores in words
+        vim.cmd("setlocal iskeyword-=_")
     end
 })
 
@@ -56,7 +58,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 -- stop treesitter highlighting for already-configured filetypes
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", "*.sh", },
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", "*.sh", "*.toml", },
     callback = function()
         vim.treesitter.stop()
     end
