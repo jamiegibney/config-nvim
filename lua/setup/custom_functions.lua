@@ -1,3 +1,5 @@
+M = {}
+
 local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
@@ -69,3 +71,30 @@ map("n", "<leader>td", function()
         vim.diagnostic.disable()
     end
 end)
+
+--
+
+vim.g.insert_block_cursor = false
+
+-- function to choose between a block or line cursor in insert mode
+function M.insert_with_block_cursor()
+    local state = vim.g.insert_block_cursor
+    local prefix
+
+    if state then
+        prefix = "n-v:block,i-ci-ve:ver80,"
+    else
+        prefix = "n-v:block,"
+    end
+
+    vim.g.insert_block_cursor = not state
+
+    vim.opt.guicursor = string.format(
+        "%sr-cr:hor80,o:hor50,c:ver80,a:blinkwait10-blinkoff350-blinkon350-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175",
+        prefix
+    )
+end
+
+M.insert_with_block_cursor()
+
+return M

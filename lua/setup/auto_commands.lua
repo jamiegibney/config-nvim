@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 -- stop treesitter highlighting for already-configured filetypes
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", "*.sh", "*.toml", },
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", "*.sh", "*.toml", "*.md", },
     callback = function()
         vim.treesitter.stop()
     end
@@ -72,4 +72,9 @@ end, {})
 -- alias for ":write" or ":w" to help with typos
 vim.api.nvim_create_user_command("W", function()
     vim.cmd("write")
+end, {})
+
+-- allow the insert mode cursor appearance to be toggled
+vim.api.nvim_create_user_command("ToggleInsertCursor", function()
+    require("setup.custom_functions").insert_with_block_cursor()
 end, {})

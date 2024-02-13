@@ -8,24 +8,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- function to choose between a block or line cursor in insert mode
-local function insert_with_block_cursor(use_block_cursor_in_insert)
-    local prefix
-    if use_block_cursor_in_insert then
-        prefix = "n-v:block,"
-    else
-        prefix = "n-v:block,i-ci-ve:ver80,"
-    end
-
-    return string.format(
-        "%sr-cr:hor80,o:hor50,c:ver80,a:blinkwait10-blinkoff350-blinkon350-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175",
-        prefix
-    )
-end
-
--- the cursor!
-opt.guicursor = insert_with_block_cursor(true)
-
 -- keep only one status bar at the bottom of the screen
 opt.laststatus = 3
 
