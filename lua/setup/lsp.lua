@@ -61,10 +61,9 @@ mason_lsp_config.setup_handlers({
     function(server_name)
         local lsp = require("lspconfig")
         -- rust_analyzer is setup in rust-tools.lua, so we need to skip it here
+        -- TODO(jamiegibney) does this actually do anything?
         if server_name == "rust_analyzer" then
-            return
-        end
-        if server_name == "wgsl_analyzer" then
+            print("hello I am rust_analyzer")
             return
         end
         if server_name == "clangd" then
