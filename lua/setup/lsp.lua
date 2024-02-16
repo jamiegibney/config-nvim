@@ -1,5 +1,5 @@
 local on_attach = function(client, bufnr)
-    --
+    -- TODO(jamiegibney) needed?
 end
 
 local map = function(keys, func)
