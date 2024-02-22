@@ -5,6 +5,8 @@ vim.cmd "autocmd BufRead,BufNewFile * syn match Braces /[{}]/"
 
 local api = vim.api
 
+method_color = "#0070a0"
+
 local links = {
     ["@lsp.type.namespace"]                  = "@namespace",
     ["@lsp.type.type"]                       = "@type",
@@ -25,6 +27,57 @@ local links = {
     ["@lsp.typemod.variable.readonly"]       = "@constant",
 }
 
+-- * -- C++ highlights -- * --
+local function set_cpp_highlights()
+    local cpp_class_purple = "#8023c0"
+    api.nvim_set_hl(0, "@lsp.typemod.class.defaultLibrary.cpp", { link = "DiagnosticHint", })
+    api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.cpp", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.cpp", { link = "none" })
+    api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { link = "none" })
+    api.nvim_set_hl(0, "cppType", { link = "rustKeyword", })
+    api.nvim_set_hl(0, "cppTypedef", { link = "cType", })
+    api.nvim_set_hl(0, "cppStructure", { link = "cType", })
+    api.nvim_set_hl(0, "cppString", { fg = "#0a8521", italic = true, })
+    api.nvim_set_hl(0, "cppRawString", { link = "cppString", })
+    api.nvim_set_hl(0, "cppRawStringDelimiter", { link = "cppString", })
+    api.nvim_set_hl(0, "cppCharacter", { link = "cString", })
+    api.nvim_set_hl(0, "cppEnum", { link = "cType", })
+    api.nvim_set_hl(0, "cppSpecialCharacter", { link = "@lsp.type.formatSpecifier.rust" })
+    api.nvim_set_hl(0, "cppSpecial", { link = "@lsp.type.formatSpecifier.rust" })
+    api.nvim_set_hl(0, "cppOperator", { link = "ctype", })
+    api.nvim_set_hl(0, "cStorageClass", { link = "ctype", })
+    api.nvim_set_hl(0, "cppStorageClass", { link = "cStorageClass", })
+    api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { bold = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.static.cpp", { bold = true, underline = true, })
+    api.nvim_set_hl(0, "@lsp.type.variable.cpp", { fg = "#000000", })
+    api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#0070a0", })
+    api.nvim_set_hl(0, "@lsp.typemod.typeParameter.classScope.cpp", { fg = cpp_class_purple, bold = true })
+    api.nvim_set_hl(0, "@lsp.typemod.typeParameter.functionScope.cpp", { fg = cpp_class_purple, bold = true })
+    api.nvim_set_hl(0, "@lsp.typemod.operator.userDefined.cpp", { link = "DiagnosticOk" })
+
+    api.nvim_set_hl(0, "@lsp.typemod.property.classScope.cpp", { link = "@lsp.type.property" })
+    
+
+    -- api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
+    api.nvim_set_hl(0, "@lsp.type.class.cpp", { link = "DiagnosticHint" })
+    -- api.nvim_set_hl(0, "@lsp.mod.classScope.cpp", { link = "@lsp.type.function.cpp" })
+    api.nvim_set_hl(0, "@lsp.type.macro.cpp", { link = "@macro" })
+    api.nvim_set_hl(0, "@lsp.type.method.cpp", { fg = method_color })
+    api.nvim_set_hl(0, "@lsp.typemod.method.classScope.cpp", { fg = method_color })
+    api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
+    api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
+    api.nvim_set_hl(0, "@lsp.typemod.parameter.functionScope.cpp", { italic = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.method.definition.cpp", { link = "@lsp.typemod.function.declaration" })
+    api.nvim_set_hl(0, "@lsp.type.type.cpp", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.cpp", { italic = false, })
+
+    api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
+    api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
+    api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.typemod.type.deduced.cpp", { link = "Statement", })
+end
+
 local function set_highlights()
     for newgroup, oldgroup in pairs(links) do
         api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true, })
@@ -41,6 +94,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "LineNr", { fg = "#adadad", bg = "#ffffff" })
     api.nvim_set_hl(0, "CursorLine", { bg = "#f5f5f5", })
     api.nvim_set_hl(0, "CursorLineNr", { fg = "#7a7a7a", })
+    api.nvim_set_hl(0, "ColorColumn", { link = "CursorLine", })
     api.nvim_set_hl(0, "Search", { bg = "#baceff", })
     api.nvim_set_hl(0, "CurSearch", { bg = "#baceff", })
     api.nvim_set_hl(0, "IncSearch", { bg = "#f0a8d2", })
@@ -135,40 +189,6 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.type.function.c", { fg = "#0070a0", })
     api.nvim_set_hl(0, "cOperator", { link = "ctype", })
 
-    -- * -- C++ highlights -- * --
-    api.nvim_set_hl(0, "@lsp.typemod.class.defaultLibrary.cpp", { link = "DiagnosticHint", })
-    api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.cpp", { fg = "#00ab9c", })
-    api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.cpp", { link = "none" })
-    api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { link = "none" })
-    api.nvim_set_hl(0, "cppType", { link = "rustKeyword", })
-    api.nvim_set_hl(0, "cppTypedef", { link = "cType", })
-    api.nvim_set_hl(0, "cppStructure", { link = "cType", })
-    api.nvim_set_hl(0, "cppString", { fg = "#0a8521", italic = true, })
-    api.nvim_set_hl(0, "cppRawString", { link = "cppString", })
-    api.nvim_set_hl(0, "cppRawStringDelimiter", { link = "cppString", })
-    api.nvim_set_hl(0, "cppCharacter", { link = "cString", })
-    api.nvim_set_hl(0, "cppEnum", { link = "cType", })
-    api.nvim_set_hl(0, "cppSpecialCharacter", { link = "@lsp.type.formatSpecifier.rust" })
-    api.nvim_set_hl(0, "cppSpecial", { link = "@lsp.type.formatSpecifier.rust" })
-    api.nvim_set_hl(0, "cppOperator", { link = "ctype", })
-    api.nvim_set_hl(0, "cStorageClass", { link = "ctype", })
-    api.nvim_set_hl(0, "cppStorageClass", { link = "cStorageClass", })
-    api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
-    api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { fg = "#a215a0", bold = true, })
-    api.nvim_set_hl(0, "@lsp.type.variable.cpp", { fg = "#000000", })
-    api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#0070a0", })
-
-    local cpp_class_purple = "#8023c0"
-    api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
-    api.nvim_set_hl(0, "@lsp.type.type.cpp", { fg = cpp_class_purple, })
-    api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.cpp", { italic = false, })
-
-    local method_color = "#0070a0"
-    api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
-    api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
-    api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#00ab9c", })
-    api.nvim_set_hl(0, "@lsp.typemod.type.deduced.cpp", { link = "Statement", })
-
     -- * -- Lua highlights -- * --
     api.nvim_set_hl(0, "luaFunction", { fg = "#0033b3", italic = true, })
     api.nvim_set_hl(0, "luaString", { fg = "#0a8521", italic = true, })
@@ -202,7 +222,6 @@ local function set_highlights()
     -- associated function (calls and declarations)
     api.nvim_set_hl(0, "@lsp.typemod.method.static.rust", { fg = "#0079a5", italic = true, })
 
-    local method_color = "#0070a0"
     api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.rust", { fg = method_color, })
     api.nvim_set_hl(0, "rustFuncCall", { fg = method_color, })
     -- method declaration
@@ -253,6 +272,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "Braces", { link = "DiagnosticHint", })
 
     api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
+
+    set_cpp_highlights()
 end
 
 M = {}
