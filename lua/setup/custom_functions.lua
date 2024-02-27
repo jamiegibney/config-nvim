@@ -74,7 +74,7 @@ end)
 
 --
 
-vim.g.insert_block_cursor = false
+vim.g.insert_block_cursor = true
 
 -- function to choose between a block or line cursor in insert mode
 function M.insert_with_block_cursor()
