@@ -63,13 +63,13 @@ mason_lsp_config.setup_handlers({
         -- rust_analyzer is setup in rust-tools.lua, so we need to skip it here
         -- TODO(jamiegibney) does this actually do anything?
         if server_name == "rust_analyzer" then
-            print("hello I am rust_analyzer")
             return
         end
         if server_name == "clangd" then
             lsp["clangd"].setup {
                 cmd = {
                     "clangd",
+                    "-x c",
                     "--background-index",
                     "--clang-tidy",
                     "--cross-file-rename",
