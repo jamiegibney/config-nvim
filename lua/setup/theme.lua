@@ -57,7 +57,7 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.operator.userDefined.cpp", { link = "DiagnosticOk" })
 
     api.nvim_set_hl(0, "@lsp.typemod.property.classScope.cpp", { link = "@lsp.type.property" })
-    
+
 
     -- api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
     api.nvim_set_hl(0, "@lsp.type.class.cpp", { link = "DiagnosticHint" })
@@ -76,6 +76,18 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.cpp", { fg = method_color, })
     api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#00ab9c", })
     api.nvim_set_hl(0, "@lsp.typemod.type.deduced.cpp", { link = "Statement", })
+end
+
+-- C# highlights
+local function set_cs_highlights()
+    api.nvim_set_hl(0, "@attribute.c_sharp", { fg = "#af9800" })
+    api.nvim_set_hl(0, "@comment.documentation.c_sharp", { link = "Comment" })
+    api.nvim_set_hl(0, "@type.c_sharp", { link = "Normal" })
+    api.nvim_set_hl(0, "@type.builtin.c_sharp", { link = "Statement" })
+    api.nvim_set_hl(0, "@function.method.c_sharp", { link = "@lsp.typemod.function.declaration" })
+    api.nvim_set_hl(0, "@function.method.call.c_sharp", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@variable.member.c_sharp", { link = "@lsp.type.property" })
+    api.nvim_set_hl(0, "@variable.builtin.c_sharp", { fg = "#0033b3", italic = true })
 end
 
 local function set_highlights()
@@ -274,6 +286,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
 
     set_cpp_highlights()
+    set_cs_highlights()
 end
 
 M = {}
