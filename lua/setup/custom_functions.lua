@@ -97,4 +97,24 @@ end
 
 M.insert_with_block_cursor()
 
+vim.g.increment_alphabetic_characters = false
+
+-- Toggles whether alphabetic characters can be incremented with `<C-a>` and decremented 
+-- with `<C-x>` (includes `g<C-a>` and `g<C-x>`).
+function M.toggle_alphabetic_incrementing()
+    local opt = vim.g.increment_alphabetic_characters
+
+    if opt then
+        vim.cmd("setlocal nrformats-=alpha")
+        print("Disabled alphabetic incrementing")
+    else
+        vim.cmd("setlocal nrformats+=alpha")
+        print("Enabled alphabetic incrementing")
+    end
+
+    vim.g.increment_alphabetic_characters = not opt
+end
+
+map("n", "<leader>ai", function() M.toggle_alphabetic_incrementing() end)
+
 return M
