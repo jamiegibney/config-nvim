@@ -27,11 +27,13 @@ require("lazy").setup({
 
     { -- top-of-buffer context
         "nvim-treesitter/nvim-treesitter-context",
+        event = "LspAttach",
         config = function()
             require("treesitter-context").setup {
-                max_lines = 2,
+                max_lines = 3,
             }
         end,
+        enabled = false,
     },
 
     -- { -- undo tree
@@ -150,6 +152,7 @@ require("lazy").setup({
         config = function()
             require("alpha").setup(require("alpha.themes.custom_theme").config)
         end,
+        enabled = false,
     },
 
     { -- rust crate tools
