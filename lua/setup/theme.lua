@@ -285,6 +285,8 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
 
+    api.nvim_set_hl(0, "SignatureMarkText", { link = "Comment", })
+
     set_cpp_highlights()
     set_cs_highlights()
 end

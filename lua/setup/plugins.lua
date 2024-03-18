@@ -251,7 +251,12 @@ require("lazy").setup({
         config = function()
             require("gitsigns").setup()
         end,
-        event = "BufRead"
+        event = "BufRead",
+    },
+
+    {
+        "kshenoy/vim-signature",
+        event = "BufRead",
     },
 }, {
     defaults = {
