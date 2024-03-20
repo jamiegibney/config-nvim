@@ -163,3 +163,6 @@ map("v", "gb", "<Plug>(comment_toggle_blockwise_visual)")
 
 -- folding
 map("v", "<leader>fl", ":fold<CR>")
+
+-- codesnap
+map("v", "<leader>cs", ":CodeSnap<CR>")

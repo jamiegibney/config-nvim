@@ -259,6 +259,15 @@ require("lazy").setup({
         "kshenoy/vim-signature",
         event = "BufRead",
     },
+
+    {
+        "mistricky/codesnap.nvim",
+        build = "make",
+        version = "^1",
+        lazy = true,
+        cmd = "CodeSnapSave",
+        enabled = false,
+    },
 }, {
     defaults = {
         lazy = true,
