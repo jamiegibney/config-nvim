@@ -55,8 +55,9 @@ cmp.setup {
     mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        -- TODO
+        -- ["<C-f>"] = cmp.mapping.scroll_docs(-4),
+        -- ["<C-g>"] = cmp.mapping.scroll_docs(4),
         ["<C-y>"] = cmp.mapping.confirm({ select = true, }),
     }),
     sorting = {
@@ -114,5 +115,3 @@ cmp.setup {
         end
     }
 }
-
--- cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
