@@ -67,6 +67,7 @@ require("lazy").setup({
     { -- workspace diagnostics
         "folke/trouble.nvim",
         event = "LspAttach",
+        enabled = false,
     },
 
     {
