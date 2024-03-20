@@ -78,8 +78,3 @@ end, {})
 vim.api.nvim_create_user_command("ToggleInsertCursor", function()
     require("setup.custom_functions").insert_with_block_cursor()
 end, {})
-
--- -- allow alphabetic de/increment to be toggleable
--- vim.api.nvim_create_user_command("ToggleAlphaIncDec", function()
---     require("setup.custom_functions").toggle_alphabetic_incrementing()
--- end, {})

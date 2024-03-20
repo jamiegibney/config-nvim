@@ -17,5 +17,5 @@ require("toggleterm").setup({
     autochdir = true,
     start_in_insert = true,
 
-    open_mapping = [[<C-Space>]],
+    open_mapping = "<C-Space>",
 })
