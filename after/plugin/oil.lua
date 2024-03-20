@@ -9,13 +9,11 @@ require("oil").setup {
     delete_to_trash = true,
 
     win_options = {
-        signcolumn = "no",
+        signcolumn = "yes",
         numberwidth = 4,
     },
 
     keymaps = {
-        -- ["<C-o>"] = "actions.select",
-        -- ["<C-i>"] = "actions.parent",
         ["<C-r>"] = "actions.refresh",
         ["<BS>"] = "actions.parent",
         ["<C-z>"] = "actions.select_hsplit",
