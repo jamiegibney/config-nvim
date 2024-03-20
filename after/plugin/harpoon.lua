@@ -29,7 +29,7 @@ map("<leader>af", function()
     print("File added to Harpoon")
 end)
 
--- "goto 1"
+--[[ -- "goto 1"
 map("<A-1>", function()
     harpoon:list():select(1)
 end)
@@ -86,7 +86,7 @@ end)
 -- "goto 5"
 map("<C-0>", function()
     harpoon:list():select(5)
-end)
+end) ]]
 
 -- alternative homerow
 if vim.g.use_dvorak_bindings then
