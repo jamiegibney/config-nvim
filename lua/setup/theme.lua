@@ -177,6 +177,7 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "@lsp.type.typeParameter", { fg = "#20999d", })
     api.nvim_set_hl(0, "@lsp.type.property", { fg = "#a215a0" })
+    api.nvim_set_hl(0, "Special", { link = "@lsp.type.property" })
     api.nvim_set_hl(0, "@lsp.type.enumMember", { fg = "#a215a0", italic = true, })
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.library.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
