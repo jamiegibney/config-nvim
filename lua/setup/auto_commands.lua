@@ -58,9 +58,16 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 -- stop treesitter highlighting for already-configured filetypes
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.rs", "*.lua", "*.sh", "*.toml", "*.md", },
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.lua", "*.sh", "*.toml", "*.md", },
     callback = function()
         vim.treesitter.stop()
+    end
+})
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+    pattern = { "*.rs" },
+    callback = function()
+        vim.treesitter.start()
     end
 })
 
