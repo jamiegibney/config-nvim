@@ -137,6 +137,11 @@ map("n", "<leader>cr", function()
     require("crates").show_popup()
 end)
 
+-- "open here" (in finder)
+map("n", "<leader>oh", function()
+    vim.cmd("!open .")
+end)
+
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
