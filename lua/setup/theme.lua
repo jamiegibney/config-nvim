@@ -291,6 +291,10 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.type.lifetime.rust", { link = "rustLifetime", })
     api.nvim_set_hl(0, "@lsp.typemod.operator.controlFlow.rust", { link = "Statement", })
 
+    api.nvim_set_hl(0, "@lsp.type.interface.rust", { fg = "#8a49dd" })
+    api.nvim_set_hl(0, "@lsp.typemod.interface.library.rust", { link = "@lsp.type.interface.rust" })
+    api.nvim_set_hl(0, "@lsp.typemod.interface.declaration.rust", { link = "Identifier", })
+
     api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
 
     api.nvim_set_hl(0, "SignatureMarkText", { link = "Comment", })
