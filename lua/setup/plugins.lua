@@ -268,6 +268,14 @@ require("lazy").setup({
         cmd = "CodeSnapSave",
         enabled = false,
     },
+
+    {
+        "ziontee113/color-picker.nvim",
+        lazy = false,
+        config = function()
+            require("color-picker").setup()
+        end
+    },
 }, {
     defaults = {
         lazy = true,

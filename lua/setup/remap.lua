@@ -142,6 +142,11 @@ map("n", "<leader>oh", function()
     vim.cmd("!open .")
 end)
 
+-- "open here" (in finder)
+map("n", "<leader>pc", function()
+    vim.cmd("PickColor")
+end)
+
 -- * --  INSERT MODE  -- * --
 
 -- insert trailing semicolon and enter normal mode
