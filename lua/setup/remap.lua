@@ -150,7 +150,7 @@ map("n", "<leader>oh", function()
     vim.cmd("!open .")
 end)
 
--- "open here" (in finder)
+-- "pick color"
 map("n", "<leader>pc", function()
     vim.cmd("PickColor")
 end)
