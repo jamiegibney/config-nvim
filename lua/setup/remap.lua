@@ -106,7 +106,15 @@ map("n", "<C-t>", "")
 map("n", "<leader>ce", ":e!<CR>")
 
 -- "spelling" - enable typo highlighting
-map("n", "<leader>sp", ":set spell!<CR>")
+map("n", "<leader>sp", function()
+    vim.cmd("set spell!")
+
+    if vim.opt.spell:get() then
+        print("Spell-checking enabled")
+    else
+        print("Spell-checking disabled")
+    end
+end)
 
 -- retain content of register after pasting into a selection
 map("x", "<leader>p", "\"_dP")
