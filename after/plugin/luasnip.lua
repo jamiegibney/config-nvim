@@ -50,11 +50,41 @@ ls.add_snippets(nil, {
         snip({
             trig = "dblf",
             namr = "Unity Debug Log, formatted",
-            dscr = "Expands to `Debug.Log(string.Format(\"`|`\"));`",
+            dscr = "Expands to `Debug.Log(string.Format(\"`|`));`",
         }, {
             text({ "Debug.Log(string.Format(\"" }),
             insert(1, ""),
-            text({ "\"));" }),
+            text({ "));" }),
+        }),
+    },
+})
+
+-- Rust
+
+ls.add_snippets(nil, {
+    all = {
+        snip({
+            trig = "dcc",
+            namr = "Derive Clone + Copy",
+            dscr = "Expands to #[derive(Clone, Copy)]",
+        }, {
+            text({ "#[derive(Clone, Copy" }),
+            insert(1, ""),
+            text({ ")]" }),
+        }),
+    },
+})
+
+ls.add_snippets(nil, {
+    all = {
+        snip({
+            trig = "prl",
+            namr = "println!();",
+            dscr = "Expands to println!();",
+        }, {
+            text({ "println!(" }),
+            insert(1, ""),
+            text({ ");" }),
         }),
     },
 })
