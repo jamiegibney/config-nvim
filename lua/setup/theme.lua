@@ -176,6 +176,8 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "Function", {})
 
+    api.nvim_set_hl(0, "@comment.todo.comment", { link = "Todo" })
+
     api.nvim_set_hl(0, "@lsp.type.typeParameter", { fg = "#20999d", })
     api.nvim_set_hl(0, "@lsp.type.property", { fg = "#a215a0" })
     api.nvim_set_hl(0, "Special", { link = "@lsp.type.property" })
