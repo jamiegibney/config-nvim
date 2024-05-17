@@ -19,6 +19,17 @@ require("lazy").setup({
         event = "VeryLazy",
     },
 
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        event = "VeryLazy",
+    },
+
+    {
+        "ellisonleao/gruvbox.nvim",
+        event = "VeryLazy",
+    },
+
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -193,6 +204,7 @@ require("lazy").setup({
                 insert_mode = true,
             }
         end,
+        -- enabled = false,
 
         event = "BufRead",
     },
