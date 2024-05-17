@@ -19,7 +19,9 @@ if vim.g.use_dvorak_bindings then
     end)
 else
     map("<C-h>", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
+        harpoon.ui:toggle_quick_menu(harpoon:list(), {
+            title = " Harpoon ",
+        })
     end)
 end
 
