@@ -95,6 +95,8 @@ local function set_highlights()
         api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true, })
     end
 
+    api.nvim_set_hl(0, "TelescopeBorder", { fg = "#444444", })
+
     api.nvim_set_hl(0, "@keyword.function.wgsl", { link = "Keyword" })
     api.nvim_set_hl(0, "@punctuation.bracket.wgsl", { fg = "#9c9c9c" })
     api.nvim_set_hl(0, "@type.wgsl", { link = "Keyword" })
