@@ -53,6 +53,9 @@ opt.scrolloff = 16
 -- this controls the CursorHold event, which is mainly used for the local highlighting plugin
 opt.updatetime = 40
 
+-- show things like substitutions in the buffer as they are typed
+opt.inccommand = "nosplit"
+
 -- show the search update ("increment") as it is typed
 opt.incsearch = true
 -- highlight all search matches
@@ -63,7 +66,7 @@ opt.linebreak = true
 -- where to break lines for soft-wrapping
 opt.breakat = " \t;:,!?."
 -- the character at which wrapping will occur.
-opt.textwidth = 0 -- TODO: just implement this for plain text files
+opt.textwidth = 0 -- TODO(jamiegibney): just implement this for plain text files
 
 -- the chars used after the EOF
 opt.fillchars = { eob = " " }
@@ -89,3 +92,5 @@ opt.hidden = true
 opt.spelllang = "en_gb"
 
 opt.shada = "!,'200,<50,s10,h"
+
+opt.splitright = true
