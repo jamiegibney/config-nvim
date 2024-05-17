@@ -60,13 +60,12 @@ mason_lsp_config.setup({
 mason_lsp_config.setup_handlers({
     function(server_name)
         local lsp = require("lspconfig")
-        -- rust_analyzer is setup in rust-tools.lua, so we need to skip it here
-        -- TODO(jamiegibney) does this actually do anything?
         if server_name == "rust_analyzer" then
             return
         end
+
         if server_name == "clangd" then
-            lsp["clangd"].setup {
+            lsp["clangd"].setup({
                 cmd = {
                     "clangd",
                     "-x c",
@@ -79,7 +78,7 @@ mason_lsp_config.setup_handlers({
                 init_options = {
                     semanticHighlighting = true,
                 },
-            }
+            })
         end
 
         lsp[server_name].setup({
