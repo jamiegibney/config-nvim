@@ -39,7 +39,7 @@ local vscode_icons = {
 cmp.setup {
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
         end
     },
     performance = {
@@ -49,16 +49,19 @@ cmp.setup {
         async_budget = 5,
     },
     completion = {
-        completeopt = "menu,menuone,noinsert,noselect",
+        completeopt = "menu,menuone",
         keyword_length = 1,
     },
     mapping = cmp.mapping.preset.insert({
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         -- TODO
         -- ["<C-f>"] = cmp.mapping.scroll_docs(-4),
         -- ["<C-g>"] = cmp.mapping.scroll_docs(4),
-        ["<C-y>"] = cmp.mapping.confirm({ select = true, }),
+        ["<C-y>"] = cmp.mapping.confirm({
+            behavior = cmp.SelectBehavior.Insert,
+            select = true,
+        }),
     }),
     sorting = {
         comparators = {
