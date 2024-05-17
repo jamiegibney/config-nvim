@@ -43,8 +43,24 @@ require("rust-tools").setup({
             end)
         end,
 
+        cmd = {
+            "ra-multiplex",
+            "client",
+            "--server-path",
+            "/Users/jamiegibney/.local/share/nvim/mason/bin/rust-analyzer",
+        },
+
         settings = {
             ["rust-analyzer"] = {
+                procMacro = {
+                    enable = false,
+                },
+                lens = {
+                    enable = false,
+                },
+                cachePriming = {
+                    enable = false,
+                },
                 checkOnSave = {
                     command = "clippy",
                     extraArgs = {
