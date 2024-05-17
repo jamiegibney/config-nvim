@@ -133,6 +133,8 @@ map("n", "<CR>", "")
 -- use k!
 -- use h!
 map("n", "<BS>", "")
+--
+map("n", "<C-f>", "")
 
 -- goto neovim config directory "neovim config"
 map("n", "<leader>ncfg", "<cmd>Oil ~/.config/nvim/<CR>")
