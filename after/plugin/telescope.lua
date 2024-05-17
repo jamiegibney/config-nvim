@@ -5,8 +5,17 @@ local km = vim.keymap
 -- "find file"
 km.set("n", "<leader>ff", builtin.find_files, {})
 
+-- "find all"
+km.set("n", "<leader>fa", function()
+    ---@diagnostic disable-next-line: param-type-mismatch, redundant-parameter
+    builtin.find_files({ cwd = "~/Documents/dev/" })
+end)
+
 -- "find word"
 km.set("n", "<leader>fw", builtin.live_grep, {})
+
+-- "find this"
+km.set("n", "<leader>ft", builtin.grep_string, {})
 
 -- "git file"
 km.set("n", "<leader>gf", builtin.git_files, {})
@@ -17,7 +26,7 @@ km.set("n", "<leader>fo", builtin.oldfiles, {})
 -- "find in"
 km.set("n", "<leader>fi", builtin.current_buffer_fuzzy_find, {})
 
--- "go references"
+-- "goto references"
 km.set("n", "gr", builtin.lsp_references, {})
 
 -- "telescope resume"
@@ -26,16 +35,24 @@ km.set("n", "<leader>tr", builtin.resume, {})
 -- "buffers"
 km.set("n", "<leader>bu", builtin.buffers)
 
--- "spell suggest"
+-- "what diagnostics"
 km.set("n", "<leader>wd", builtin.diagnostics)
 
 -- "spell suggest"
 km.set("n", "<leader>su", builtin.spell_suggest)
 
+-- "find help"
+km.set("n", "<leader>fh", builtin.help_tags)
 
-require("telescope").load_extension("fzf")
+pcall(require("telescope").load_extension, "fzf")
+pcall(require("telescope").load_extension, "smart_history")
 
 require("telescope").setup {
+    extensions = {
+        fzf = {},
+        history = { limit = 100, },
+        wrap_results = true,
+    },
     defaults = {
         -- vimgrep_arguments = {
         --     "rg",
@@ -50,25 +67,29 @@ require("telescope").setup {
         --     "-u",
         -- },
 
+        -- -> => == !=
+
         prompt_title = false,
         dynamic_preview_title = true,
         results_title = false,
-        -- path_display = "truncate",
+        path_display = "truncate",
 
-        prompt_prefix = "=> ",
-        selection_caret = " ",
-        entry_prefix = " ",
+        prompt_prefix = "> ",
+        selection_caret = "  ",
+        entry_prefix = "  ",
 
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "descending",
 
-        layout_strategy = "vertical",
+        layout_strategy = "horizontal",
         layout_config = {
             horizontal = {
-                prompt_position = "top",
-                preview_width = 0.55,
-                results_width = 0.8,
+                prompt_position = "bottom",
+                preview_width = 0.45,
+                -- results_width = 0.8,
+                width = 0.85,
+                height = 0.9,
             },
             vertical = {
                 prompt_position = "bottom",
@@ -90,6 +111,7 @@ require("telescope").setup {
         winblend = 0,
         color_devicons = true,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         -- borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
 
         file_sorter = require("telescope.sorters").get_fuzzy_file,
