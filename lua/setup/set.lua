@@ -92,5 +92,3 @@ opt.hidden = true
 opt.spelllang = "en_gb"
 
 opt.shada = "!,'200,<50,s10,h"
-
-opt.splitright = true
