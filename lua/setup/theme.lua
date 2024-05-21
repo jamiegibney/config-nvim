@@ -88,6 +88,7 @@ local function set_cs_highlights()
     api.nvim_set_hl(0, "@function.method.call.c_sharp", { fg = "#00ab9c", })
     api.nvim_set_hl(0, "@variable.member.c_sharp", { link = "@lsp.type.property" })
     api.nvim_set_hl(0, "@variable.builtin.c_sharp", { fg = "#0033b3", italic = true })
+    api.nvim_set_hl(0, "@variable.c_sharp", { link = "Normal" })
 end
 
 local function set_highlights()
@@ -102,7 +103,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@type.wgsl", { link = "Keyword" })
 
     -- general highlights
-    api.nvim_set_hl(0, "Normal", { fg = "#000000", bg = "#ffffff", })
+    api.nvim_set_hl(0, "Normal", { fg = "#000000", --[[ bg = "#ffffff", ]] })
     api.nvim_set_hl(0, "NormalNC", { link = "Normal", })
     api.nvim_set_hl(0, "Todo", { fg = "#008dde", italic = true, bold = true, --[[ bg = "#c0ddef", ]] })
     api.nvim_set_hl(0, "LineNr", { fg = "#adadad", bg = "#ffffff" })
@@ -126,12 +127,14 @@ local function set_highlights()
     api.nvim_set_hl(0, "WinBar", { fg = "#000000" })
     api.nvim_set_hl(0, "WinBarNC", { fg = "#000000" })
     api.nvim_set_hl(0, "FloatBorder", { link = "WinBar" })
-    api.nvim_set_hl(0, "NormalFloat", { bg = "#ffffff", fg = "none" })
+    api.nvim_set_hl(0, "NormalFloat", { bg = "#f7f7f7", fg = "none" })
     api.nvim_set_hl(0, "VertSplit", { link = "LineNr", })
     api.nvim_set_hl(0, "PMenuSel", { bg = "#a6d2ff", fg = "none" })
     api.nvim_set_hl(0, "PMenu", { link = "NormalFloat", })
     api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#dddddd", })
     api.nvim_set_hl(0, "IndentBlanklineContextChar", { link = "DiagnosticHint", })
+
+    api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
 
     -- diagnostic colours
     api.nvim_set_hl(0, "DiagnosticError", { fg = "#d95716", })
@@ -171,7 +174,7 @@ local function set_highlights()
     --
 
     api.nvim_set_hl(0, "Boolean", { fg = "#0033b3", })
-    api.nvim_set_hl(0, "Type", { fg = "#000000", })
+    api.nvim_set_hl(0, "Type", { link = "Normal" })
     api.nvim_set_hl(0, "@type", { fg = "#000000", })
     -- what do these actually do?
     api.nvim_set_hl(0, "Constant", {})
@@ -206,6 +209,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "cSpecialCharacter", { link = "@lsp.type.formatSpecifier.rust" })
     api.nvim_set_hl(0, "cSpecial", { link = "@lsp.type.formatSpecifier.rust" })
     api.nvim_set_hl(0, "@lsp.type.variable.c", { fg = "#000000", })
+    api.nvim_set_hl(0, "@type.builtin.c", { link = "Statement" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.c", { link = "@lsp.mod.constant.rust", })
     api.nvim_set_hl(0, "@lsp.type.function.c", { fg = "#0070a0", })
     api.nvim_set_hl(0, "cOperator", { link = "ctype", })
