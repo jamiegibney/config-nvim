@@ -47,6 +47,16 @@ km.set("n", "<leader>fh", builtin.help_tags)
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "smart_history")
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "TelescopeResults",
+    callback = function(ctx)
+        vim.api.nvim_buf_call(ctx.buf, function()
+            vim.fn.matchadd("TelescopePwd", "[A-Za-z/…].*/")
+            vim.api.nvim_set_hl(0, "TelescopePwd", { fg = "#999999" })
+        end)
+    end,
+})
+
 require("telescope").setup {
     extensions = {
         fzf = {},
@@ -54,25 +64,33 @@ require("telescope").setup {
         wrap_results = true,
     },
     defaults = {
-        -- vimgrep_arguments = {
-        --     "rg",
-        --     "-L",
-        --     "--color=never",
-        --     "--no-heading",
-        --     "--with-filename",
-        --     "--line-number",
-        --     "--column",
-        --     "--smart-case",
-        --     "-u",
-        --     "-u",
-        -- },
-
         -- -> => == !=
 
         prompt_title = false,
         dynamic_preview_title = true,
         results_title = false,
-        path_display = "smart",
+        path_display = {
+            truncate = 2,
+        },
+        -- path_display = function(_, path)
+        --     local tail = vim.fs.basename(path)
+        --     local parent = vim.fs.dirname(path)
+        --     if parent == "." then return tail end
+        --
+        --     local pwd
+        --     local full
+        --     for str in string.gmatch(parent, "([^/]+)") do
+        --         if pwd ~= nil then
+        --             if full == nil then
+        --                 full = string.format("%s/", pwd)
+        --             end
+        --             full = string.format("%s%s/", full, pwd)
+        --         end
+        --         pwd = str
+        --     end
+        --
+        --     return string.format(" %s/%s\t\t%s", pwd, tail, full)
+        -- end,
 
         prompt_prefix = "> ",
         selection_caret = "  ",
