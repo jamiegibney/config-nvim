@@ -34,7 +34,6 @@ require("lazy").setup({
                 max_lines = 3,
             }
         end,
-        enabled = false,
     },
 
     -- { -- undo tree
