@@ -21,7 +21,7 @@ local snip = ls.snippet
 local insert = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
-ls.add_snippets("csharp", {
+ls.add_snippets("cs", {
     snip({
         trig = "sum",
         name = "C# single-line summary comment",
@@ -52,7 +52,11 @@ ls.add_snippets("rust", {
     snip({
         trig = "dcc",
         name = "Derive Copy and Clone",
-    }, fmt("#[derive(Clone, Copy{}", { insert(0) })),
+    }, fmt("#[derive(Clone, Copy{})]", { insert(0) })),
+    snip({
+        trig = "ddb",
+        name = "Derive Debug",
+    }, fmt("#[derive(Debug{})]", { insert(0) })),
     snip({
         trig = "prl",
         name = "Print line macro",
