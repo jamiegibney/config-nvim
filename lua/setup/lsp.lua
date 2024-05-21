@@ -90,8 +90,7 @@ mason_lsp_config.setup_handlers({
     end
 })
 
--- TODO: this does not work if the "for further information" message is the last line of the message
-local function remove_further_information(msg)
+local function remove_unnecessary_info(msg)
     local start, _ = string.find(msg, "for further information")
     if start == nil then
         return msg
@@ -100,7 +99,7 @@ local function remove_further_information(msg)
     local last = 0
     local i = 0
     while true do
-        i = string.find(msg, "\n", last + 1)
+        i, _ = string.find(msg, "\n", last + 1)
         if i == nil then
             break
         end
@@ -108,14 +107,25 @@ local function remove_further_information(msg)
     end
 
     local result = string.sub(msg, 1, start - 1) .. string.sub(msg, last)
-    return result
+    local final, _ = string.find(result, "for further information")
+    if final ~= nil then
+        result = string.sub(result, 1, final - 1)
+    end
+
+    -- remove "to override ..." messages
+    final, _ = string.find(result, "to override")
+    if final == nil then
+        return result
+    else
+        return string.sub(result, 1, final - 1)
+    end
 end
 
 vim.diagnostic.config {
     virtual_text = {
         spacing = 3,
         format = function(diag)
-            return remove_further_information(diag.message)
+            return remove_unnecessary_info(diag.message)
         end,
     },
     signs = false,
