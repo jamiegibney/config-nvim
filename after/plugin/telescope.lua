@@ -69,9 +69,22 @@ require("telescope").setup {
         prompt_title = false,
         dynamic_preview_title = true,
         results_title = false,
-        path_display = {
-            truncate = 2,
-        },
+        path_display = function(_, path)
+            local get_status = require("telescope.state").get_status
+            local truncate = require("plenary.strings").truncate
+
+            local truncate_len = 2
+            local status = get_status(vim.api.nvim_get_current_buf())
+            local len = vim.api.nvim_win_get_width(status.results_win)
+                - status.picker.selection_caret:len() - 2
+            local path_len = len - truncate_len
+
+            local truncated = truncate(path, path_len, nil, -1)
+
+            return " " .. truncated
+        end,
+
+        -- function to show file name before the file path
         -- path_display = function(_, path)
         --     local tail = vim.fs.basename(path)
         --     local parent = vim.fs.dirname(path)
