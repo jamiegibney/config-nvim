@@ -44,6 +44,9 @@ km.set("n", "<leader>su", builtin.spell_suggest)
 -- "find help"
 km.set("n", "<leader>fh", builtin.help_tags)
 
+-- "see registers"
+km.set("n", "<leader>sr", builtin.registers)
+
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "smart_history")
 
