@@ -75,15 +75,15 @@ local function status_line()
     )
 end
 
-function M.set_status_line()
+local function set_status_line()
     vim.opt.statusline = status_line()
 end
 
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     pattern = "*",
     callback = function()
-        M.set_status_line()
+        set_status_line()
     end
 })
 
-return M
+set_status_line()
