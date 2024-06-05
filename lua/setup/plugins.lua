@@ -16,7 +16,7 @@ require("lazy").setup({
     },
 
     -- themes
-    -- { "savq/melange-nvim", event = "VeryLazy", },
+    { "savq/melange-nvim", event = "VeryLazy", },
     -- { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
     -- { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
 
