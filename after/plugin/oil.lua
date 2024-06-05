@@ -30,6 +30,11 @@ require("oil").setup {
                 return true
             end
 
+            local start, _ = string.find(name, ".meta")
+            if start ~= nil then
+                return true
+            end
+
             return false
         end
     },
