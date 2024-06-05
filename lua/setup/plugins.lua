@@ -16,9 +16,9 @@ require("lazy").setup({
     },
 
     -- themes
-    { "savq/melange-nvim", event = "VeryLazy", },
-    { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
-    { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
+    -- { "savq/melange-nvim", event = "VeryLazy", },
+    -- { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
+    -- { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
 
     { -- ast stuff
         "nvim-treesitter/nvim-treesitter",
@@ -64,12 +64,6 @@ require("lazy").setup({
         },
     },
 
-    { -- workspace diagnostics
-        "folke/trouble.nvim",
-        event = "LspAttach",
-        enabled = false,
-    },
-
     {
         "hrsh7th/nvim-cmp",
         lazy = false,
@@ -83,15 +77,6 @@ require("lazy").setup({
             "felipelema/cmp-async-path",
             "L3MON4D3/LuaSnip",
         }
-    },
-
-    { -- auto-pairing of () [] {} <> "" '', etc
-        "windwp/nvim-autopairs",
-        opts = {
-            disable_filetype = { "TelescopePrompt", "vim", "plain text", "txt" },
-        },
-        event = "InsertEnter",
-        enabled = false,
     },
 
     -- { -- rust-tools replacement
@@ -110,6 +95,7 @@ require("lazy").setup({
 
     { -- debugging tool
         "mfussenegger/nvim-dap",
+        enabled = false,
     },
 
     { -- auto-saving
@@ -142,19 +128,19 @@ require("lazy").setup({
         lazy = false,
     },
 
-    { -- devicons
-        "nvim-tree/nvim-web-devicons",
-    },
+    -- { -- devicons
+    --     "nvim-tree/nvim-web-devicons",
+    -- },
 
-    { -- startup screen
-        "goolord/alpha-nvim",
-        cmd = "Alpha",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("alpha").setup(require("alpha.themes.custom_theme").config)
-        end,
-        enabled = false,
-    },
+    -- { -- startup screen
+    --     "goolord/alpha-nvim",
+    --     cmd = "Alpha",
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     config = function()
+    --         require("alpha").setup(require("alpha.themes.custom_theme").config)
+    --     end,
+    --     enabled = false,
+    -- },
 
     { -- rust crate tools
         "saecki/crates.nvim",
@@ -253,15 +239,6 @@ require("lazy").setup({
     {
         "kshenoy/vim-signature",
         event = "BufRead",
-    },
-
-    {
-        "mistricky/codesnap.nvim",
-        build = "make",
-        version = "^1",
-        lazy = true,
-        cmd = "CodeSnapSave",
-        enabled = false,
     },
 
     {
