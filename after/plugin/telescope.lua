@@ -62,7 +62,10 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("telescope").setup {
     extensions = {
-        fzf = {},
+        fzf = {
+            override_generic_sorter = true,
+            override_file_sorter = true,
+        },
         history = { limit = 100, },
         wrap_results = true,
     },
@@ -146,13 +149,8 @@ require("telescope").setup {
         color_devicons = true,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 
-        file_sorter = require("telescope.sorters").get_fzy_sorter,
         file_ignore_patterns = { "node_modules" },
-        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
         mappings = {
             i = {
