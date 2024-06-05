@@ -162,6 +162,9 @@ end)
 -- insert trailing semicolon and enter normal mode
 map("i", "<C-CR>", "<C-c>A;<C-c>")
 
+-- open line below cursor in insert
+map("i", "<C-o>", "<C-c>O")
+
 -- backwards-deletes a word in insert mode
 -- note that <M-BS> is how the terminal interprets <C-BS> and this has nothing to do with the meta key.
 map("i", "<M-BS>", "<C-w>")
