@@ -128,9 +128,9 @@ require("lazy").setup({
         lazy = false,
     },
 
-    -- { -- devicons
-    --     "nvim-tree/nvim-web-devicons",
-    -- },
+    { -- devicons
+        "nvim-tree/nvim-web-devicons",
+    },
 
     -- { -- startup screen
     --     "goolord/alpha-nvim",
