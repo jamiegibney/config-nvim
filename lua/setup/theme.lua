@@ -163,7 +163,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "rustQuestionMark", { link = "rustKeyword", })
 
     -- literals
-    api.nvim_set_hl(0, "String", { fg = "#0a8521", italic = true, })
+    api.nvim_set_hl(0, "String", { fg = "#0f8f21", italic = true, })
     api.nvim_set_hl(0, "Character", { link = "String", })
     -- api.nvim_set_hl(0, "rustLifetime", { fg = "#20999d", italic = true, })
     api.nvim_set_hl(0, "rustLifetime", { fg = "#00ab9c" })
@@ -192,7 +192,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.library.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.rust", {})
-    api.nvim_set_hl(0, "@lsp.typemod.variable.constant.rust", { fg = "#a215a0", bold = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.const.constant.rust", { fg = "#a215a0", bold = true, })
     -- api.nvim_set_hl(0, "@lsp.mod.static.rust", { fg = "#000000", bold = true, })
     api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = "#000000", })
     api.nvim_set_hl(0, "@macro", { fg = "#dd6718", })
@@ -245,9 +245,11 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.function.static.rust", { fg = method_color, })
     api.nvim_set_hl(0, "@lsp.mod.callable.rust", { link = "@lsp.type.function.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.callable", { link = "@lsp.type.function.rust" })
-    api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.rust", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.typemod.function.library.rust", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.rust", { link = "none" })
     -- associated function (calls and declarations)
     api.nvim_set_hl(0, "@lsp.typemod.method.static.rust", { fg = "#0079a5", italic = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.function.associated.rust", { fg = "#0079a5", })
 
     api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.rust", { fg = method_color, })
     api.nvim_set_hl(0, "rustFuncCall", { fg = method_color, })
@@ -284,10 +286,10 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.macro.defaultLibrary.rust", { link = "@macro" })
     api.nvim_set_hl(0, "@lsp.typemod.macro.library.rust", { link = "@macro" })
     api.nvim_set_hl(0, "@lsp.typemod.macro.declaration.rust", { bold = true })
-    api.nvim_set_hl(0, "@lsp.type.string.rust", { fg = "#0a8521", italic = true, })
+    api.nvim_set_hl(0, "@lsp.type.string.rust", { fg = "#0f8f21", italic = true, })
     api.nvim_set_hl(0, "rustString", { link = "String" })
     api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", })
-    api.nvim_set_hl(0, "@lsp.typemod.decorator.attribute.rust", { fg = "#af9800" })
+    api.nvim_set_hl(0, "@lsp.typemod.decorator.attribute.rust", { fg = "#b89e00" })
     api.nvim_set_hl(0, "@lsp.typemod.generic.attribute.rust", { fg = "#000000" })
     api.nvim_set_hl(0, "@lsp.typemod.derive.attribute.rust", { fg = "#000000" })
     api.nvim_set_hl(0, "@lsp.mod.attribute.rust", { fg = "#af9800" })
@@ -303,7 +305,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.type.lifetime.rust", { link = "rustLifetime", })
     api.nvim_set_hl(0, "@lsp.typemod.operator.controlFlow.rust", { link = "Statement", })
 
-    api.nvim_set_hl(0, "@lsp.type.interface.rust", { fg = "#8a49dd" })
+    api.nvim_set_hl(0, "@lsp.type.interface.rust", { fg = "#8a2bed" })
     api.nvim_set_hl(0, "@lsp.typemod.interface.library.rust", { link = "@lsp.type.interface.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.interface.declaration.rust", { link = "Identifier", })
 
@@ -316,6 +318,19 @@ local function set_highlights()
 end
 
 M = {}
+
+vim.api.nvim_create_autocmd("LspTokenUpdate", {
+    callback = function(args)
+        local token = args.data.token
+        if token.type == "function" and token.modifiers.static and
+            token.modifiers.library then
+            vim.lsp.semantic_tokens.highlight_token(
+                token, args.buf, args.data.client_id,
+                "@lsp.typemod.function.static.rust"
+            )
+        end
+    end
+})
 
 function M.set_theme()
     vim.cmd.colorscheme "melange"
