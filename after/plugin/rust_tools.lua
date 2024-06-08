@@ -105,7 +105,7 @@ require("rust-tools").setup({
                 rustfmt = {
                     extraArgs = {
                         "--config",
-                        "use_small_heuristics=Max,control_brace_style=ClosingNextLine,max_width=80,chain_width=60,overflow_delimited_expr=true,short_array_element_width_threshold=100",
+                        "use_small_heuristics=Max,control_brace_style=ClosingNextLine,max_width=80,chain_width=60,overflow_delimited_expr=true,short_array_element_width_threshold=80,wrap_comments=true,use_field_init_shorthand=true",
                     },
                 },
             },
