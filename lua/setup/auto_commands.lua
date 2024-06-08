@@ -71,6 +71,26 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     end
 })
 
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = { "*.rs" },
+    callback = function()
+        print("yes")
+        vim.cmd("setlocal textwidth=80")
+    end
+})
+
+local remember_folds = vim.api.nvim_create_augroup("remember_folds", {})
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    group = remember_folds,
+    pattern = "?*",
+    command = "silent! loadview 1",
+})
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+    group = remember_folds,
+    pattern = "?*",
+    command = "mkview 1",
+})
+
 -- allow the ability to reset the theme with ":ResetTheme"
 vim.api.nvim_create_user_command("ResetTheme", function()
     require("setup.theme").set_theme()
