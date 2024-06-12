@@ -231,6 +231,7 @@ local function set_highlights()
     -- * -- Rust highlights -- * --
     -- types
     api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.rust", { fg = "#000000", })
+    api.nvim_set_hl(0, "@variable.member.rust", { link = "@lsp.type.property" })
 
     -- variables and parameters (closure variables are considered parameters)
     api.nvim_set_hl(0, "@lsp.type.variable.rust", { link = "Identifier" })
