@@ -74,7 +74,6 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     pattern = { "*.rs" },
     callback = function()
-        print("yes")
         vim.cmd("setlocal textwidth=80")
     end
 })
