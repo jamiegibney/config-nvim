@@ -63,12 +63,12 @@ map("n", "<leader>ac", function() toggle_auto_completion() end)
 
 -- "toggle diagnostics"
 map("n", "<leader>td", function()
-    if vim.diagnostic.is_disabled() then
+    if not vim.diagnostic.is_enabled() then
         print("Diagnostics enabled")
         vim.diagnostic.enable()
     else
         print("Diagnostics disabled")
-        vim.diagnostic.disable()
+        vim.diagnostic.enable(false)
     end
 end)
 
