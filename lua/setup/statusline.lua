@@ -37,8 +37,6 @@
 --     return res
 -- end
 --
--- vim.api.nvim_set_hl(0, "SLWarn", { bold = true, fg = "#d9aa0d", bg = "#ededed" })
--- vim.api.nvim_set_hl(0, "SLError", { bold = true, fg = "#d95716", bg = "#ededed" })
 --
 -- local function status_line()
 --     local set_color_1 = "%#StatusLineNC#"
@@ -81,13 +79,15 @@
 
 -- set_status_line()
 
-vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "BufWrite" }, {
+vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrite" }, {
     pattern = "*",
     callback = function()
+        vim.api.nvim_set_hl(0, "SLWarn", { bold = true, fg = "#d9aa0d", bg = "#ededed" })
+        vim.api.nvim_set_hl(0, "SLError", { bold = true, fg = "#d95716", bg = "#ededed" })
+
         local set_color_1 = "%#StatusLineNC#"
         local set_color_2 = "%#StatusLine#"
         local set_color_3 = "%#StatusLineNC#"
-        local set_color_error = "%#SLError#"
 
         local file_dir = "/%f"
         local modified_read_only = "%m%r"
@@ -105,12 +105,27 @@ vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "BufWrite" }, {
             errs = num_errors .. " errors"
         end
 
+        local num_warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        local warns = ""
+        if num_warnings == 1 then
+            warns = num_warnings .. " warn"
+        elseif num_warnings > 1 then
+            warns = num_warnings .. " warns"
+        end
+
+        local set_color_error = ""
+        if num_errors >= 1 then set_color_error = "%#SLError#" else set_color_error = set_color_3 end
+        local set_color_warning = "%#SLWarn#"
+        if num_warnings >= 1 then set_color_warning = "%#SLWarn#" else set_color_warning = set_color_3 end
+
         vim.opt.statusline = string.format(
-            "%s%s %s%s%s%s %s%s %s %s%s ",
+            "%s%s %s%s%s%s %s%s %s%s %s %s%s ",
             set_color_1,
             file_dir,
             modified_read_only,
             align_right,
+            set_color_warning,
+            warns,
             set_color_error,
             errs,
             set_color_2,
