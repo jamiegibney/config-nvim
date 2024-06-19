@@ -35,7 +35,7 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 
 -- clear search highlight (but not the search term, so n and N will work)
-map("n", "<C-c>", ":noh<CR>")
+map("n", "<C-c>", function() error("PRESS ESC!") end)
 map("n", "<Esc>", ":noh<CR>")
 
 -- move through soft-wrapped lines
@@ -60,10 +60,44 @@ map("n", "<C-p>", "V:move '<-2<CR>gv=gv<Esc>")
 map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
 
 -- insert semicolon at end of line
-map("n", "<C-CR>", "A;<C-c>")
+map("n", "<C-CR>", "A;<Esc>")
 
 -- copy contents of buffer
 map("n", "<leader>%", "ggyG<C-o>")
+
+-- "read me"
+map("n", "<leader>rm", function()
+    local function open(name)
+        vim.cmd("edit " .. name)
+        print("Opened README")
+    end
+
+    -- search for different common variations of READMEs first
+    if #vim.fs.find({ "README.md" }, { type = "file" }) >= 1 then
+        open("README.md")
+    elseif #vim.fs.find("README", { type = "file" }) >= 1 then
+        open("README")
+    elseif #vim.fs.find("readme.md", { type = "file" }) >= 1 then
+        open("readme.md")
+    elseif #vim.fs.find("readme", { type = "file" }) >= 1 then
+        open("readme")
+    else
+        -- if none found, just create README.md
+        vim.cmd("edit README.md")
+        print("No README found; created README.md")
+    end
+end)
+
+-- "git ignore"
+map("n", "<leader>gi", function()
+    if #vim.fs.find({ ".gitignore" }, { type = "file" }) >= 1 then
+        print("Opened gitignore")
+    else
+        print("No .gitignore found; created new .gitignore file")
+    end
+
+    vim.cmd("edit .gitignore")
+end)
 
 -- split resizign
 -- decrease split width
@@ -159,18 +193,20 @@ end)
 
 -- * --  INSERT MODE  -- * --
 
+map("i", "<C-c>", function() error("PRESS ESC!") end)
+
 -- insert trailing semicolon and enter normal mode
-map("i", "<C-CR>", "<C-c>A;<C-c>")
+map("i", "<C-CR>", "<Esc>A;<Esc>")
 
 -- open line below cursor in insert
-map("i", "<C-o>", "<C-c>O")
+map("i", "<C-o>", "<Esc>O")
 
 -- backwards-deletes a word in insert mode
--- note that <M-BS> is how the terminal interprets <C-BS> and this has nothing to do with the meta key.
-map("i", "<M-BS>", "<C-w>")
+map("i", "<C-BS>", "<C-w>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
-map({ "i", "v", "c", "s" }, "<C-c>", "<Esc>")
+map({ "i", "v", "c", "s" }, "<Esc>", "<Esc>")
+
 
 -- * --  VISUAL MODE  -- * --
 
@@ -186,6 +222,3 @@ map("v", "gb", "<Plug>(comment_toggle_blockwise_visual)")
 
 -- folding
 map("v", "<leader>fl", ":fold<CR>")
-
--- codesnap
-map("v", "<leader>cs", ":CodeSnap<CR>")
