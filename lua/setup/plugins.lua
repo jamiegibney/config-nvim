@@ -4,7 +4,7 @@ require("lazy").setup({
         tag = "0.1.6",
         dependencies = {
             { "nvim-lua/plenary.nvim", },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
             { "nvim-telescope/telescope-smart-history.nvim", },
         },
         keys = {
@@ -15,12 +15,11 @@ require("lazy").setup({
         cmd = "Telescope",
     },
 
-    -- themes
     { "savq/melange-nvim", event = "VeryLazy", },
     -- { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
     -- { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
 
-    { -- ast stuff
+    { -- syntax highlighting
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         event = "LspAttach",
@@ -30,9 +29,7 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter-context",
         event = "LspAttach",
         config = function()
-            require("treesitter-context").setup {
-                max_lines = 3,
-            }
+            require("treesitter-context").setup()
         end,
     },
 
@@ -52,7 +49,7 @@ require("lazy").setup({
         event = "LspAttach",
     },
 
-    {
+    { -- lsp stuff
         "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
@@ -64,7 +61,7 @@ require("lazy").setup({
         },
     },
 
-    {
+    { -- autocompletion
         "hrsh7th/nvim-cmp",
         lazy = false,
 
@@ -88,12 +85,12 @@ require("lazy").setup({
     --     },
     -- },
 
-    {
+    { -- rust enhancements
         "simrat39/rust-tools.nvim",
         event = "BufEnter *.rs",
     },
 
-    { -- debugging tool
+    { -- debugging tools
         "mfussenegger/nvim-dap",
         enabled = false,
     },
@@ -139,7 +136,7 @@ require("lazy").setup({
     --     config = function()
     --         require("alpha").setup(require("alpha.themes.custom_theme").config)
     --     end,
-    --     enabled = false,
+    --     -- enabled = false,
     -- },
 
     { -- rust crate tools
@@ -215,10 +212,11 @@ require("lazy").setup({
         end,
 
         cmd = "SymbolsOutline",
-        enabled = false,
+        keys = { { "<leader>so>", "<cmd>SymbolsOutline<CR>" }, },
+        enabled = true,
     },
 
-    {
+    { -- move text to the centre of the screen
         "folke/zen-mode.nvim",
         cmd = "ZenMode",
         opts = {
@@ -228,7 +226,7 @@ require("lazy").setup({
         },
     },
 
-    {
+    { -- show git diff in buffer
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
@@ -236,12 +234,12 @@ require("lazy").setup({
         event = "BufRead",
     },
 
-    {
+    { -- show marks in the sign column
         "kshenoy/vim-signature",
         event = "BufRead",
     },
 
-    {
+    { -- pick colours directly in the editor
         "ziontee113/color-picker.nvim",
         lazy = false,
         config = function()
