@@ -2,7 +2,7 @@ require("ibl").setup({
     scope = {
         enabled = true,
         char = "▏",
-        highlight = "DiagnosticHint",
+        highlight = "DiagnosticInfo",
         show_start = false,
         show_end = false,
     },
