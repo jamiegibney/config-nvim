@@ -185,7 +185,13 @@ local function set_highlights()
     api.nvim_set_hl(0, "Function", {})
 
     api.nvim_set_hl(0, "@comment.todo.comment", { link = "Todo" })
+    api.nvim_set_hl(0, "@comment.note.comment", { fg = "#d9aa0d", bold = true })
+    api.nvim_set_hl(0, "@comment.error.comment", { fg = "#d95716", bold = true })
+    api.nvim_set_hl(0, "@string.special.url.comment", { fg = "#70abe9", italic = true, underline = true })
 
+    api.nvim_set_hl(0, "@lsp.typemod.constParameter.constant.rust", {
+        link = "@lsp.typemod.const.constant.rust"
+    })
     api.nvim_set_hl(0, "@lsp.typemod.const.documentation.rust", {
         link = "@lsp.typemod.const.constant.rust"
     })
@@ -196,7 +202,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.enumMember.defaultLibrary.rust", { link = "@lsp.type.enumMember" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.rust", {})
     api.nvim_set_hl(0, "@lsp.typemod.const.constant.rust", { fg = "#a215a0", bold = true, })
-    -- api.nvim_set_hl(0, "@lsp.mod.static.rust", { fg = "#000000", bold = true, })
+    api.nvim_set_hl(0, "@lsp.type.static.rust", { fg = "#000000", bold = true, })
     api.nvim_set_hl(0, "@lsp.type.namespace.rust", { fg = "#000000", })
     api.nvim_set_hl(0, "@macro", { fg = "#dd6718", })
     api.nvim_set_hl(0, "@function.macro.rust", { link = "@macro" })
@@ -311,7 +317,7 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "@lsp.type.interface.rust", { fg = "#8a2bed" })
     api.nvim_set_hl(0, "@lsp.typemod.interface.library.rust", { link = "@lsp.type.interface.rust" })
-    api.nvim_set_hl(0, "@lsp.typemod.interface.declaration.rust", { link = "Identifier", })
+    api.nvim_set_hl(0, "@lsp.typemod.interface.declaration.rust", { link = "@lsp.type.interface.rust", })
 
     api.nvim_set_hl(0, "TabLineSel", { link = "Visual", })
 
