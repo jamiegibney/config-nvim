@@ -56,6 +56,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = { "*.glsl", "*.vert", "*.frag", "*.comp", "*.geom", "*.tesc", "*.tese" },
+    callback = function()
+        vim.bo.filetype = "glsl"
+    end
+})
+
 -- stop treesitter highlighting for already-configured filetypes
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.lua", "*.sh", "*.toml", "*.md", },
