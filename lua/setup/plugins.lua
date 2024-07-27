@@ -29,7 +29,9 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter-context",
         event = "LspAttach",
         config = function()
-            require("treesitter-context").setup()
+            require("treesitter-context").setup({
+                max_lines = 5,
+            })
         end,
     },
 
@@ -59,6 +61,11 @@ require("lazy").setup({
                 event = "BufEnter *.lua",
             },
         },
+    },
+
+    {
+        "Issafalcon/lsp-overloads.nvim",
+        event = "LspAttach",
     },
 
     { -- autocompletion
@@ -245,6 +252,27 @@ require("lazy").setup({
         config = function()
             require("color-picker").setup()
         end
+    },
+
+    { -- case formatting coercion
+        "tpope/vim-abolish",
+        event = "BufRead",
+    },
+
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     lazy = false,
+    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    -- },
+
+    {
+        "MeanderingProgrammer/markdown.nvim",
+        main = "render-markdown",
+        lazy = false,
+        opts = {
+            --
+        },
+        -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     },
 }, {
     defaults = {
