@@ -1,5 +1,15 @@
 local on_attach = function(client, bufnr)
-    -- TODO(jamiegibney) needed?
+    if client.server_capabilities.signatureHelpProvider then
+        require("lsp-overloads").setup(client, {
+            keymaps = {
+                next_signature = "<C-l>",
+                previous_signature = "<C-h>",
+                next_parameter = "",
+                previous_parameter = "",
+            },
+            display_automatically = false,
+        })
+    end
 end
 
 local map = function(keys, func)
@@ -20,6 +30,9 @@ map("<leader>fm", function() vim.lsp.buf.format({ async = true }) end)
 
 -- "goto definition"
 map("gd", function() vim.lsp.buf.definition() end)
+
+-- "goto declaration"
+map("gG", function() vim.lsp.buf.declaration() end)
 
 -- "goto definition"
 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
