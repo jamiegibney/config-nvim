@@ -27,6 +27,14 @@ local links = {
     ["@lsp.typemod.variable.readonly"]       = "@constant",
 }
 
+local function set_glsl_highlights()
+    api.nvim_set_hl(0, "@type.builtin.glsl", { link = "Statement", })
+    api.nvim_set_hl(0, "@type.glsl", { link = "Statement", })
+    api.nvim_set_hl(0, "@variable.builtin.glsl", { link = "Special", })
+    api.nvim_set_hl(0, "@function.call.glsl", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "@function.glsl", { fg = "#0070a0", bold = true })
+end
+
 -- * -- C++ highlights -- * --
 local function set_cpp_highlights()
     local cpp_class_purple = "#8023c0"
@@ -34,9 +42,11 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.cpp", { fg = "#00ab9c", })
     api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.cpp", { link = "none" })
     api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { link = "none" })
+    api.nvim_set_hl(0, "@type.builtin.cpp", { link = "rustKeyword", })
     api.nvim_set_hl(0, "cppType", { link = "rustKeyword", })
     api.nvim_set_hl(0, "cppTypedef", { link = "cType", })
     api.nvim_set_hl(0, "cppStructure", { link = "cType", })
+    api.nvim_set_hl(0, "cppString", { fg = "#0a8521", italic = true, })
     api.nvim_set_hl(0, "cppString", { fg = "#0a8521", italic = true, })
     api.nvim_set_hl(0, "cppRawString", { link = "cppString", })
     api.nvim_set_hl(0, "cppRawStringDelimiter", { link = "cppString", })
@@ -44,30 +54,38 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "cppEnum", { link = "cType", })
     api.nvim_set_hl(0, "cppSpecialCharacter", { link = "@lsp.type.formatSpecifier.rust" })
     api.nvim_set_hl(0, "cppSpecial", { link = "@lsp.type.formatSpecifier.rust" })
+    api.nvim_set_hl(0, "cppModifier", { link = "cppType" })
     api.nvim_set_hl(0, "cppOperator", { link = "ctype", })
     api.nvim_set_hl(0, "cStorageClass", { link = "ctype", })
     api.nvim_set_hl(0, "cppStorageClass", { link = "cStorageClass", })
     api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
-    api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { bold = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { link = "@lsp.typemod.const.constant.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.static.cpp", { bold = true, underline = true, })
     api.nvim_set_hl(0, "@lsp.type.variable.cpp", { fg = "#000000", })
     api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#0070a0", })
+    api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { fg = "#9c9c9c", })
     api.nvim_set_hl(0, "@lsp.typemod.typeParameter.classScope.cpp", { fg = cpp_class_purple, bold = true })
     api.nvim_set_hl(0, "@lsp.typemod.typeParameter.functionScope.cpp", { fg = cpp_class_purple, bold = true })
     api.nvim_set_hl(0, "@lsp.typemod.operator.userDefined.cpp", { link = "DiagnosticOk" })
 
+    api.nvim_set_hl(0, "@lsp.typemod.class.classScope.cpp", { link = "Normal" })
+    api.nvim_set_hl(0, "@lsp.typemod.class.abstract.cpp", { link = "@lsp.type.interface.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.property.classScope.cpp", { link = "@lsp.type.property" })
 
 
     -- api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
-    api.nvim_set_hl(0, "@lsp.type.class.cpp", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.typemod.class.declaration.cpp", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.typemod.class.definition.cpp", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.typemod.class.constructorOrDestructor.cpp", { link = "DiagnosticHint" })
+    api.nvim_set_hl(0, "@lsp.typemod.class.classScope.cpp", { link = "DiagnosticHint" })
     -- api.nvim_set_hl(0, "@lsp.mod.classScope.cpp", { link = "@lsp.type.function.cpp" })
+    api.nvim_set_hl(0, "@lsp.mod.deduced.cpp", { link = "rustKeyword" })
     api.nvim_set_hl(0, "@lsp.type.macro.cpp", { link = "@macro" })
     api.nvim_set_hl(0, "@lsp.type.method.cpp", { fg = method_color })
     api.nvim_set_hl(0, "@lsp.typemod.method.classScope.cpp", { fg = method_color })
     api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
     api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
-    api.nvim_set_hl(0, "@lsp.typemod.parameter.functionScope.cpp", { italic = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.parameter.functionScope.cpp", { sp = "#dddddd", underline = true, })
     api.nvim_set_hl(0, "@lsp.typemod.method.definition.cpp", { link = "@lsp.typemod.function.declaration" })
     api.nvim_set_hl(0, "@lsp.type.type.cpp", { link = "DiagnosticHint" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.cpp", { italic = false, })
@@ -325,6 +343,7 @@ local function set_highlights()
 
     set_cpp_highlights()
     set_cs_highlights()
+    set_glsl_highlights()
 end
 
 M = {}
@@ -337,6 +356,12 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
             vim.lsp.semantic_tokens.highlight_token(
                 token, args.buf, args.data.client_id,
                 "@lsp.typemod.function.static.rust"
+            )
+        end
+        if token.type == "enumMember" then
+            vim.lsp.semantic_tokens.highlight_token(
+                token, args.buf, args.data.client_id,
+                "@lsp.type.enumMember.cpp"
             )
         end
     end
