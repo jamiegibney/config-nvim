@@ -47,6 +47,18 @@ km.set("n", "<leader>fh", builtin.help_tags)
 -- "see registers"
 km.set("n", "<leader>sr", builtin.registers)
 
+-- "show functions"
+km.set("n", "<leader>sf", function()
+    vim.cmd(
+        "Telescope lsp_document_symbols symbol_width=40 symbols={\"function\",\"method\",\"constructor\",\"destructor\"}")
+end)
+
+-- "show functions"
+km.set("n", "<leader>ss", function()
+    vim.cmd(
+        "Telescope lsp_document_symbols symbol_width=40")
+end)
+
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "smart_history")
 
