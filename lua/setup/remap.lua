@@ -99,6 +99,10 @@ map("n", "<leader>gi", function()
     vim.cmd("edit .gitignore")
 end)
 
+map("n", "<leader>th", function()
+    vim.cmd("edit ~/.config/nvim/lua/setup/theme.lua")
+end)
+
 -- split resizign
 -- decrease split width
 map("n", "<C-,>", "4<C-w><")
@@ -206,7 +210,6 @@ map("i", "<C-BS>", "<C-w>")
 
 -- allows visual block edits to apply across multiple lines when using <C-c>
 map({ "i", "v", "c", "s" }, "<Esc>", "<Esc>")
-
 
 -- * --  VISUAL MODE  -- * --
 
