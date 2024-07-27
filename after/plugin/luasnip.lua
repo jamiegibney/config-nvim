@@ -66,3 +66,52 @@ ls.add_snippets("rust", {
         name = "Print macro",
     }, fmt("print!(\"{}\");", { insert(0) })),
 })
+
+ls.add_snippets("cpp", {
+    snip({
+        trig = "nl",
+        name = "Newline character",
+    }, fmt("'\\n'{}", { insert(0) })),
+    snip({
+        trig = "prl",
+        name = "std::cout snippet",
+    }, fmt("cout << \"{}\" << {}'\\n';", { insert(1), insert(0) })),
+    snip({
+        trig = "th",
+        name = "this-> shortcut",
+    }, fmt("this->{}", { insert(0) })),
+    snip({
+        trig = "cfoff",
+        name = "Disable clang-format",
+    }, fmt("// clang-format off", {})),
+    snip({
+        trig = "cfon",
+        name = "Enable clang-format",
+    }, fmt("// clang-format on", {})),
+    snip({
+            trig = "classnew",
+            name = "\"Safe\" class template",
+        },
+        fmt(
+            "class NAME {{\n private:\n    NAME() = default;\n\n    struct State {{\n        //\n    }} m;\n\n    explicit NAME(State s) : m(std::move(s)) {{}}\n\n public:\n    static NAME create() {{\n        return NAME(State {{\n            //\n        }});\n    }}\n}};",
+            {})),
+
+    snip({
+        trig = "pasf",
+        name = "pasf prelude header",
+    }, fmt("#pragma once\n\n#include \"../{}\"\nusing namespace pasf::prelude;", { insert(0) })),
+    -- snip({
+    --         trig = "newcl",
+    --         regTrig = true,
+    --         name = "Class template with \"safe\" constructor",
+    --     },
+    --     ls.function_node(function(_, s)
+    --         local cl = s.captures[1]
+    --         return "class " .. cl .. " {\n private:\n    " ..
+    --             cl ..
+    --             "() = default;\n\n    struct State {\n        //\n    } m;\n\n    explicit " ..
+    --             cl ..
+    --             "(State s) : m(std::move(s)) {}\n\n public:\n    static " ..
+    --             cl .. " create() {\n        return " .. cl .. "(State {\n            //\n        });\n    }\n};"
+    --     end, {})),
+})
