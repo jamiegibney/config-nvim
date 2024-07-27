@@ -15,7 +15,7 @@ require("nvim-treesitter.configs").setup {
         "query",
 
         "wgsl",
-        "gls",
+        "glsl",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
