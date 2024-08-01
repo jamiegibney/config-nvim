@@ -60,7 +60,7 @@ km.set("n", "<leader>ss", function()
 end)
 
 pcall(require("telescope").load_extension, "fzf")
-pcall(require("telescope").load_extension, "smart_history")
+-- pcall(require("telescope").load_extension, "smart_history")
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "TelescopeResults",
