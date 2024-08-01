@@ -123,19 +123,19 @@ map("n", "<leader>cw", "ZZ")
 -- close all other splits, i.e. "maximise" the current split
 map("n", "<leader><leader>", "<C-w>o")
 
--- -- tabs
--- -- "new tab"
--- map("n", "<leader>nt", ":tabnew<CR>")
+-- tabs
+-- "new tab"
+map("n", "<leader>nt", ":tab split<CR>")
 -- -- "open (current buffer in) tab"
 -- map("n", "<leader>ot", ":tab split<CR>")
--- -- "close tab"
--- map("n", "<leader>ct", ":tabclose<CR>")
--- -- "tab next"
--- map("n", "<leader>tn", ":tabnext<CR>")
--- -- "tab previous"
--- map("n", "<leader>tp", ":tabprev<CR>")
--- -- "tab only" - close all tabs but the current
--- map("n", "<leader>to", ":tabonly<CR>")
+-- "close tab"
+map("n", "<leader>ct", ":tabclose<CR>")
+-- "tab next"
+map("n", "<leader>tn", ":tabnext<CR>")
+-- "tab previous"
+map("n", "<leader>tp", ":tabprev<CR>")
+-- "tab only" - close all tabs but the current
+map("n", "<leader>to", ":tabonly<CR>")
 
 -- unmap tagstack for tmux
 map("n", "<C-t>", "")
