@@ -4,8 +4,8 @@ require("lazy").setup({
         tag = "0.1.6",
         dependencies = {
             { "nvim-lua/plenary.nvim", },
-            { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
-            { "nvim-telescope/telescope-smart-history.nvim", },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            -- { "nvim-telescope/telescope-smart-history.nvim", },
         },
         keys = {
             { "<leader>ff", "<cmd>Telescope find_files", },
@@ -56,10 +56,7 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            {
-                "folke/neodev.nvim",
-                event = "BufEnter *.lua",
-            },
+            { "folke/neodev.nvim", ft = { "lua" } },
         },
     },
 
@@ -75,7 +72,7 @@ require("lazy").setup({
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lua",
+            { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
             "hrsh7th/cmp-buffer",
 
             "felipelema/cmp-async-path",
@@ -94,7 +91,7 @@ require("lazy").setup({
 
     { -- rust enhancements
         "simrat39/rust-tools.nvim",
-        event = "BufEnter *.rs",
+        ft = { "rust", },
     },
 
     { -- debugging tools
@@ -135,16 +132,6 @@ require("lazy").setup({
     { -- devicons
         "nvim-tree/nvim-web-devicons",
     },
-
-    -- { -- startup screen
-    --     "goolord/alpha-nvim",
-    --     cmd = "Alpha",
-    --     dependencies = { "nvim-tree/nvim-web-devicons" },
-    --     config = function()
-    --         require("alpha").setup(require("alpha.themes.custom_theme").config)
-    --     end,
-    --     -- enabled = false,
-    -- },
 
     { -- rust crate tools
         "saecki/crates.nvim",
@@ -220,7 +207,7 @@ require("lazy").setup({
 
         cmd = "SymbolsOutline",
         keys = { { "<leader>so>", "<cmd>SymbolsOutline<CR>" }, },
-        enabled = true,
+        enabled = false,
     },
 
     { -- move text to the centre of the screen
@@ -244,6 +231,7 @@ require("lazy").setup({
     { -- show marks in the sign column
         "kshenoy/vim-signature",
         event = "BufRead",
+        enabled = false,
     },
 
     { -- pick colours directly in the editor
@@ -259,20 +247,35 @@ require("lazy").setup({
         event = "BufRead",
     },
 
-    -- {
-    --     "m4xshen/hardtime.nvim",
-    --     lazy = false,
-    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    -- },
+    {
+        "m4xshen/hardtime.nvim",
+        lazy = false,
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        enabled = false,
+    },
 
     {
         "MeanderingProgrammer/markdown.nvim",
         main = "render-markdown",
-        lazy = false,
-        opts = {
-            --
+        ft = { "markdown" },
+        enabled = false,
+    },
+
+    {
+        "madskjeldgaard/cppman.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", },
+        config = function()
+            local cppman = require("cppman")
+            cppman.setup()
+
+            -- vim.keymap.set("n", "<leader>cm", function()
+            --     cppman.open_cppman_for(vim.fn.expand("<cword>"))
+            -- end)
+        end,
+        keys = {
+            { "<leader>cm", "<cmd>lua require('cppman').open_cppman_for(vim.fn.expand('<cword>'))<CR>", },
         },
-        -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        enabled = false,
     },
 }, {
     defaults = {
