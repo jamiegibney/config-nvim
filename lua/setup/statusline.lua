@@ -90,27 +90,28 @@ vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrit
         local set_color_3 = "%#StatusLineNC#"
 
         local file_dir = "/%f"
+        local file_name = " %t"
         local modified_read_only = "%m%r"
         local align_right = "%="
 
         local line_col = "%l:%c"
-        local percentage = "%p%%"
+        local percentage = "%p%% (%L lines)"
         local file_type = "%y"
 
         local num_errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
         local errs = ""
         if num_errors == 1 then
-            errs = num_errors .. " error"
+            errs = num_errors .. " error   "
         elseif num_errors > 1 then
-            errs = num_errors .. " errors"
+            errs = num_errors .. " errors   "
         end
 
         local num_warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
         local warns = ""
         if num_warnings == 1 then
-            warns = num_warnings .. " warn"
+            warns = num_warnings .. " warn   "
         elseif num_warnings > 1 then
-            warns = num_warnings .. " warns"
+            warns = num_warnings .. " warns   "
         end
 
         local set_color_error = ""
@@ -119,7 +120,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrit
         if num_warnings >= 1 then set_color_warning = "%#SLWarn#" else set_color_warning = set_color_3 end
 
         vim.opt.statusline = string.format(
-            "%s%s %s%s%s%s %s%s %s%s %s %s%s ",
+            "%s%s %s%s%s%s%s%s%s%s %s   %s%s ",
             set_color_1,
             file_dir,
             modified_read_only,
