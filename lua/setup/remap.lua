@@ -213,6 +213,9 @@ map({ "i", "v", "c", "s" }, "<Esc>", "<Esc>")
 
 -- * --  VISUAL MODE  -- * --
 
+-- easy align
+map({ "v", "n" }, "<leader>ea", "<Plug>(EasyAlign)")
+
 -- move selected block and auto-indent
 map("v", "<C-p>", ":move '<-2<CR>gv=gv")
 map("v", "<C-n>", ":move '>+1<CR>gv=gv")
