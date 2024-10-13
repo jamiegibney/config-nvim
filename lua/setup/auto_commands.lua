@@ -118,3 +118,11 @@ end, {})
 vim.api.nvim_create_user_command("ToggleInsertCursor", function()
     require("setup.custom_functions").insert_with_block_cursor()
 end, {})
+
+vim.api.nvim_create_autocmd("Colorscheme", {
+    callback = function()
+        local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
+        io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
+    end
+})
+
