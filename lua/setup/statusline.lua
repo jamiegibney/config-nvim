@@ -79,7 +79,7 @@
 
 -- set_status_line()
 
-vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrite" }, {
+vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrite", "TextChanged", }, {
     pattern = "*",
     callback = function()
         vim.api.nvim_set_hl(0, "SLWarn", { bold = true, fg = "#d9aa0d", bg = "#ededed" })
