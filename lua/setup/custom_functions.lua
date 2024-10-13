@@ -48,10 +48,10 @@ local function toggle_auto_completion()
     local print_string
 
     if ac_enabled then
-        require("cmp").setup({ enabled = false })
+        require("cmp").setup({ completion = { autocomplete = false } })
         print_string = "Disabled auto-completion"
     else
-        require("cmp").setup({ enabled = true })
+        require("cmp").setup({ completion = { autocomplete = { "TextChanged" } } })
         print_string = "Enabled auto-completion"
     end
 
@@ -99,7 +99,7 @@ M.insert_with_block_cursor()
 
 vim.g.increment_alphabetic_characters = false
 
--- Toggles whether alphabetic characters can be incremented with `<C-a>` and decremented 
+-- Toggles whether alphabetic characters can be incremented with `<C-a>` and decremented
 -- with `<C-x>` (includes `g<C-a>` and `g<C-x>`).
 function M.toggle_alphabetic_incrementing()
     local opt = vim.g.increment_alphabetic_characters
