@@ -53,10 +53,17 @@ km.set("n", "<leader>sf", function()
         "Telescope lsp_document_symbols symbol_width=40 symbols={\"function\",\"method\",\"constructor\",\"destructor\"}")
 end)
 
--- "show functions"
+-- "show symbols"
 km.set("n", "<leader>ss", function()
     vim.cmd(
         "Telescope lsp_document_symbols symbol_width=40")
+end)
+
+-- "show errors"
+km.set("n", "<leader>se", function()
+    builtin.diagnostics({
+        severity = vim.diagnostic.severity.ERROR,
+    })
 end)
 
 pcall(require("telescope").load_extension, "fzf")
