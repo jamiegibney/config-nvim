@@ -36,6 +36,10 @@ local vscode_icons = {
     TypeParameter = "  ",
 }
 
+vim.keymap.set("i", "<C-y>", function() cmp.complete() end)
+vim.keymap.set("i", "<C-n>", function() cmp.complete() end)
+vim.keymap.set("i", "<C-p>", function() cmp.complete() end)
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -87,7 +91,7 @@ cmp.setup {
         }
     },
     sources = {
-        { name = "buffer" },
+        -- { name = "buffer" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "async_path" },
@@ -98,7 +102,6 @@ cmp.setup {
             scrolloff = 5,
             side_padding = 1,
         },
-        preselect = cmp.PreselectMode.None,
     },
     view = {
         entries = {
@@ -110,11 +113,17 @@ cmp.setup {
         format = function(entry, vim_item)
             vim_item.kind = (vscode_icons[vim_item.kind] or "") .. vim_item.kind
             vim_item.menu = ({
-                buffer = "[Buf]",
+                -- buffer = "[Buf]",
                 lsp = "[LSP]",
             })[entry.source.name]
 
             return vim_item
         end
-    }
+    },
+    experimental = {
+        ghost_text = {
+            hl_group = "LineNr",
+        },
+    },
+    preselect = cmp.PreselectMode.Item,
 }
