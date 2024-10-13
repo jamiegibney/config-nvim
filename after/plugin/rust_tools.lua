@@ -53,7 +53,7 @@ require("rust-tools").setup({
         settings = {
             ["rust-analyzer"] = {
                 procMacro = {
-                    enable = false,
+                    enable = true,
                 },
                 lens = {
                     enable = false,
