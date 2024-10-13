@@ -1,3 +1,20 @@
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
+-- vim.keymap.set("n", "<leader>hg", function()
+--     local tokens = vim.lsp.semantic_tokens.get_at_pos()
+--     print(dump(tokens))
+-- end)
 vim.keymap.set("n", "<leader>hg", ":Inspect<CR>")
 
 vim.g.indent_blankline_use_treesitter = true
@@ -61,6 +78,7 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
     api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { link = "@lsp.typemod.const.constant.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.static.cpp", { bold = true, underline = true, })
+    api.nvim_set_hl(0, "@lsp.type.operator.cpp", { link = "" })
     api.nvim_set_hl(0, "@lsp.type.variable.cpp", { fg = "#000000", })
     api.nvim_set_hl(0, "@lsp.type.function.cpp", { fg = "#0070a0", })
     api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { fg = "#9c9c9c", })
@@ -71,6 +89,7 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.class.classScope.cpp", { link = "Normal" })
     api.nvim_set_hl(0, "@lsp.typemod.class.abstract.cpp", { link = "@lsp.type.interface.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.property.classScope.cpp", { link = "@lsp.type.property" })
+    api.nvim_set_hl(0, "@lsp.typemod.property.readonly.cpp", { link = "@lsp.typemod.const.constant.rust" })
 
 
     -- api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
@@ -124,7 +143,7 @@ local function set_highlights()
     api.nvim_set_hl(0, "Normal", { fg = "#000000", --[[ bg = "#ffffff", ]] })
     api.nvim_set_hl(0, "NormalNC", { link = "Normal", })
     api.nvim_set_hl(0, "Todo", { fg = "#008dde", italic = true, bold = true, --[[ bg = "#c0ddef", ]] })
-    api.nvim_set_hl(0, "LineNr", { fg = "#adadad", bg = "#ffffff" })
+    api.nvim_set_hl(0, "LineNr", { fg = "#adadad" })
     api.nvim_set_hl(0, "CursorLine", { bg = "#f5f5f5", })
     api.nvim_set_hl(0, "CursorLineNr", { fg = "#7a7a7a", })
     api.nvim_set_hl(0, "ColorColumn", { link = "CursorLine", })
@@ -151,6 +170,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "PMenu", { link = "NormalFloat", })
     api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#dddddd", })
     api.nvim_set_hl(0, "IndentBlanklineContextChar", { link = "DiagnosticHint", })
+
+    api.nvim_set_hl(0, "@comment.documentation", { link = "Comment", })
 
     api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
 
@@ -341,6 +362,9 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "SignatureMarkText", { link = "Comment", })
 
+    api.nvim_set_hl(0, "OilDir", { link = "@lsp.type.method.cpp", })
+    api.nvim_set_hl(0, "OilLink", { link = "@lsp.type.namespace.cpp", })
+
     set_cpp_highlights()
     set_cs_highlights()
     set_glsl_highlights()
@@ -364,6 +388,13 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
                 "@lsp.type.enumMember.cpp"
             )
         end
+        if token.type == "class" and token.modifiers.abstract and
+            (token.modifiers.classScope or token.modifiers.class) then
+            vim.lsp.semantic_tokens.highlight_token(
+                token, args.buf, args.data.client_id,
+                "@lsp.type.interface.rust"
+            )
+        end
     end
 })
 
@@ -372,6 +403,7 @@ function M.set_theme()
     vim.opt.background = "light"
     set_highlights()
     api.nvim_set_hl(0, "@lsp.type.formatSpecifier.rust", { fg = "#0033b3", italic = false, })
+    io.stdout:write(("\027]11;#%06x\027\\"):format(16777215))
 end
 
 M.set_theme()
