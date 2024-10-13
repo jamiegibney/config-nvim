@@ -23,7 +23,10 @@ map("<leader>ca", function() vim.lsp.buf.code_action() end)
 map("<leader>i", function() vim.lsp.buf.hover() end)
 
 -- "rename"
-map("<leader>rn", function() vim.lsp.buf.rename() end)
+map("<leader>rn", function()
+    vim.lsp.buf.rename()
+    vim.cmd("silent! wa")
+end)
 
 -- "format"
 map("<leader>fm", function() vim.lsp.buf.format({ async = true }) end)
@@ -58,6 +61,21 @@ local servers = {
 local lsp_config = require("lspconfig")
 lsp_config.glsl_analyzer.setup({})
 lsp_config.wgsl_analyzer.setup({})
+lsp_config.sourcekit.setup({
+    filetypes = {
+        "swift",
+    },
+    cmd = {
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
+    },
+    capabilities = {
+        workspace = {
+            didChangeWatchedFiles = {
+                dynamicRegistration = true,
+            },
+        },
+    },
+})
 
 require("neodev").setup()
 
@@ -157,4 +175,15 @@ require("lspconfig").omnisharp.setup({
     },
     on_attach = on_attach,
     use_mono = true,
+})
+
+require("lspconfig").jsonls.setup({
+    settings = {
+        json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = {
+                enable = true,
+            },
+        },
+    },
 })
