@@ -126,3 +126,8 @@ vim.api.nvim_create_autocmd("Colorscheme", {
     end
 })
 
+vim.api.nvim_create_autocmd("VimLeave", {
+    callback = function()
+        io.stdout:write("\027]111;;\027\\")
+    end
+})
