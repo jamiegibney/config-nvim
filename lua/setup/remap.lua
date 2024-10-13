@@ -63,7 +63,7 @@ map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
 map("n", "<C-CR>", "A;<Esc>")
 
 -- copy contents of buffer
-map("n", "<leader>%", "ggyG<C-o>")
+map("n", "<leader>%", "<cmd>%y<CR>")
 
 -- "read me"
 map("n", "<leader>rm", function()
