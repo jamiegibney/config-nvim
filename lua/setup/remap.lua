@@ -65,6 +65,9 @@ map("n", "<C-CR>", "A;<Esc>")
 -- copy contents of buffer
 map("n", "<leader>%", "<cmd>%y<CR>")
 
+-- crudely convert snake_case to camelCase
+map("n", "<leader>cc", "f_x~;x~;x~;x~;x~;x~;x~;x~")
+
 -- "read me"
 map("n", "<leader>rm", function()
     local function open(name)
@@ -140,9 +143,6 @@ map("n", "<leader>to", ":tabonly<CR>")
 -- unmap tagstack for tmux
 map("n", "<C-t>", "")
 
--- "clear edits"
-map("n", "<leader>ce", ":e!<CR>")
-
 -- "spelling" - enable typo highlighting
 map("n", "<leader>sp", function()
     vim.cmd("set spell!")
@@ -161,7 +161,7 @@ map("x", "<leader>p", "\"_dP")
 map("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- "expand braces"
-map("n", "<leader>eb", "_f{a<CR><Esc>f}i<CR><Esc>")
+map("n", "<leader>eb", "_f{a<CR><Esc>_f}i<CR><Esc>")
 
 -- Normal mode unmaps
 -- use x!
