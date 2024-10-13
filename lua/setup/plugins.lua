@@ -15,7 +15,9 @@ require("lazy").setup({
         cmd = "Telescope",
     },
 
-    { "savq/melange-nvim", event = "VeryLazy", },
+    { "savq/melange-nvim",             event = "VeryLazy", },
+    { "Everblush/nvim",                event = "VeryLazy", },
+    { "eddyekofo94/gruvbox-flat.nvim", event = "VeryLazy", },
     -- { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
     -- { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
 
@@ -80,6 +82,10 @@ require("lazy").setup({
         }
     },
 
+    {
+        "b0o/schemastore.nvim",
+    },
+
     -- { -- rust-tools replacement
     --     "mrcjkb/rustaceanvim",
     --     version = "^3",
@@ -96,7 +102,14 @@ require("lazy").setup({
 
     { -- debugging tools
         "mfussenegger/nvim-dap",
-        enabled = false,
+
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-neotest/nvim-nio",
+        },
+
+        enabled = true,
     },
 
     { -- auto-saving
@@ -173,6 +186,16 @@ require("lazy").setup({
         -- enabled = false,
 
         event = "BufRead",
+    },
+
+    {
+        "refractalize/oil-git-status.nvim",
+
+        dependencies = {
+            "stevearc/oil.nvim",
+        },
+
+        config = true,
     },
 
     { -- a file-system editable like a buffer
@@ -276,6 +299,11 @@ require("lazy").setup({
             { "<leader>cm", "<cmd>lua require('cppman').open_cppman_for(vim.fn.expand('<cword>'))<CR>", },
         },
         enabled = false,
+    },
+
+    {
+        "junegunn/vim-easy-align",
+        lazy = false,
     },
 }, {
     defaults = {
