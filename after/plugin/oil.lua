@@ -10,7 +10,7 @@ require("oil").setup {
 
     win_options = {
         signcolumn = "yes",
-        numberwidth = 4,
+        numberwidth = 6,
     },
 
     keymaps = {
@@ -36,7 +36,14 @@ require("oil").setup {
             end
 
             return false
-        end
+        end,
+        natural_order = true,
+    },
+
+    git = {
+        add = function(_) return true end,
+        mv = function(_, _) return true end,
+        rm = function(_) return true end,
     },
 
     float = {
@@ -47,4 +54,9 @@ require("oil").setup {
     progress = {
         border = "single",
     },
+
+    experimental_watch_for_changes = true,
+    constrain_cursor = "name",
 }
+
+require("oil-git-status").setup({})
