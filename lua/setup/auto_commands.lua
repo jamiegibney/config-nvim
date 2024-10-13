@@ -85,6 +85,13 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     end
 })
 
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = { "*.json" },
+    callback = function()
+        vim.cmd("setlocal shiftwidth=2")
+    end
+})
+
 local remember_folds = vim.api.nvim_create_augroup("remember_folds", {})
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     group = remember_folds,
