@@ -14,12 +14,12 @@ require("oil").setup {
     },
 
     keymaps = {
-        ["<C-r>"] = "actions.refresh",
-        ["<BS>"] = "actions.parent",
-        ["<C-z>"] = "actions.select_hsplit",
+        ["<C-r>"] = { "actions.refresh" },
+        ["<BS>"] = { "actions.parent" },
+        ["<C-z>"] = { "actions.select", opts = { horizontal = true } },
 
         -- enable this for floating windows for easy exit
-        ["<C-c>"] = "<Esc>:noh<CR>",
+        ["<C-c>"] = { "<Esc>:noh<CR>" },
         ["<C-h>"] = false,
     },
 
@@ -55,7 +55,7 @@ require("oil").setup {
         border = "single",
     },
 
-    experimental_watch_for_changes = true,
+    watch_for_changes = true,
     constrain_cursor = "name",
 }
 

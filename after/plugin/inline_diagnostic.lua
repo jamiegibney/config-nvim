@@ -1,0 +1,18 @@
+-- vim.g.background = "light"
+--
+-- vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#d95716", })
+-- vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#d9aa0d", })
+-- vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#cccccc", })
+-- vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#6a959f", })
+--
+-- require("tiny-inline-diagnostic").setup({
+--     preset = "classic",
+--     hi = {
+--         background = "Normal",
+--     },
+--     options = {
+--         multiple_diag_under_cursor = true,
+--         multilines = true,
+--         enable_on_insert = true,
+--     }
+-- })

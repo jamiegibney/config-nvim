@@ -18,8 +18,9 @@ require("lazy").setup({
     { "savq/melange-nvim",             event = "VeryLazy", },
     { "Everblush/nvim",                event = "VeryLazy", },
     { "eddyekofo94/gruvbox-flat.nvim", event = "VeryLazy", },
-    -- { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy", },
-    -- { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
+    { "luisiacc/gruvbox-baby",         event = "VeryLazy" },
+    { "rose-pine/neovim",              event = "VeryLazy", },
+    { "rebelot/kanagawa.nvim",         event = "VeryLazy", },
 
     { -- syntax highlighting
         "nvim-treesitter/nvim-treesitter",
@@ -82,9 +83,9 @@ require("lazy").setup({
         }
     },
 
-    {
-        "b0o/schemastore.nvim",
-    },
+    -- {
+    --     "b0o/schemastore.nvim",
+    -- },
 
     -- { -- rust-tools replacement
     --     "mrcjkb/rustaceanvim",
@@ -305,6 +306,23 @@ require("lazy").setup({
         "junegunn/vim-easy-align",
         lazy = false,
     },
+
+    -- {
+    --     "rachartier/tiny-inline-diagnostic.nvim",
+    --     event = "VeryLazy",
+    --     priority = 1000,
+    --     -- config = function()
+    --     -- end
+    -- },
+
+    -- {
+    --     "saghen/blink.cmp",
+    --     lazy = false,
+    --     -- optional: provides snippets for the snippet source
+    --     -- dependencies = "rafamadriz/friendly-snippets",
+    --
+    --     version = "v0.*",
+    -- },
 }, {
     defaults = {
         lazy = true,

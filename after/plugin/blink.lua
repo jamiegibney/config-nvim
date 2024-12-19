@@ -1,0 +1,84 @@
+-- local blink = require("blink-cmp")
+--
+-- require("blink-cmp").setup({
+--     keymap = {
+--         -- show = { "<C-n>", "<C-p>" },
+--         hide = "<C-e>",
+--         accept = "<C-y>",
+--         select_prev = "<C-p>",
+--         select_next = "<C-n>",
+--
+--         -- show_documentation = { "<C-n>", "<C-p>" },
+--         hide_documentation = "<C-\\>",
+--         scroll_documentation_up = "<C-b>",
+--         scroll_documentation_down = "<C-f>",
+--
+--         snippet_forward = "<C-f>",
+--         snippet_backward = "<S-C-f>",
+--     },
+--
+--     sources = {
+--         providers = {
+--             {
+--                 {
+--                     "blink.cmp.sources.lsp",
+--                     name = "LSP",
+--                 },
+--                 {
+--                     "blink.cmp.sources.path",
+--                     name = "Path",
+--                 },
+--                 {
+--                     "blink.cmp.sources.snippets",
+--                     name = "Snip",
+--                     score_offset = -2
+--                 },
+--             },
+--             -- { { "blink.cmp.sources.buffer" } },
+--         },
+--     },
+--
+--     kind_icons = {
+--         Text = "  ",
+--         Method = "󰊕 ",
+--         Function = "󰊕 ",
+--         Constructor = "󰊕 ",
+--
+--         Field = "  ",
+--         Variable = "  ",
+--         Property = "  ",
+--
+--         Class = "  ",
+--         Interface = "  ",
+--         Struct = "  ",
+--         Module = "  ",
+--
+--         Unit = "  ",
+--         Value = "󰎠  ",
+--         Enum = "   ",
+--         EnumMember = "  ",
+--
+--         -- Keyword = "󰻾 ",
+--         Keyword = "󰌋  ",
+--         Constant = "󰏿  ",
+--
+--         Snippet = "  ",
+--         Color = "  ",
+--         File = "  ",
+--         Reference = "  ",
+--         Folder = "  ",
+--         Event = "  ",
+--         Operator = "  ",
+--         TypeParameter = "  ",
+--     },
+--
+--     highlight = {
+--         use_nvim_cmp_as_default = true,
+--     },
+--
+--     trigger = {
+--         signature_help = {
+--             enabled = false
+--         }
+--     },
+-- })

@@ -154,6 +154,8 @@ map("n", "<leader>sp", function()
     end
 end)
 
+map("n", "<C-c>", ":ToggleTerm <CR><C-c>")
+
 -- retain content of register after pasting into a selection
 map("x", "<leader>p", "\"_dP")
 

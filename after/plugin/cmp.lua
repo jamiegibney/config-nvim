@@ -5,32 +5,33 @@ luasnip.config.setup()
 
 local vscode_icons = {
     Text = "  ",
-    Method = "  ",
-    Function = "  ",
-    Constructor = "  ",
-    Field = "  ",
+    Method = "  ",
+    Function = "  ",
+    Constructor = "  ",
+
+    Field = "  ",
     Variable = "  ",
-    Class = "  ",
+    Property = "  ",
+
+    Class = "  ",
     Interface = "  ",
+    Struct = "  ",
     Module = "  ",
-    Property = "  ",
+
     Unit = "  ",
-    -- Value = "  ",
     Value = "󰎠  ",
-    Enum = "  ",
-    -- Keyword = "  ",
+    Enum = "   ",
+    EnumMember = "  ",
+
+    -- Keyword = "󰻾 ",
     Keyword = "󰌋  ",
-    -- Snippet = "  ",
+    Constant = "󰏿  ",
+
     Snippet = "  ",
     Color = "  ",
     File = "  ",
     Reference = "  ",
     Folder = "  ",
-    -- EnumMember = "  ",
-    EnumMember = "  ",
-    Constant = "  ",
-    -- Struct = "  ",
-    Struct = "  ",
     Event = "  ",
     Operator = "  ",
     TypeParameter = "  ",
@@ -104,17 +105,24 @@ cmp.setup {
         },
     },
     view = {
+        docs = {
+            auto_open = true,
+        },
         entries = {
             name = "custom",
-            selection_order = "near_cursor",
+            follow_cursor = true,
         },
     },
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = (vscode_icons[vim_item.kind] or "") .. vim_item.kind
             vim_item.menu = ({
-                -- buffer = "[Buf]",
-                lsp = "[LSP]",
+                buffer = "",
+                nvim_lsp = "",
+                luasnip = "",
+                nvim_lua = "",
+                latex_symbols = "",
+                lsp = "",
             })[entry.source.name]
 
             return vim_item

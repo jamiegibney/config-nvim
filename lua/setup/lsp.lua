@@ -12,6 +12,26 @@ local on_attach = function(client, bufnr)
     end
 end
 
+local hover = function(_, result, ctx, config)
+    if not (result and result.contents) then
+        return vim.lsp.handlers.hover(_, result, ctx, config)
+    end
+    if type(result.contents) == "string" then
+        local s = string.gsub(result.contents, [[\\*]], [[*]])
+        s = string.gsub(s, [[\\`]], [[`]])
+        result.contents = s
+    else
+        local s = string.gsub((result.contents or {}).value or "", "\\", "")
+        -- s = string.gsub(s, "\\`", "`")
+        -- s = string.gsub(s, "\\\\*", "\\*")
+        s = string.gsub(s, "\n\n", "\n\n\n")
+
+        result.contents.value = s
+    end
+
+    return vim.lsp.handlers.hover(_, result, ctx, config)
+end
+
 local map = function(keys, func)
     vim.keymap.set("n", keys, func)
 end
@@ -96,20 +116,29 @@ mason_lsp_config.setup_handlers({
         end
 
         if server_name == "clangd" then
-            lsp["clangd"].setup({
+            require("lspconfig").clangd.setup({
                 cmd = {
                     "clangd",
-                    "-x c",
                     "--background-index",
                     "--clang-tidy",
                     "--cross-file-rename",
+                    "--header-insertion-decorators",
                     -- "--completion-style=bundled",
                     -- "--header-insertion=iwyu",
                 },
                 init_options = {
                     semanticHighlighting = true,
                 },
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = servers[server_name],
+                filetypes = (servers[server_name] or {}).filetypes,
+                handlers = {
+                    ["textDocument/hover"] = vim.lsp.with(hover, {})
+                }
             })
+
+            return
         end
 
         lsp[server_name].setup({
@@ -154,7 +183,8 @@ end
 
 vim.diagnostic.config {
     virtual_text = {
-        spacing = 3,
+        spacing = 4,
+        prefix = "⏺",
         format = function(diag)
             return remove_unnecessary_info(diag.message)
         end,
@@ -180,7 +210,7 @@ require("lspconfig").omnisharp.setup({
 require("lspconfig").jsonls.setup({
     settings = {
         json = {
-            schemas = require("schemastore").json.schemas(),
+            -- schemas = require("schemastore").json.schemas(),
             validate = {
                 enable = true,
             },
