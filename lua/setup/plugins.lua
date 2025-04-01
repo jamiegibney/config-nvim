@@ -84,10 +84,6 @@ require("lazy").setup({
         }
     },
 
-    -- {
-    --     "b0o/schemastore.nvim",
-    -- },
-
     -- { -- rust-tools replacement
     --     "mrcjkb/rustaceanvim",
     --     version = "^3",
