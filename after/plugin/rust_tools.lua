@@ -43,12 +43,12 @@ require("rust-tools").setup({
             end)
         end,
 
-        cmd = {
-            "ra-multiplex",
-            "client",
-            "--server-path",
-            "/Users/jamiegibney/.local/share/nvim/mason/bin/rust-analyzer",
-        },
+        -- cmd = {
+        --     "ra-multiplex",
+        --     "client",
+        --     "--server-path",
+        --     "/Users/jamiegibney/.local/share/nvim/mason/bin/rust-analyzer",
+        -- },
 
         settings = {
             ["rust-analyzer"] = {
