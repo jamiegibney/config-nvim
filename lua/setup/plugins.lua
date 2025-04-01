@@ -213,8 +213,9 @@ require("lazy").setup({
         keys = {
             { "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", }
         },
-        build = function()
-            vim.fn["mkdp#util#install"]()
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
         end
     },
 
