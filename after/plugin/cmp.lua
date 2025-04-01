@@ -70,9 +70,8 @@ cmp.setup {
     }),
     sorting = {
         comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
             cmp.config.compare.score,
+            cmp.config.compare.offset,
             -- in-line version of cmp-under-comparator
             function(entry_1, entry_2)
                 local _, e1_under = entry_1.completion_item.label:find("^_+")
@@ -85,9 +84,6 @@ cmp.setup {
                     return true
                 end
             end,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
             cmp.config.compare.order,
         }
     },
@@ -135,3 +131,12 @@ cmp.setup {
     },
     preselect = cmp.PreselectMode.Item,
 }
+
+local function hl(group, opts)
+    vim.api.nvim_set_hl(0, group, opts)
+end
+
+hl("CmpItemKindConstructor", { link = "CmpItemKind" })
+hl("CmpItemKindKeyword", { link = "CmpItemKind" })
+hl("CmpItemAbbrMatch", { bold = true, fg = "#a215a0" })
+hl("CmpItemAbbrMatchFuzzy", { bold = true, fg = "#a270a0" })
