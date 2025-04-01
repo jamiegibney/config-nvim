@@ -226,7 +226,7 @@ require("lazy").setup({
         end,
 
         cmd = "SymbolsOutline",
-        keys = { { "<leader>so>", "<cmd>SymbolsOutline<CR>" }, },
+        keys = { { "<leader>so", "<cmd>SymbolsOutline<CR>" }, },
         enabled = false,
     },
 
@@ -317,7 +317,10 @@ require("lazy").setup({
     --     "saghen/blink.cmp",
     --     lazy = false,
     --     -- optional: provides snippets for the snippet source
-    --     -- dependencies = "rafamadriz/friendly-snippets",
+    --     dependencies = {
+    --         "rafamadriz/friendly-snippets",
+    --         -- "L3MON4D3/LuaSnip",
+    --     },
     --
     --     version = "v0.*",
     -- },
