@@ -45,7 +45,7 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 
 -- clear search highlight (but not the search term, so n and N will work)
-map("n", "<C-c>", function() error("PRESS ESC!") end)
+-- map("n", "<C-c>", function() error("PRESS ESC!") end)
 map("n", "<Esc>", ":noh<CR>")
 
 -- move through soft-wrapped lines
