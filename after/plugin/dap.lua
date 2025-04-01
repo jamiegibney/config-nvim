@@ -39,7 +39,7 @@ end
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/usr/local/Cellar/llvm/18.1.7/bin/lldb-dap",
+    command = "/opt/homebrew/Cellar/llvm/19.1.6/bin/lldb-dap",
     name = "lldb",
 }
 
