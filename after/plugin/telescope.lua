@@ -27,7 +27,7 @@ km.set("n", "<leader>fo", builtin.oldfiles, {})
 km.set("n", "<leader>fi", builtin.current_buffer_fuzzy_find, {})
 
 -- "goto references"
-km.set("n", "gr", builtin.lsp_references, {})
+km.set("n", "<leader>gr", builtin.lsp_references, {})
 
 -- "telescope resume"
 km.set("n", "<leader>tr", builtin.resume, {})
