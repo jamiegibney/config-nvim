@@ -15,12 +15,13 @@ require("lazy").setup({
         cmd = "Telescope",
     },
 
-    { "savq/melange-nvim",             event = "VeryLazy", },
-    { "Everblush/nvim",                event = "VeryLazy", },
-    { "eddyekofo94/gruvbox-flat.nvim", event = "VeryLazy", },
-    { "luisiacc/gruvbox-baby",         event = "VeryLazy" },
-    { "rose-pine/neovim",              event = "VeryLazy", },
-    { "rebelot/kanagawa.nvim",         event = "VeryLazy", },
+    { "savq/melange-nvim",             event = "VeryLazy", enabled = true },
+    { "Everblush/nvim",                event = "VeryLazy", enabled = false },
+    { "eddyekofo94/gruvbox-flat.nvim", event = "VeryLazy", enabled = false },
+    { "luisiacc/gruvbox-baby",         event = "VeryLazy", enabled = false },
+    { "rose-pine/neovim",              event = "VeryLazy", enabled = false },
+    { "rebelot/kanagawa.nvim",         event = "VeryLazy", enabled = false },
+    { "rjshkhr/shadow.nvim",           event = "VeryLazy", enabled = false },
 
     { -- syntax highlighting
         "nvim-treesitter/nvim-treesitter",
