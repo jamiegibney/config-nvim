@@ -29,6 +29,9 @@ map("n", "<leader>ga", "<cmd>!git add %<CR>")
 -- "comment separator"
 map("n", "<leader>cs", "o<Esc>O*** *** *** *** *** <Esc>:lua require('Comment.api').toggle.linewise.current()<CR>_yiW$p")
 
+-- "hex dump"
+map("n", "<leader>hd", "<cmd>%!xxd -b -d -c 8<CR>")
+
 -- "git status"
 -- map("n", "<leader>gs", vim.cmd.Git)
 
