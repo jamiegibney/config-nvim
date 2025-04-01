@@ -52,6 +52,16 @@ local function set_glsl_highlights()
     api.nvim_set_hl(0, "@function.glsl", { fg = "#0070a0", bold = true })
 end
 
+-- * -- C highlight -- * --
+local function set_c_highlights()
+    api.nvim_set_hl(0, "@lsp.type.macro.c", { link = "@macro" })
+    api.nvim_set_hl(0, "@lsp.type.function.c", { fg = "#00ab9c" })
+    api.nvim_set_hl(0, "@lsp.type.type.c", { link = "cType" })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.c", { link = "@lsp.typemod.const.constant.rust" })
+    api.nvim_set_hl(0, "@lsp.typemod.property.readonly.c", { link = "@lsp.typemod.const.constant.rust" })
+    api.nvim_set_hl(0, "@lsp.typemod.variable.fileScope.c", { fg = "#000000", bold = true, })
+end
+
 -- * -- C++ highlights -- * --
 local function set_cpp_highlights()
     local cpp_class_purple = "#8023c0"
@@ -60,6 +70,7 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.cpp", { link = "none" })
     api.nvim_set_hl(0, "@lsp.type.namespace.cpp", { link = "none" })
     api.nvim_set_hl(0, "@type.builtin.cpp", { link = "rustKeyword", })
+    api.nvim_set_hl(0, "cppConstant", { fg = "#0033b3", bg = "#f0f4ff", })
     api.nvim_set_hl(0, "cppType", { link = "rustKeyword", })
     api.nvim_set_hl(0, "cppTypedef", { link = "cType", })
     api.nvim_set_hl(0, "cppStructure", { link = "cType", })
@@ -203,6 +214,7 @@ local function set_highlights()
 
     -- general highlights
     api.nvim_set_hl(0, "Normal", { fg = "#000000", --[[ bg = "#ffffff", ]] })
+    api.nvim_set_hl(0, "Whitespace", { fg = "#000000", --[[ bg = "#ffffff", ]] })
     api.nvim_set_hl(0, "NormalNC", { link = "Normal", })
     api.nvim_set_hl(0, "Todo", { fg = "#008dde", italic = true, bold = true, --[[ bg = "#c0ddef", ]] })
     api.nvim_set_hl(0, "LineNr", { fg = "#adadad" })
@@ -223,17 +235,21 @@ local function set_highlights()
 
     api.nvim_set_hl(0, "StatusLine", { bg = "#ededed", fg = "none" })
     api.nvim_set_hl(0, "StatusLineNC", { bg = "#eeeeee", fg = "none" })
-    api.nvim_set_hl(0, "WinBar", { fg = "#000000" })
-    api.nvim_set_hl(0, "WinBarNC", { fg = "#000000" })
+    api.nvim_set_hl(0, "WinBar", { fg = "#000000", bg = "none" })
+    api.nvim_set_hl(0, "WinBarNC", { fg = "#000000", bg = "none" })
+    api.nvim_set_hl(0, "WinSeparator", { fg = "#bbbbbb", bg = "none" })
     api.nvim_set_hl(0, "FloatBorder", { link = "WinBar" })
     api.nvim_set_hl(0, "NormalFloat", { bg = "#f7f7f7", fg = "none" })
     api.nvim_set_hl(0, "VertSplit", { link = "LineNr", })
-    api.nvim_set_hl(0, "PMenuSel", { bg = "#a6d2ff", fg = "none" })
+    api.nvim_set_hl(0, "PMenuSel", { bg = "#a6d2ff", fg = "#000000" })
+    api.nvim_set_hl(0, "PMenuMatch", { link = "Special" })
+    api.nvim_set_hl(0, "PMenuMatchSel", { bg = "#a6d2ff", fg = "#000000" })
     api.nvim_set_hl(0, "PMenu", { link = "NormalFloat", })
     api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#dddddd", })
     api.nvim_set_hl(0, "IndentBlanklineContextChar", { link = "DiagnosticHint", })
 
     api.nvim_set_hl(0, "@comment.documentation", { link = "Comment", })
+    api.nvim_set_hl(0, "@lsp.mod.GlobalScope", { link = "none", })
 
     api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
 
@@ -296,6 +312,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.const.documentation.rust", {
         link = "@lsp.typemod.const.constant.rust"
     })
+    api.nvim_set_hl(0, "@keyword.import.rust", { link = "Statement" })
+    api.nvim_set_hl(0, "@character.special.rust", { link = "Normal" })
     api.nvim_set_hl(0, "@lsp.type.typeParameter", { fg = "#20999d", })
     api.nvim_set_hl(0, "@lsp.type.property", { fg = "#a215a0" })
     api.nvim_set_hl(0, "@lsp.type.enumMember", { fg = "#a215a0", italic = true, })
@@ -338,6 +356,7 @@ local function set_highlights()
     -- * -- Rust highlights -- * --
     -- types
     api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.rust", { fg = "#000000", })
+    api.nvim_set_hl(0, "@lsp.typemod.property.library.rust", { link = "@lsp.type.property" })
     api.nvim_set_hl(0, "@variable.member.rust", { link = "@lsp.type.property" })
 
     -- variables and parameters (closure variables are considered parameters)
@@ -435,6 +454,7 @@ local function set_highlights()
     set_cpp_highlights()
     set_cs_highlights()
     set_glsl_highlights()
+    set_c_highlights()
 end
 
 local function set_dark_highlights()
@@ -475,7 +495,6 @@ local function set_dark_highlights()
     api.nvim_set_hl(0, "FloatBorder", { link = "WinBar" })
     api.nvim_set_hl(0, "NormalFloat", { bg = "#f7f7f7", fg = "none" })
     api.nvim_set_hl(0, "VertSplit", { link = "LineNr", })
-    api.nvim_set_hl(0, "PMenuSel", { bg = "#a6d2ff", fg = "none" })
     api.nvim_set_hl(0, "PMenu", { link = "NormalFloat", })
     api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#dddddd", })
     api.nvim_set_hl(0, "IndentBlanklineContextChar", { link = "DiagnosticHint", })
@@ -674,6 +693,10 @@ local function set_dark_highlights()
     api.nvim_set_hl(0, "OilDir", { link = "@lsp.type.method.cpp", })
     api.nvim_set_hl(0, "OilLink", { link = "@lsp.type.namespace.cpp", })
     api.nvim_set_hl(0, "@markup.raw.markdown_inline", { fg = "#426d77", bg = "#e5e5e5" })
+
+    api.nvim_set_hl(0, "xxdAddress", { fg = "#000000", bold = true })
+    api.nvim_set_hl(0, "xxdAscii", { link = "String" })
+
     -- api.nvim_set_hl(0, "DiagnosticError", { fg = "#d95716", })
     -- api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#d9aa0d", })
     -- api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#cccccc", })
@@ -702,12 +725,18 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
                 "@lsp.type.enumMember.cpp"
             )
         end
-        if token.type == "class" and token.modifiers.abstract and
-            (token.modifiers.classScope or token.modifiers.class) then
+        if token.type == "class" and token.modifiers.abstract then
             vim.lsp.semantic_tokens.highlight_token(
                 token, args.buf, args.data.client_id,
                 "@lsp.type.interface.rust"
             )
+            if token.modifiers.declaration or token.modifiers.definition or
+                token.modifiers.globalScope then
+                vim.lsp.semantic_tokens.highlight_token(
+                    token, args.buf, args.data.client_id,
+                    "@lsp.type.interface.rust"
+                )
+            end
         end
     end
 })
