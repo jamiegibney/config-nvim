@@ -107,8 +107,6 @@ require("lazy").setup({
             "theHamsta/nvim-dap-virtual-text",
             "nvim-neotest/nvim-nio",
         },
-
-        enabled = true,
     },
 
     { -- auto-saving
@@ -123,7 +121,7 @@ require("lazy").setup({
 
     { -- automatic commenting
         "numToStr/Comment.nvim",
-        event = "BufRead",
+        event = "BufEnter",
     },
 
     { -- awesome buffer visuals
@@ -167,6 +165,7 @@ require("lazy").setup({
     { -- better terminals
         "akinsho/toggleterm.nvim",
         version = "*",
+        lazy = false,
     },
 
     { -- surround text with anything you want!
@@ -204,14 +203,13 @@ require("lazy").setup({
     { -- indent guides
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        event = "LspAttach",
+        lazy = false,
     },
 
     { -- markdown previewing
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop", },
         ft = { "markdown" },
-        lazy = true,
         keys = {
             { "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", }
         },
@@ -235,6 +233,7 @@ require("lazy").setup({
     { -- move text to the centre of the screen
         "folke/zen-mode.nvim",
         cmd = "ZenMode",
+        keys = { "<leader>mm" },
         opts = {
             window = {
                 backdrop = 1.0,
@@ -259,6 +258,7 @@ require("lazy").setup({
     { -- pick colours directly in the editor
         "ziontee113/color-picker.nvim",
         lazy = false,
+        keys = { "<leader>pc" },
         config = function()
             require("color-picker").setup()
         end
