@@ -101,6 +101,7 @@ require("neodev").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 local mason_lsp_config = require("mason-lspconfig")
 
@@ -190,7 +191,7 @@ vim.diagnostic.config {
         end,
     },
     signs = false,
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
 }
