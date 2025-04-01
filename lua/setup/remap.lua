@@ -5,6 +5,10 @@ local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
 
+vim.cmd("unmap grr")
+vim.cmd("unmap gri")
+vim.cmd("unmap gra")
+
 -- * --  NORMAL MODE  -- * --
 
 -- toggle line comment
