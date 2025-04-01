@@ -1,3 +1,5 @@
+local Terminal = require("toggleterm.terminal").Terminal
+
 require("toggleterm").setup({
     size = 40,
 
@@ -18,9 +20,8 @@ require("toggleterm").setup({
     start_in_insert = true,
 
     open_mapping = "<C-Space>",
+    shell = "fish",
 })
-
-local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({
     cmd = "lazygit",
