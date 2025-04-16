@@ -29,7 +29,7 @@ require("dapui").setup({
         },
     },
 })
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup({})
 
 dap.set_log_level("DEBUG")
 
@@ -39,7 +39,7 @@ end
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/opt/homebrew/Cellar/llvm/19.1.6/bin/lldb-dap",
+    command = "/opt/homebrew/Cellar/llvm/20.1.1/bin/lldb-dap",
     name = "lldb",
 }
 
