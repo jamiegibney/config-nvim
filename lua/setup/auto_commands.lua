@@ -109,9 +109,14 @@ vim.api.nvim_create_user_command("ResetTheme", function()
     require("setup.theme").set_theme()
 end, {})
 
--- alias for ":write" or ":w" to help with typos
+-- I initially set `:W` to alias to `:write`, but found that I relied on that
+-- far too often. Whenever I would use a "default Vim" setting like a web
+-- editor or different system, I would frequently type `:W` which throws an
+-- error. So I've changed this to an explicit error to force myself to type
+-- properly.
 vim.api.nvim_create_user_command("W", function()
-    vim.cmd("write")
+    -- vim.cmd("write")
+    error("Please use a lowercase 'w' to write!")
 end, {})
 
 -- allow the insert mode cursor appearance to be toggled
