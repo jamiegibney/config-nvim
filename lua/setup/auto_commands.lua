@@ -86,6 +86,13 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = { "*.hpp", "*.cpp", "*.h", "*.c", "*.m", "*.mm" },
+    callback = function()
+        vim.cmd("setlocal textwidth=85")
+    end
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     pattern = { "*.json" },
     callback = function()
         vim.cmd("setlocal shiftwidth=2")
