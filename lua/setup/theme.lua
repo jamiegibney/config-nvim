@@ -86,7 +86,8 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "cppOperator", { link = "ctype", })
     api.nvim_set_hl(0, "cStorageClass", { link = "ctype", })
     api.nvim_set_hl(0, "cppStorageClass", { link = "cStorageClass", })
-    api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
+    -- api.nvim_set_hl(0, "cInclude", { fg = "#af9800", italic = true, })
+    api.nvim_set_hl(0, "cInclude", { fg = "#b9a000", italic = true, })
     api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.cpp", { link = "@lsp.typemod.const.constant.rust" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.static.cpp", { bold = true, underline = true, })
     api.nvim_set_hl(0, "@lsp.type.operator.cpp", { link = "" })
@@ -115,7 +116,7 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.method.classScope.cpp", { fg = method_color })
     api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
     api.nvim_set_hl(0, "@lsp.typemod.type.defaultLibrary.cpp", { link = "rustKeyword" })
-    api.nvim_set_hl(0, "@lsp.typemod.parameter.functionScope.cpp", { sp = "#dddddd", underline = true, })
+    api.nvim_set_hl(0, "@lsp.typemod.parameter.functionScope.cpp", { sp = "#d4d4d4", underline = true, })
     api.nvim_set_hl(0, "@lsp.typemod.method.definition.cpp", { link = "@lsp.typemod.function.declaration" })
     api.nvim_set_hl(0, "@lsp.type.type.cpp", { link = "DiagnosticHint" })
     api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.cpp", { italic = false, })
@@ -296,7 +297,7 @@ local function set_highlights()
     -- what do these actually do?
     api.nvim_set_hl(0, "Constant", {})
 
-    api.nvim_set_hl(0, "PreProc", { fg = "#af9800", })
+    api.nvim_set_hl(0, "PreProc", { fg = "#b9a000", })
     api.nvim_set_hl(0, "rustModPath", { fg = "#0033b3", })
 
     api.nvim_set_hl(0, "Function", {})
@@ -723,6 +724,20 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
             vim.lsp.semantic_tokens.highlight_token(
                 token, args.buf, args.data.client_id,
                 "@lsp.type.enumMember.cpp"
+            )
+        end
+        if token.type == "function" and token.modifiers.fileScope and not
+            token.modifiers.definition then
+            vim.lsp.semantic_tokens.highlight_token(
+                token, args.buf, args.data.client_id,
+                "@lsp.typemod.variable.reference.rust"
+            )
+        end
+        if token.type == "variable" and token.modifiers.functionScope and
+            token.modifiers.readonly then
+            vim.lsp.semantic_tokens.highlight_token(
+                token, args.buf, args.data.client_id,
+                "@lsp.type.variable"
             )
         end
         if token.type == "class" and token.modifiers.abstract then
