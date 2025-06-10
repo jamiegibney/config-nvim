@@ -6,6 +6,16 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end
 })
 
+-- set 'sc' files to glsl (bgfx .sc is very similar to glsl)
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.sc",
+    callback = function()
+        vim.bo.filetype = "glsl"
+        vim.opt.shiftwidth = 4
+    end,
+})
+
+
 -- prevent comments from being created on newlines with 'o' and 'O'
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = "*",
