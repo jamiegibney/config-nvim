@@ -9,6 +9,9 @@ vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+vim.opt.guicursor =
+"n-v:block-blinkwait400-blinkon200-blinkoff200,i-ci-ve:ver80,r-cr:hor80,o:hor50,c:ver80,a:blinkwait10-blinkoff350-blinkon350-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+
 -- keep only one status bar at the bottom of the screen
 opt.laststatus = 3
 
