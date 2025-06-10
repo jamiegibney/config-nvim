@@ -67,6 +67,14 @@ map("<leader>dn", function()
     })
 end)
 
+map("<C-]>", function()
+    vim.diagnostic.goto_next(nil)
+end)
+
+map("<C-[>", function()
+    vim.diagnostic.goto_prev(nil)
+end)
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 
