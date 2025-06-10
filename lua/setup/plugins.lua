@@ -16,10 +16,10 @@ require("lazy").setup({
     },
 
     { "savq/melange-nvim",             event = "VeryLazy", enabled = true },
+    { "rose-pine/neovim",              event = "VeryLazy", enabled = true },
     { "Everblush/nvim",                event = "VeryLazy", enabled = false },
     { "eddyekofo94/gruvbox-flat.nvim", event = "VeryLazy", enabled = false },
     { "luisiacc/gruvbox-baby",         event = "VeryLazy", enabled = false },
-    { "rose-pine/neovim",              event = "VeryLazy", enabled = false },
     { "rebelot/kanagawa.nvim",         event = "VeryLazy", enabled = false },
     { "rjshkhr/shadow.nvim",           event = "VeryLazy", enabled = false },
 
