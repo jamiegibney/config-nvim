@@ -21,6 +21,7 @@ require("oil").setup {
         -- enable this for floating windows for easy exit
         ["<C-c>"] = { "<Esc>:noh<CR>" },
         ["<C-h>"] = false,
+        ["<C-l>"] = false,
     },
 
     view_options = {
@@ -30,10 +31,11 @@ require("oil").setup {
                 return true
             end
 
-            local start, _ = string.find(name, ".meta")
-            if start ~= nil then
-                return true
-            end
+            -- TODO: this should specifically look for file suffixes
+            -- local start, _ = string.find(name, ".meta")
+            -- if start ~= nil then
+            --     return true
+            -- end
 
             return false
         end,
