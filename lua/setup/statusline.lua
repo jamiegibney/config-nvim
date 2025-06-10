@@ -82,8 +82,10 @@
 vim.api.nvim_create_autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrite", "TextChanged", }, {
     pattern = "*",
     callback = function()
-        vim.api.nvim_set_hl(0, "SLWarn", { bold = true, fg = "#d9aa0d", bg = "#ededed" })
-        vim.api.nvim_set_hl(0, "SLError", { bold = true, fg = "#d95716", bg = "#ededed" })
+        -- vim.api.nvim_set_hl(0, "SLWarn", { bold = true, fg = "#d9aa0d", bg = "#ededed" })
+        -- vim.api.nvim_set_hl(0, "SLError", { bold = true, fg = "#d95716", bg = "#ededed" })
+        vim.api.nvim_set_hl(0, "SLWarn", { link = "DiagnosticWarn" })
+        vim.api.nvim_set_hl(0, "SLError", { link = "DiagnosticError" })
 
         local set_color_1 = "%#StatusLineNC#"
         local set_color_2 = "%#StatusLine#"
