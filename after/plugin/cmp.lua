@@ -64,7 +64,7 @@ cmp.setup {
         -- ["<C-f>"] = cmp.mapping.scroll_docs(-4),
         -- ["<C-g>"] = cmp.mapping.scroll_docs(4),
         ["<C-y>"] = cmp.mapping.confirm({
-            behavior = cmp.SelectBehavior.Insert,
+            behavior = cmp.SelectBehavior.Replace,
             select = true,
         }),
     }),
