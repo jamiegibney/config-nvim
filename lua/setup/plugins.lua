@@ -74,7 +74,6 @@ require("lazy").setup({
                         ["<C-p>"] = { "show_and_insert", "select_prev" },
                         ["<C-n>"] = { "show_and_insert", "select_next" },
                         ["<C-e>"] = { "cancel" },
-                        --
                     },
                     completion = {
                         menu = {
@@ -86,7 +85,7 @@ require("lazy").setup({
                         },
                     },
                     sources = {
-                        default = { "buffer", "omni", "path" },
+                        default = { "buffer", "path", "omni" },
                         per_filetype = {
                             md = { "buffer", "path" },
                             txt = { "buffer", "path" },
@@ -94,12 +93,12 @@ require("lazy").setup({
                     },
                     fuzzy = {
                         implementation = "prefer_rust",
-                        use_frecency = false,
+                        use_frecency = true,
                         use_proximity = true,
                         sorts = {
                             "exact",
                             "score",
-                            -- "sort_text",
+                            "sort_text",
                         },
                     },
                 },
