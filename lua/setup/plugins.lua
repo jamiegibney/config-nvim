@@ -53,7 +53,8 @@ require("lazy").setup({
         "j-hui/fidget.nvim",
         tag = "legacy",
         event = "LspAttach",
-        setup = require("setup.plugins.fidget")
+        setup = require("setup.plugins.fidget"),
+        enabled = false,
     },
 
     { -- lsp stuff
@@ -61,29 +62,69 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            { "folke/neodev.nvim", ft = { "lua" } },
+            {
+                "saghen/blink.cmp",
+                event = "VimEnter",
+                lazy = false,
+                version = "1.*",
+                opts = {
+                    keymap = {
+                        preset = "none",
+                        ["<C-y>"] = { "show_and_insert", "select_and_accept" },
+                        ["<C-p>"] = { "show_and_insert", "select_prev" },
+                        ["<C-n>"] = { "show_and_insert", "select_next" },
+                        ["<C-e>"] = { "cancel" },
+                        --
+                    },
+                    completion = {
+                        menu = {
+                            auto_show = false,
+                            draw = {
+                                components = {
+                                },
+                            },
+                        },
+                    },
+                    sources = {
+                        default = { "buffer", "omni", "path" },
+                        per_filetype = {
+                            md = { "buffer", "path" },
+                            txt = { "buffer", "path" },
+                        },
+                    },
+                    fuzzy = {
+                        implementation = "prefer_rust",
+                        use_frecency = false,
+                        use_proximity = true,
+                        sorts = {
+                            "exact",
+                            "score",
+                            -- "sort_text",
+                        },
+                    },
+                },
+            }
         },
-    },
 
-    {
-        "Issafalcon/lsp-overloads.nvim",
-        event = "LspAttach",
-    },
+        config = function() require("setup.lsp") end,
 
-    { -- autocompletion
-        "hrsh7th/nvim-cmp",
         lazy = false,
-
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip",
-            { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
-            "hrsh7th/cmp-buffer",
-
-            "felipelema/cmp-async-path",
-            "L3MON4D3/LuaSnip",
-        }
     },
+
+    -- { -- autocompletion
+    --     "hrsh7th/nvim-cmp",
+    --     lazy = false,
+    --
+    --     dependencies = {
+    --         "hrsh7th/cmp-nvim-lsp",
+    --         "saadparwaiz1/cmp_luasnip",
+    --         { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
+    --         "hrsh7th/cmp-buffer",
+    --
+    --         "felipelema/cmp-async-path",
+    --         "L3MON4D3/LuaSnip",
+    --     }
+    -- },
 
     -- { -- rust-tools replacement
     --     "mrcjkb/rustaceanvim",
@@ -97,6 +138,7 @@ require("lazy").setup({
     { -- rust enhancements
         "simrat39/rust-tools.nvim",
         ft = { "rust", },
+        enabled = false,
     },
 
     { -- debugging tools
@@ -107,21 +149,25 @@ require("lazy").setup({
             "theHamsta/nvim-dap-virtual-text",
             "nvim-neotest/nvim-nio",
         },
+
+        enabled = false,
     },
 
     { -- auto-saving
         "Pocco81/auto-save.nvim",
-        lazy = false,
+        enabled = false,
     },
 
     { -- gamefied vim motions
         "ThePrimeagen/vim-be-good",
         cmd = "VimBeGood",
+        enabled = false,
     },
 
     { -- automatic commenting
         "numToStr/Comment.nvim",
         event = "BufEnter",
+        enabled = false,
     },
 
     { -- awesome buffer visuals
@@ -145,6 +191,7 @@ require("lazy").setup({
 
     { -- rust crate tools
         "saecki/crates.nvim",
+        enabled = false,
         tag = "v0.4.0",
         event = { "BufRead Cargo.toml" },
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -154,9 +201,9 @@ require("lazy").setup({
                 thousands_separator = ",",
                 date_format = "%d-%m-%y",
                 src = {
-                    cmp = {
-                        enabled = true,
-                    }
+                    -- cmp = {
+                    --     enabled = true,
+                    -- }
                 }
             })
         end
@@ -181,7 +228,6 @@ require("lazy").setup({
                 insert_mode = true,
             }
         end,
-        -- enabled = false,
 
         event = "BufRead",
     },
@@ -194,10 +240,6 @@ require("lazy").setup({
         },
 
         config = true,
-    },
-
-    { -- a file-system editable like a buffer
-        "stevearc/oil.nvim",
     },
 
     { -- indent guides
@@ -233,6 +275,7 @@ require("lazy").setup({
 
     { -- move text to the centre of the screen
         "folke/zen-mode.nvim",
+        enabled = false,
         cmd = "ZenMode",
         keys = { "<leader>mm" },
         opts = {
@@ -258,8 +301,7 @@ require("lazy").setup({
 
     { -- pick colours directly in the editor
         "ziontee113/color-picker.nvim",
-        lazy = false,
-        keys = { "<leader>pc" },
+        cmd = "PickColor",
         config = function()
             require("color-picker").setup()
         end
@@ -305,26 +347,6 @@ require("lazy").setup({
         "junegunn/vim-easy-align",
         lazy = false,
     },
-
-    -- {
-    --     "rachartier/tiny-inline-diagnostic.nvim",
-    --     event = "VeryLazy",
-    --     priority = 1000,
-    --     -- config = function()
-    --     -- end
-    -- },
-
-    -- {
-    --     "saghen/blink.cmp",
-    --     lazy = false,
-    --     -- optional: provides snippets for the snippet source
-    --     dependencies = {
-    --         "rafamadriz/friendly-snippets",
-    --         -- "L3MON4D3/LuaSnip",
-    --     },
-    --
-    --     version = "v0.*",
-    -- },
 }, {
     defaults = {
         lazy = true,

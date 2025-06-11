@@ -1,15 +1,15 @@
 local on_attach = function(client, bufnr)
-    if client.server_capabilities.signatureHelpProvider then
-        require("lsp-overloads").setup(client, {
-            keymaps = {
-                next_signature = "<C-l>",
-                previous_signature = "<C-h>",
-                next_parameter = "",
-                previous_parameter = "",
-            },
-            display_automatically = false,
-        })
-    end
+    -- if client.server_capabilities.signatureHelpProvider then
+    --     require("lsp-overloads").setup(client, {
+    --         keymaps = {
+    --             next_signature = "<C-l>",
+    --             previous_signature = "<C-h>",
+    --             next_parameter = "",
+    --             previous_parameter = "",
+    --         },
+    --         display_automatically = false,
+    --     })
+    -- end
 end
 
 local hover = function(_, result, ctx, config)
@@ -87,8 +87,9 @@ local servers = {
 }
 
 local lsp_config = require("lspconfig")
-lsp_config.glsl_analyzer.setup({})
-lsp_config.wgsl_analyzer.setup({})
+-- lsp_config.glsl_analyzer.setup({})
+-- lsp_config.wgsl_analyzer.setup({})
+
 lsp_config.sourcekit.setup({
     filetypes = {
         "swift",
@@ -105,11 +106,8 @@ lsp_config.sourcekit.setup({
     },
 })
 
-require("neodev").setup()
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
--- capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
 local mason_lsp_config = require("mason-lspconfig")
 
@@ -194,9 +192,9 @@ vim.diagnostic.config {
     virtual_text = {
         spacing = 4,
         prefix = "⏺",
-        format = function(diag)
-            return remove_unnecessary_info(diag.message)
-        end,
+        -- format = function(diag)
+        --     return remove_unnecessary_info(diag.message)
+        -- end,
     },
     signs = false,
     update_in_insert = false,
@@ -216,13 +214,4 @@ require("lspconfig").omnisharp.setup({
     use_mono = true,
 })
 
-require("lspconfig").jsonls.setup({
-    settings = {
-        json = {
-            -- schemas = require("schemastore").json.schemas(),
-            validate = {
-                enable = true,
-            },
-        },
-    },
-})
+-- require("lspconfig").jsonls.setup()

@@ -5,16 +5,14 @@ local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
 
-vim.cmd("unmap grr")
-vim.cmd("unmap gri")
-vim.cmd("unmap gra")
+-- vim.cmd("unmap grr")
+-- vim.cmd("unmap gri")
+-- vim.cmd("unmap gra")
 
 -- * --  NORMAL MODE  -- * --
 
 -- toggle line comment
-map("n", "<leader>/", function()
-    require("Comment.api").toggle.linewise.current()
-end)
+map("n", "<leader>/", ":norm gcc<CR>")
 
 -- git "diff"
 map("n", "<leader>df", function()
@@ -27,7 +25,10 @@ end)
 map("n", "<leader>ga", "<cmd>!git add %<CR>")
 
 -- "comment separator"
-map("n", "<leader>cs", "o<Esc>O*** *** *** *** *** <Esc>:lua require('Comment.api').toggle.linewise.current()<CR>_yiW$p")
+map("n", "<leader>cs", "o<Esc>O*** *** *** *** *** <Esc>:norm gcc<CR>_yiW$p")
+
+-- "pick colour"
+map("n", "<leader>pc", ":PickColor<CR>")
 
 -- "hex dump"
 map("n", "<leader>hd", "<cmd>%!xxd -b -d -c 8<CR>")
@@ -233,10 +234,10 @@ map("v", "<C-p>", ":move '<-2<CR>gv=gv")
 map("v", "<C-n>", ":move '>+1<CR>gv=gv")
 
 -- linewise comment
-map("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
+map("v", "<leader>/", "<Esc>:norm gvgc<CR>")
 
 -- "go block" - blockwise comment selection
-map("v", "gb", "<Plug>(comment_toggle_blockwise_visual)")
+-- map("v", "gb", "<Plug>(comment_toggle_blockwise_visual)")
 
 -- folding
 map("v", "<leader>fl", ":fold<CR>")

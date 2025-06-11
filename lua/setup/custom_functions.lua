@@ -44,27 +44,27 @@ toggle_gjk(true)
 
 vim.g.auto_completion = true
 
--- Toggles nvim-cmp auto-completion. Prints the current state of the toggle.
-local function toggle_auto_completion(silent)
-    local ac_enabled = vim.g.auto_completion
-    local print_string
-
-    if ac_enabled then
-        require("cmp").setup({ completion = { autocomplete = false } })
-        print_string = "Disabled auto-completion"
-    else
-        require("cmp").setup({ completion = { autocomplete = { "TextChanged" } } })
-        print_string = "Enabled auto-completion"
-    end
-
-    if not silent then
-        print(print_string)
-    end
-
-    vim.g.auto_completion = not ac_enabled
-end
-toggle_auto_completion(true)
-map("n", "<leader>ac", function() toggle_auto_completion(false) end)
+-- -- Toggles nvim-cmp auto-completion. Prints the current state of the toggle.
+-- local function toggle_auto_completion(silent)
+--     local ac_enabled = vim.g.auto_completion
+--     local print_string
+--
+--     if ac_enabled then
+--         require("cmp").setup({ completion = { autocomplete = false } })
+--         print_string = "Disabled auto-completion"
+--     else
+--         require("cmp").setup({ completion = { autocomplete = { "TextChanged" } } })
+--         print_string = "Enabled auto-completion"
+--     end
+--
+--     if not silent then
+--         print(print_string)
+--     end
+--
+--     vim.g.auto_completion = not ac_enabled
+-- end
+-- toggle_auto_completion(true)
+-- map("n", "<leader>ac", function() toggle_auto_completion(false) end)
 
 -- "toggle diagnostics"
 map("n", "<leader>td", function()
