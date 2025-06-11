@@ -516,6 +516,8 @@ local function set_highlights()
     api.nvim_set_hl(0, "OilDir", { link = "@lsp.type.method.cpp", })
     api.nvim_set_hl(0, "OilLink", { link = "@lsp.type.namespace.cpp", })
     api.nvim_set_hl(0, "@markup.raw.markdown_inline", { fg = "#426d77", bg = "#e5e5e5" })
+    api.nvim_set_hl(0, "markdownCodeBlock", { link = "@markup.raw.markdown_inline" })
+    api.nvim_set_hl(0, "markdownCode", { link = "@markup.raw.markdown_inline" })
     api.nvim_set_hl(0, "markdownRule", { link = "@macro" })
     api.nvim_set_hl(0, "markdownBlockquote", { link = "@lsp.type.namespace.cpp" })
     api.nvim_set_hl(0, "markdownH1", { fg = "#003389", bold = true })
@@ -569,8 +571,8 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
         --         "@lsp.typemod.variable.reference.rust"
         --     )
         -- end
-        if token.type == "variable" and token.modifiers.functionScope and
-            token.modifiers.readonly then
+        if token.type == "variable" and (token.modifiers.functionScope or
+            token.modifiers.fileScope) and token.modifiers.readonly then
             vim.lsp.semantic_tokens.highlight_token(
                 token, args.buf, args.data.client_id,
                 "@lsp.typemod.const.constant.rust"
