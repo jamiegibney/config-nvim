@@ -105,6 +105,8 @@ local function set_cpp_highlights()
     api.nvim_set_hl(0, "@lsp.typemod.property.readonly.cpp", { link = "@lsp.typemod.const.constant.rust" })
 
 
+    api.nvim_set_hl(0, "@lsp.type.modifier.cpp", { fg = "#0033b3", })
+
     -- api.nvim_set_hl(0, "@lsp.type.class.cpp", { fg = cpp_class_purple, })
     api.nvim_set_hl(0, "@lsp.typemod.class.declaration.cpp", { link = "DiagnosticHint" })
     api.nvim_set_hl(0, "@lsp.typemod.class.fileScope.cpp", { link = "DiagnosticHint" })
@@ -572,7 +574,7 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
         --     )
         -- end
         if token.type == "variable" and (token.modifiers.functionScope or
-            token.modifiers.fileScope) and token.modifiers.readonly then
+                token.modifiers.fileScope) and token.modifiers.readonly then
             vim.lsp.semantic_tokens.highlight_token(
                 token, args.buf, args.data.client_id,
                 "@lsp.typemod.const.constant.rust"
