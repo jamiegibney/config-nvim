@@ -148,8 +148,6 @@ require("lazy").setup({
             "theHamsta/nvim-dap-virtual-text",
             "nvim-neotest/nvim-nio",
         },
-
-        enabled = false,
     },
 
     { -- auto-saving
