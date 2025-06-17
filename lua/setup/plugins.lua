@@ -70,12 +70,37 @@ require("lazy").setup({
                 opts = {
                     keymap = {
                         preset = "none",
-                        ["<C-y>"] = { "show_and_insert", "select_and_accept" },
-                        ["<C-p>"] = { "show_and_insert", "select_prev" },
-                        ["<C-n>"] = { "show_and_insert", "select_next" },
+                        ["<C-y>"] = {
+                            "select_and_accept",
+                            function(cmp)
+                                cmp.show_and_insert({
+                                    providers = { "lsp" },
+                                })
+                            end
+                        },
+                        ["<C-p>"] = {
+                            "select_prev",
+                            function(cmp)
+                                cmp.show_and_insert({
+                                    providers = { "path" },
+                                })
+                            end
+                        },
+                        ["<C-n>"] = {
+                            "select_next",
+                            function(cmp)
+                                cmp.show_and_insert({
+                                    providers = { "buffer", "omni" },
+                                })
+                            end
+                        },
                         ["<C-e>"] = { "cancel" },
+                        ["<C-f>"] = { "snippet_forward" },
                     },
                     completion = {
+                        list = {
+                            max_items = 80,
+                        },
                         menu = {
                             auto_show = false,
                             draw = {
@@ -85,7 +110,7 @@ require("lazy").setup({
                         },
                     },
                     sources = {
-                        default = { "buffer", "path", "omni" },
+                        default = { "lsp", "buffer", "path", "omni" },
                         per_filetype = {
                             md = { "buffer", "path" },
                             txt = { "buffer", "path" },
