@@ -252,6 +252,7 @@ require("lazy").setup({
         end,
 
         event = "BufRead",
+        enabled = false,
     },
 
     {
